@@ -644,6 +644,22 @@
   <!-- Start Certifications Section -->
 
   <section id="certifications" class="services">
+    <style>
+      .certification-badge {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin: 10px;
+      }
+  
+      .certification-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
     <div class="container">
       <div class="section-title">
         <h2>Certifications</h2>
@@ -652,10 +668,8 @@
         <div class="col-lg-12" data-aos="fade-up">
           <div class="col-md-12 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="100" style="background:#fff">
             <div style="text-align:left;color:#09203a">
-              <!-- Aggiunto il div per il titolo per una migliore semantica -->
               <h4>Certifications</h4>
-              <div style="text-align:left;">
-                <!-- Aggiunta di class="certification-badge" a ogni immagine -->
+              <div class="certification-container">
                 <a href="https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/BC062EA070865656?sharingId=CAB9C76CF28D6EAE">
                   <img src="assets/img/certification/azuresolutionarchitectexpert.png" alt="Azure Solutions Architect Expert" class="certification-badge">
                 </a>
@@ -681,12 +695,13 @@
                   <img src="assets/img/certification/GenAI-MSFTLinkedin.png" alt="Career Essentials in Generative AI by Microsoft and LinkedIn" class="certification-badge">
                 </a>
               </div>
-            </div>          
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  
 
 
    <!-- <section id="certifications" class="services">
