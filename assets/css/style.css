@@ -1096,3 +1096,22 @@ section .container {
     transform: translateX(-50%);
   }
 }
+
+.certification-badge {
+  width: 120px; /* Larghezza massima per tutte le immagini */
+  height: 120px; /* Altezza massima per tutte le immagini */
+  object-fit: contain; /* Mantiene il rapporto delle immagini senza tagliare */
+  margin-bottom: 15px; /* Distanza tra le immagini */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombra leggera per un effetto di profondità */
+  transition: transform 0.3s ease-in-out; /* Transizione fluida per l'hover */
+  display: inline-block; /* Permette alle immagini di avere margini e spaziatura */
+  border: 1px solid #ddd; /* Opzionale: aggiunge un bordo sottile per definire i limiti dell'immagine */
+  background: #fff; /* Opzionale: sfondo bianco per le immagini con trasparenza */
+  border-radius: 4px; /* Opzionale: bordi arrotondati per le immagini */
+}
+
+.certification-badge:hover {
+  transform: translateY(-5px); /* Sposta leggermente verso l'alto l'immagine al passaggio del mouse */
+}
+
+
