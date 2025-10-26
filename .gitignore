@@ -1,9 +1,0 @@
-# Node dependencies
-node_modules/
-
-# Astro build output
-dist/
-
-# Environment / logs
-.DS_Store
-*.log
