@@ -471,14 +471,22 @@ gtag('config', 'UA-169007209-3');`}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
     <script type="text/javascript">
-      {`window.addEventListener('load', function () {
-  if (window.Typed) {
-    new Typed('.typing', {
-      strings: ["Enterprise & Solution Architect", "Multi-cloud Strategist across AWS, Azure & GCP", "Generative AI and Data Advocate", "Digital Transformation Leader", "Scrum Master Certified", "Cloud Lover"],
-      loop: true,
-      typeSpeed: 65,
-      backSpeed: 65
-    });
+      {`document.addEventListener('DOMContentLoaded', () => {
+  const startTyping = () => {
+    if (typeof window.Typed !== 'undefined') {
+      new window.Typed('.typing', {
+        strings: ["Enterprise & Solution Architect", "Multi-cloud Strategist across AWS, Azure & GCP", "Generative AI and Data Advocate", "Digital Transformation Leader", "Scrum Master Certified", "Cloud Lover"],
+        loop: true,
+        typeSpeed: 65,
+        backSpeed: 65
+      });
+    }
+  };
+
+  if (typeof window.Typed !== 'undefined') {
+    startTyping();
+  } else {
+    window.addEventListener('load', startTyping);
   }
 });`}
     </script>
