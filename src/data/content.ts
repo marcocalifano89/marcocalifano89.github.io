@@ -188,50 +188,50 @@ const data: Record<Locale, Content> = {
       intro: 'Ruoli di leadership tecnica e strategica, con un approccio hands-on che connette business, architettura e delivery.',
       items: [
         {
-          company: 'Reply · Crédit Agricole',
+          company: 'Reply',
           period: 'Lug 2025 — Presente',
           role: 'Senior Architect / PM / IT Strategy',
           bullets: [
-            'Definizione del blueprint multi-cloud e GenAI: landing zone, modelli di sicurezza, data/AI service layer e integrazioni applicative.',
-            'IT strategy advisor per governance, roadmap e operating model DevSecOps/MLOps condivisi con il gruppo Crédit Agricole.',
+            'Definizione di blueprint multi-cloud e GenAI: landing zone, modelli di sicurezza, data/AI service layer e integrazioni applicative per un gruppo bancario internazionale.',
+            'Advisory su governance, roadmap e operating model DevSecOps/MLOps coordinando stakeholder business e IT.',
             'Coordinamento dei primi use case GenAI (document intelligence, credit risk) con KPI, compliance e change management dedicati.'
           ]
         },
         {
-          company: 'Reply · BPER Banca',
+          company: 'Reply',
           period: 'Lug 2025 — Presente',
           role: 'Senior Architect · GenAI Design Authority',
           bullets: [
-            'Design authority sulle iniziative GenAI: assessment architetturali, blueprint contestualizzati, remediation plan e governance centralizzata.',
-            'Analisi e rollout della piattaforma AI su Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run/MemoryStore).',
-            'Valutazione AI Gateway: requisiti RBAC, auditing, semantic caching, cost tracking e roadmap di adozione.'
+            'Design authority su iniziative GenAI nel settore bancario: assessment architetturali, remediation plan e governance centralizzata.',
+            'Analisi e rollout di una piattaforma AI su Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run, MemoryStore).',
+            'Valutazione e definizione di requisiti per AI Gateway: RBAC, auditing, semantic caching, cost tracking e roadmap di adozione.'
           ]
         },
         {
-          company: 'Reply · BAPS',
+          company: 'Reply',
           period: 'Mar 2025 — Presente',
           role: 'Technical Lead',
           bullets: [
             'Ottimizzazione di workflow cloud personalizzati, integrando SAST in pipeline Terraform-based e KPI di sicurezza.',
-            'Sviluppo di dashboard BI su stack AWS per decision making data-driven e visibility operativa.',
+            'Sviluppo di dashboard BI su stack AWS per decisioni data-driven e visibilità operativa.',
             'Advisor tecnico per garantire soluzioni scalabili, sicure e allineate alle priorità del cliente.'
           ]
         },
         {
-          company: 'Reply · Telepass',
+          company: 'Reply',
           period: 'Giu 2021 — Gen 2022',
           role: 'GCP Cloud Architect',
           bullets: [
-            'Blueprint GCP end-to-end per migrazione lift-and-shift e modernizzazione di servizi mobility.',
-            'Adozione di Kubernetes, SQL gestiti e pipeline CI/CD per accelerare il go-live delle applicazioni.'
+            'Blueprint GCP end-to-end per migrazione lift-and-shift e modernizzazione di servizi nel settore mobility.',
+            'Adozione di Kubernetes, database gestiti e pipeline CI/CD per accelerare il go-live delle applicazioni.'
           ]
         },
         {
-          company: 'Accenture · CNH Industrial',
+          company: 'Accenture',
           period: 'Giu 2019 — Giu 2021',
           role: 'AWS Architect & Team Leader',
           bullets: [
-            'Realizzazione di soluzioni Alexa integrate con infrastruttura Azure per servizi connessi sui veicoli Iveco.',
+            'Realizzazione di soluzioni Alexa integrate con infrastrutture Azure per servizi connessi nel settore automotive.',
             'Coordinamento di team sviluppo/test globali, pianificazione sprint e adozione di best practice DevOps.'
           ]
         }
@@ -353,7 +353,7 @@ const data: Record<Locale, Content> = {
         { id: 'contact', label: 'Contact' }
       ],
       cvLabel: 'Download CV',
-      contactLabel: 'Let’s talk about your project',
+      contactLabel: 'Let\'s talk about your project',
       languageSwitchLabel: 'IT',
       languageSwitchSr: 'Switch to Italian version',
       themeToggle: {
@@ -380,7 +380,7 @@ const data: Record<Locale, Content> = {
       actions: {
         primaryLabel: 'Download CV',
         primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link',
-        secondaryLabel: 'Let’s talk',
+        secondaryLabel: 'Let\'s talk',
         secondaryHref: '#contact'
       }
     },
