@@ -3,6 +3,8 @@ node_modules/
 
 # Astro build output
 dist/
+agents.md
+project_kb.md
 
 # Environment / logs
 .DS_Store

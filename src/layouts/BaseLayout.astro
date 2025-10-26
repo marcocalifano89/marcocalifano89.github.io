@@ -3,17 +3,32 @@ import '../styles/global.css';
 
 const {
   title = 'Marco Califano',
-  description = 'Enterprise & Solution Architect with multi-cloud expertise across AWS, Azure, and Google Cloud.'
+  description = 'Enterprise & Solution Architect with multi-cloud expertise across AWS, Azure, and Google Cloud.',
+  keywords = '',
+  lang = 'en'
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      try {
+        const storedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : prefersDark ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
     <link rel="icon" type="image/png" href="/solutionarchitect.png" />
+    <link rel="preload" as="image" href="/assets/img/profile.jpeg" fetchpriority="high" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

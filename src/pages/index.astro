@@ -1,287 +1,140 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getContent, fallbackLocale, isLocale, locales } from '../data/content';
 
-const pageTitle = 'Marco Califano';
-const pageDescription = 'Enterprise & Solution Architect specialising in multi-cloud platforms, digital transformation and data-driven innovation.';
+const requestUrl = new URL(Astro.request.url);
+const requestedLocale = requestUrl.searchParams.get('lang') ?? undefined;
+const locale = isLocale(requestedLocale) ? requestedLocale : fallbackLocale;
+const content = getContent(locale);
+
+const { head, nav, hero, metrics, pillars, experience, education, skills, certifications, contact, footer } = content;
+
+const alternateLocale = locales.find((code) => code !== locale) ?? fallbackLocale;
+const localeSwitchUrl = new URL(requestUrl);
+localeSwitchUrl.searchParams.set('lang', alternateLocale);
+const localeSwitchHref = `${localeSwitchUrl.pathname}${localeSwitchUrl.search}`;
+
+const emailCard = contact.cards.find((card) => card.href?.startsWith('mailto:'));
+const phoneCard = contact.cards.find((card) => card.href?.startsWith('tel:'));
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Marco Califano',
-  jobTitle: 'Enterprise & Solution Architect',
+  name: nav.brand,
+  jobTitle: hero.badge,
   url: 'https://marcocalifano89.github.io',
   image: 'https://marcocalifano89.github.io/assets/img/profile.jpeg',
-  email: 'mailto:marcocalifano89@gmail.com',
-  telephone: '+39-348-878-2506',
+  email: emailCard?.href ?? 'mailto:marcocalifano89@gmail.com',
+  telephone: phoneCard?.href?.replace('tel:', '') ?? phoneCard?.text ?? '+393488782506',
   worksFor: {
     '@type': 'Organization',
     name: 'Reply'
   },
-  sameAs: [
-    'https://www.linkedin.com/in/marcocalifano/',
-    'https://github.com/marcocalifano89'
-  ],
-  knowsAbout: [
-    'Cloud Architecture',
-    'Enterprise Architecture',
-    'DevOps',
-    'Generative AI',
-    'Digital Transformation'
-  ]
+  sameAs: ['https://www.linkedin.com/in/marcocalifano/', 'https://github.com/marcocalifano89'],
+  knowsAbout: hero.typing,
+  description: head.description
 };
 
-const typedPhrases = [
-  'enterprise-scale cloud roadmaps',
-  'AWS, Azure & GCP landing zones',
-  'digital transformation programmes',
-  'data & AI platforms',
-  'secure-by-design architectures'
-];
-
-const heroHighlights = [
-  'Enterprise & solution architecture lead across utilities, energy, media and banking',
-  'Hands-on delivery di piattaforme multi-cloud su AWS, Azure e Google Cloud',
-  'Programmi di modernizzazione e GenAI orientati a KPI di business misurabili'
-];
-
-const metrics = [
-  {
-    value: 'AWS,Azure e GCP',
-    label: 'Multi-cloud architecture',
-    detail: 'Progettazione e governance di landing zone ibride e piattaforme mission critical.'
-  },
-  {
-    value: 'Utilities, Energy, Media e Banking',
-    label: 'Settori serviti',
-    detail: 'Esperienza end-to-end in programmi di trasformazione digitale B2C e B2B.'
-  },
-  {
-    value: 'Team lead & release mgmt',
-    label: 'Leadership operativa',
-    detail: 'Coordinamento di squadre cross-funzionali e gestione release in programmi complessi.'
-  }
-];
-
-const approachPillars = [
-  {
-    title: 'Scouting & Vision',
-    blurb: 'Assessment iniziali e definizione della roadmap condivisa con stakeholder business e IT.',
-    points: ['Cloud readiness & gap analysis', 'Business case e KPI di trasformazione', 'Architecture vision e guard-rail']
-  },
-  {
-    title: 'Blueprint & Enablement',
-    blurb: 'Disegno di reference architecture, landing zone e modelli operativi per squadre cross-funzionali.',
-    points: ['Pattern riutilizzabili e acceleratori IaC', 'Operating model e governance', 'Security & compliance by design']
-  },
-  {
-    title: 'Delivery & Adoption',
-    blurb: 'Supporto hands-on a squadre di sviluppo, rilascio e adozione della piattaforma lungo il ciclo di vita.',
-    points: ['Coaching a team distribuiti', 'Gestione release e change', 'Misurazione valore e ottimizzazione costi']
-  }
-];
-
-const experiences = [
-  {
-    company: 'Reply',
-    period: 'Aug 2022 — Present',
-    role: 'Enterprise & Solution Architect Manager',
-    bullets: [
-      'Guida tecnica e governance per programmi multi-cloud (AWS, Azure, GCP) in utilities, energy e telecom.',
-      'Definizione e industrializzazione di landing zone, reference architecture e sicurezza by design.',
-      'Coordinamento di iniziative GenAI e data platform con impatto su customer experience e automazione.'
-    ]
-  },
-  {
-    company: 'Sky Italy',
-    period: 'Feb 2022 — Jul 2022',
-    role: 'Solution Architect Manager',
-    bullets: [
-      'Supporto alle digital squad nella definizione di architetture resilienti multi-cloud.',
-      'Advisor per governance architetturale, modernizzazione e integrazione ecosistemi legacy.'
-    ]
-  },
-  {
-    company: 'Telepass',
-    period: 'Jun 2021 — Jan 2022',
-    role: 'Cloud Architect',
-    bullets: [
-      'Responsabile del blueprint GCP: container platform, modernizzazione dati e pipeline CI/CD.',
-      'Enablement di team cross-funzionali per servizi di mobilità real-time.'
-    ]
-  },
-  {
-    company: 'Accenture Italy',
-    period: 'Jun 2019 — Jun 2021',
-    role: 'AWS Cloud & Solution Architect',
-    bullets: [
-      'Progettazione di acceleratori AWS riutilizzabili e supporto a programmi mobile/backend globali.',
-      'Ottimizzazione costi, adozione IaC e DevOps enablement per team distribuiti.'
-    ]
-  }
-];
-
-const education = [
-  {
-    school: 'University of Trento',
-    title: 'MSc Telecommunications Engineering',
-    period: '2014 — 2016',
-    bullets: [
-      'Thesis on tolerance analysis for reflector antennas using interval arithmetic (C/C++).',
-      'Built an open-source video mixer for high-quality multi-conference experiences.'
-    ]
-  },
-  {
-    school: 'University of Salerno',
-    title: 'BSc Electronic Engineering',
-    period: '2008 — 2013',
-    bullets: [
-      'Thesis on radio coverage optimisation with WinProp Suite for indoor/outdoor scenarios.',
-      'Focus on electromagnetics, digital electronics and radiopropagation.'
-    ]
-  }
-];
-
-const skillGroups = [
-  {
-    category: 'Cloud & Platforms',
-    items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Hybrid & Edge', 'Landing Zones']
-  },
-  {
-    category: 'Architecture & Delivery',
-    items: ['Enterprise Architecture', 'Solution Design', 'Microservices', 'Event-driven', 'Serverless', 'DevOps']
-  },
-  {
-    category: 'Data & AI',
-    items: ['Data Platforms', 'GenAI Use Cases', 'MLOps', 'Analytics Modernisation', 'Automation']
-  },
-  {
-    category: 'Leadership & Governance',
-    items: ['Architecture Governance', 'Team Coaching', 'Stakeholder Engagement', 'Regulatory Compliance']
-  }
-];
-
-const certifications = [
-  {
-    name: 'Azure Solutions Architect Expert',
-    issuer: 'Microsoft',
-    href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/BC062EA070865656?sharingId=CAB9C76CF28D6EAE'
-  },
-  {
-    name: 'Azure Administrator Associate',
-    issuer: 'Microsoft',
-    href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/4C72C1888660AB9A?sharingId=CAB9C76CF28D6EAE'
-  },
-  {
-    name: 'AWS Solutions Architect Associate',
-    issuer: 'Amazon Web Services',
-    href: 'https://www.credly.com/badges/d902b397-e33c-419c-84dc-f66d32e94fc3'
-  },
-  {
-    name: 'Databricks Generative AI Fundamentals',
-    issuer: 'Databricks',
-    href: 'https://sgq.io/GodJh3O'
-  },
-  {
-    name: 'Professional Scrum Master I',
-    issuer: 'Scrum.org',
-    href: 'https://www.credly.com/badges/3a6c266f-578b-468d-b1a9-89e633976ac1/public_url'
-  }
-];
-
-const contactCards = [
-  {
-    icon: 'ri-map-pin-2-line',
-    label: 'Home Town',
-    text: 'Milan, Italy'
-  },
-  {
-    icon: 'ri-mail-line',
-    label: 'Email',
-    text: 'marcocalifano89@gmail.com',
-    href: 'mailto:marcocalifano89@gmail.com'
-  },
-  {
-    icon: 'ri-phone-line',
-    label: 'Phone',
-    text: '+39 348 878 2506',
-    href: 'tel:+393488782506'
-  },
-  {
-    icon: 'ri-linkedin-box-line',
-    label: 'LinkedIn',
-    text: 'linkedin.com/in/marcocalifano',
-    href: 'https://www.linkedin.com/in/marcocalifano/'
-  }
-];
+const footerText = footer.startsWith('©') ? `© ${new Date().getFullYear()} ${footer.slice(1).trim()}` : footer;
+const navLabel = locale === 'it' ? 'Navigazione principale' : 'Primary navigation';
+const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
+const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
 ---
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <astro:fragment slot="meta">
-    <meta name="keywords" content="Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture" />
-    <meta name="author" content="Marco Califano" />
-    <meta property="og:title" content="Marco Califano — Solution Architect" />
-    <meta property="og:description" content="Certified Enterprise & Solution Architect leading multi-cloud strategies, innovation programmes and data-driven transformation." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://marcocalifano89.github.io" />
-    <meta property="og:image" content="https://marcocalifano89.github.io/solutionarchitect.png" />
-    <meta name="theme-color" content="#101829" />
-    <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169007209-3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-169007209-3');
-    </script>
-  </astro:fragment>
+<BaseLayout title={head.title} description={head.description} keywords={head.keywords} lang={locale}>
+  <meta slot="meta" property="og:title" content={head.title} />
+  <meta slot="meta" property="og:description" content={head.ogDescription} />
+  <script slot="meta" type="application/ld+json">{JSON.stringify(structuredData)}</script>
 
-  <header class="site-header">
+  <header class="site-header" id="top">
     <div class="site-header__inner">
-      <a class="site-header__brand" href="#about">Marco Califano</a>
-      <nav class="site-nav">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
+      <a class="site-header__brand" href="#top">{nav.brand}</a>
+      <nav class="site-nav" aria-label={navLabel}>
+        {nav.items.map((item) => (
+          <a href={`#${item.id}`}>{item.label}</a>
+        ))}
       </nav>
-      <a class="button button--ghost" href="https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <div class="site-header__controls">
+        <a
+          class="control control--language"
+          href={localeSwitchHref}
+          aria-label={nav.languageSwitchSr}
+        >
+            {nav.languageSwitchLabel}
+        </a>
+        <button
+          class="control control--theme"
+          type="button"
+          aria-pressed="true"
+          data-theme-toggle
+          data-label-light={nav.themeToggle.light}
+          data-label-dark={nav.themeToggle.dark}
+        >
+          <span class="sr-only">{nav.themeToggle.light}</span>
+          <i class="ri-moon-line" aria-hidden="true"></i>
+        </button>
+        <a class="button button--ghost" href="#contact">{nav.contactLabel}</a>
+        <a
+          class="button"
+          href={hero.actions.primaryHref}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {hero.actions.primaryLabel}
+        </a>
+      </div>
     </div>
   </header>
 
   <main class="page">
     <section id="about" class="hero">
       <div class="hero__content">
-        <span class="hero__badge">Enterprise &amp; Solution Architect</span>
-        <h1>Ciao, sono Marco.</h1>
-        <p class="hero__lead">
-          Progetto e guido architetture cloud, data &amp; AI per grandi organizzazioni, trasformando roadmap strategiche in risultati concreti e misurabili.
+        <span class="hero__badge">{hero.badge}</span>
+        <h1>{hero.title}</h1>
+        <p class="hero__lead">{hero.lead}</p>
+        <p class="hero__typing" aria-live="polite">
+          <span class="typing"></span>
+          <span class="cursor" aria-hidden="true">|</span>
         </p>
-        <p class="hero__typing">Specialised in <span class="typing" aria-live="polite"></span></p>
         <div class="hero__highlights">
-          {heroHighlights.map((item) => (
-            <span class="chip" key={item}>{item}</span>
+          {hero.highlights.map((highlight) => (
+            <div class="hero__highlight">
+              <i class="ri-check-line" aria-hidden="true"></i>
+              <p>{highlight}</p>
+            </div>
           ))}
         </div>
         <div class="hero__actions">
-          <a class="button" href="https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Scarica il CV</a>
-          <a class="button button--ghost" href="#contact">Qui i miei contatti</a>
+          <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
+            {hero.actions.primaryLabel}
+          </a>
+          <a class="button button--ghost" href={hero.actions.secondaryHref}>
+            {hero.actions.secondaryLabel}
+          </a>
         </div>
       </div>
       <div class="hero__visual">
         <div class="hero__image-frame">
-          <img src="/assets/img/profile.jpeg" alt="Portrait of Marco Califano" loading="lazy" decoding="async" />
+          <img
+            src="/assets/img/profile.jpeg"
+            alt="Marco Califano"
+            width="766"
+            height="743"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </section>
 
-    <section class="section metrics">
+    <section id="impact" class="section">
       <div class="section-heading">
-        <h2>Impact snapshot</h2>
-        <p>Una panoramica dei risultati più ricorrenti che porto nei programmi enterprise.</p>
+        <h2>{metrics.title}</h2>
+        <p>{metrics.intro}</p>
       </div>
-      <div class="card-grid metrics__grid">
-        {metrics.map(({ value, label, detail }) => (
-          <article class="metric-card" key={label}>
+      <div class="metrics__grid">
+        {metrics.items.map(({ value, label, detail }) => (
+          <article class="metric-card">
             <span class="metric-card__value">{value}</span>
             <h3>{label}</h3>
             <p>{detail}</p>
@@ -290,20 +143,18 @@ const contactCards = [
       </div>
     </section>
 
-    <section class="section pillars">
+    <section id="approach" class="section">
       <div class="section-heading">
-        <h2>Come affronto i programmi</h2>
-        <p>Un framework in tre fasi che accompagna clienti e team dall’allineamento strategico alla delivery misurabile.</p>
+        <h2>{pillars.title}</h2>
+        <p>{pillars.intro}</p>
       </div>
       <div class="pillars-grid">
-        {approachPillars.map(({ title, blurb, points }) => (
-          <article class="pillar-card" key={title}>
+        {pillars.items.map(({ title, blurb, points }) => (
+          <article class="pillar-card">
             <h3>{title}</h3>
             <p>{blurb}</p>
             <ul>
-              {points.map((point) => (
-                <li>{point}</li>
-              ))}
+              {points.map((point) => <li>{point}</li>)}
             </ul>
           </article>
         ))}
@@ -312,23 +163,22 @@ const contactCards = [
 
     <section id="experience" class="section">
       <div class="section-heading">
-        <h2>Experience</h2>
-        <p>Ruoli di leadership tecnica e strategica, con un approccio hands-on che connette business, architettura e delivery.</p>
+        <h2>{experience.title}</h2>
+        <p>{experience.intro}</p>
       </div>
       <div class="timeline">
-        {experiences.map(({ company, period, role, bullets }) => (
-          <div class="timeline-item" key={company + period}>
-            <div class="timeline-item__marker" aria-hidden="true"></div>
-            <div class="timeline-item__content">
-              <div class="timeline-item__meta">
-                <span class="timeline-item__period">{period}</span>
-                <h3>{role}</h3>
-                <p class="timeline-item__company">{company}</p>
+        {experience.items.map(({ company, period, role, bullets }) => (
+          <div class="timeline-item">
+            <div class="timeline-item__header">
+              <h3>{company}</h3>
+              <span>{period}</span>
+            </div>
+            <div class="timeline-item__body">
+              <div class="timeline-item__role">
+                <h4>{role}</h4>
               </div>
               <ul>
-                {bullets.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
+                {bullets.map((bullet) => <li>{bullet}</li>)}
               </ul>
             </div>
           </div>
@@ -338,23 +188,22 @@ const contactCards = [
 
     <section id="education" class="section section--compact">
       <div class="section-heading">
-        <h2>Education</h2>
-        <p>Formazione ingegneristica con forte attenzione a telecomunicazioni, sistemi distribuiti e innovazione.</p>
+        <h2>{education.title}</h2>
+        <p>{education.intro}</p>
       </div>
       <div class="timeline timeline--compact">
-        {education.map(({ school, title, period, bullets }) => (
-          <div class="timeline-item" key={school}>
-            <div class="timeline-item__marker" aria-hidden="true"></div>
-            <div class="timeline-item__content">
-              <div class="timeline-item__meta">
-                <span class="timeline-item__period">{period}</span>
-                <h3>{title}</h3>
-                <p class="timeline-item__company">{school}</p>
+        {education.items.map(({ school, period, title, bullets }) => (
+          <div class="timeline-item">
+            <div class="timeline-item__header">
+              <h3>{school}</h3>
+              <span>{period}</span>
+            </div>
+            <div class="timeline-item__body">
+              <div class="timeline-item__role">
+                <h4>{title}</h4>
               </div>
               <ul>
-                {bullets.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
+                {bullets.map((bullet) => <li>{bullet}</li>)}
               </ul>
             </div>
           </div>
@@ -364,17 +213,15 @@ const contactCards = [
 
     <section id="skills" class="section">
       <div class="section-heading">
-        <h2>Focus areas &amp; skills</h2>
-        <p>Competenze principali su cui costruisco strategie, architetture e delivery roadmap.</p>
+        <h2>{skills.title}</h2>
+        <p>{skills.intro}</p>
       </div>
       <div class="skills-grid">
-        {skillGroups.map(({ category, items }) => (
-          <article class="skills-card" key={category}>
+        {skills.groups.map(({ category, items }) => (
+          <article class="skills-card">
             <h3>{category}</h3>
             <div class="skills-card__chips">
-              {items.map((item) => (
-                <span class="chip chip--ghost" key={item}>{item}</span>
-              ))}
+              {items.map((item) => <span class="chip chip--ghost">{item}</span>)}
             </div>
           </article>
         ))}
@@ -383,15 +230,17 @@ const contactCards = [
 
     <section id="certifications" class="section">
       <div class="section-heading">
-        <h2>Certifications</h2>
-        <p>Credenziali che attestano il mio impegno continuo nell'evoluzione tecnologica e metodologica.</p>
+        <h2>{certifications.title}</h2>
+        <p>{certifications.intro}</p>
       </div>
       <div class="card-grid">
-        {certifications.map(({ name, issuer, href }) => (
-          <article class="cert-card" key={name}>
+        {certifications.items.map(({ name, issuer, href }) => (
+          <article class="cert-card">
             <h3>{name}</h3>
             <p>{issuer}</p>
-            <a class="cert-card__link" href={href} target="_blank" rel="noopener noreferrer">Vedi credenziale</a>
+            <a class="cert-card__link" href={href} target="_blank" rel="noopener noreferrer">
+              {credentialLabel}
+            </a>
           </article>
         ))}
       </div>
@@ -399,12 +248,12 @@ const contactCards = [
 
     <section id="contact" class="section section--compact">
       <div class="section-heading">
-        <h2>Contact</h2>
-        <p>Qui di seguito i miei riferimenti</p>
+        <h2>{contact.title}</h2>
+        <p>{contact.intro}</p>
       </div>
       <div class="contact-grid">
-        {contactCards.map(({ icon, label, text, href }) => (
-          <article class="contact-card" key={label}>
+        {contact.cards.map(({ icon, label, text, href }) => (
+          <article class="contact-card">
             <i class={icon} aria-hidden="true"></i>
             <h3>{label}</h3>
             {href ? (
@@ -419,18 +268,23 @@ const contactCards = [
   </main>
 
   <footer class="site-footer">
-    <p>&copy; {new Date().getFullYear()} Marco Califano — Enterprise &amp; Solution Architect.</p>
+    <p>{footerText}</p>
   </footer>
 
-  <button class="back-to-top" type="button" aria-label="Torna in alto">
+  <button class="back-to-top" type="button" aria-label={backToTopLabel}>
     <i class="ri-arrow-up-line" aria-hidden="true"></i>
   </button>
 
-  <astro:fragment slot="scripts">
-    <script type="module" data-phrases={JSON.stringify(typedPhrases)}>
+  <script slot="scripts" type="module" data-phrases={JSON.stringify(hero.typing)}>
       const phrases = JSON.parse(document.currentScript.dataset.phrases || '[]');
       const target = document.querySelector('.typing');
       if (phrases.length && target) {
+        const prefersReducedMotion =
+          window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+          target.textContent = phrases[0] || '';
+          return;
+        }
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -457,23 +311,118 @@ const contactCards = [
         tick();
       }
     </script>
-    <script>
+  <script slot="scripts">
       document.addEventListener('DOMContentLoaded', () => {
-        const button = document.querySelector('.back-to-top');
-        if (!button) return;
+        const docEl = document.documentElement;
+        const backToTopEl = document.querySelector('.back-to-top');
+        const themeToggleEl = document.querySelector('[data-theme-toggle]');
+        const backToTopButton = backToTopEl instanceof HTMLElement ? backToTopEl : null;
+        const themeButton = themeToggleEl instanceof HTMLElement ? themeToggleEl : null;
+        const prefersReducedMotion =
+          window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         const toggleVisibility = () => {
+          if (!backToTopButton) return;
           if (window.scrollY > 320) {
-            button.classList.add('back-to-top--visible');
+            backToTopButton.classList.add('back-to-top--visible');
           } else {
-            button.classList.remove('back-to-top--visible');
+            backToTopButton.classList.remove('back-to-top--visible');
           }
         };
+
+        const persistTheme = (/** @type {'light' | 'dark'} */ theme) => {
+          try {
+            localStorage.setItem('theme', theme);
+          } catch (error) {
+            // Storage might be unavailable; ignore
+          }
+        };
+
+        const getCurrentTheme = () =>
+          /** @type {'light' | 'dark'} */ (docEl.dataset.theme === 'light' ? 'light' : 'dark');
+
+        const updateThemeButton = () => {
+          if (!themeButton) return;
+          const currentTheme = getCurrentTheme();
+          const srTarget = themeButton.querySelector('.sr-only');
+          const icon = themeButton.querySelector('i');
+          const dataset = themeButton.dataset;
+          const nextLabel =
+            currentTheme === 'dark' ? dataset.labelLight : dataset.labelDark;
+          if (srTarget && nextLabel) {
+            srTarget.textContent = nextLabel;
+          }
+          if (icon) {
+            icon.className = currentTheme === 'dark' ? 'ri-moon-line' : 'ri-sun-line';
+            icon.setAttribute('aria-hidden', 'true');
+          }
+          themeButton.setAttribute('aria-pressed', currentTheme === 'dark' ? 'true' : 'false');
+        };
+
+        const setTheme = (/** @type {'light' | 'dark'} */ theme, /** @type {boolean} */ shouldPersist = true) => {
+          docEl.dataset.theme = theme;
+          if (shouldPersist) {
+            persistTheme(theme);
+          }
+          updateThemeButton();
+        };
+
+        const initTheme = () => {
+          try {
+            const stored = localStorage.getItem('theme');
+            if (stored === 'light' || stored === 'dark') {
+              docEl.dataset.theme = stored;
+            } else if (window.matchMedia) {
+              docEl.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+          } catch (error) {
+            docEl.dataset.theme = 'dark';
+          }
+          updateThemeButton();
+        };
+
+        initTheme();
+
+        if (themeButton) {
+          themeButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const nextTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+            setTheme(nextTheme);
+          });
+        }
+
+        if (window.matchMedia) {
+          const media = window.matchMedia('(prefers-color-scheme: dark)');
+          const handleChange = (/** @type {MediaQueryListEvent} */ event) => {
+            let storedPreference = null;
+            try {
+              storedPreference = localStorage.getItem('theme');
+            } catch (error) {
+              storedPreference = null;
+            }
+            if (!storedPreference) {
+              setTheme(event.matches ? 'dark' : 'light', false);
+            }
+          };
+          if (typeof media.addEventListener === 'function') {
+            media.addEventListener('change', handleChange);
+          } else if (typeof media.addListener === 'function') {
+            media.addListener(handleChange);
+          }
+        }
+
         toggleVisibility();
         window.addEventListener('scroll', toggleVisibility, { passive: true });
-        button.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+
+        if (backToTopButton) {
+          backToTopButton.addEventListener('click', () => {
+            if (prefersReducedMotion) {
+              window.scrollTo(0, 0);
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          });
+        }
       });
     </script>
-  </astro:fragment>
 </BaseLayout>

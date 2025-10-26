@@ -8,9 +8,12 @@
     "start": "npx astro dev",
     "build": "npx astro build",
     "preview": "npx astro preview",
-    "lint": "npx astro check"
+    "lint": "npx astro check",
+    "test": "npm run lint"
   },
   "devDependencies": {
-    "astro": "^4.8.6"
+    "@astrojs/check": "^0.9.5",
+    "astro": "^4.8.6",
+    "typescript": "^5.9.3"
   }
 }
