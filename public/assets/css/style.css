@@ -1145,6 +1145,14 @@ section .container {
   color: #12d640;
 }
 
+.contact-intro {
+  color: #dfe4ea;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
 .contact .php-email-form {
   padding: 30px;
   background: rgba(255, 255, 255, 0.08);
@@ -1319,4 +1327,3 @@ section .container {
 .certification-badge:hover {
   transform: translateY(-5px); /* Sposta leggermente verso l'alto l'immagine al passaggio del mouse */
 }
-
