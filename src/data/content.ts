@@ -1,4 +1,4 @@
-export type Locale = 'it' | 'en';
+ï»¿export type Locale = 'it' | 'en';
 export const locales: Locale[] = ['it', 'en'];
 export const fallbackLocale: Locale = 'it';
 
@@ -83,7 +83,7 @@ type Content = {
 const data: Record<Locale, Content> = {
   it: {
     head: {
-      title: 'Marco Califano — Enterprise & Solution Architect',
+      title: 'Marco Califano â€” Enterprise & Solution Architect',
       description: 'Enterprise & Solution Architect con esperienza multi-cloud (AWS, Azure, Google Cloud) e programmi di trasformazione digitale in utilities, energy, media e banking.',
       keywords: 'Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture',
       ogDescription: 'Enterprise & Solution Architect che guida roadmap cloud, data & AI con impatto misurabile sul business.'
@@ -120,7 +120,7 @@ const data: Record<Locale, Content> = {
       highlights: [
         'Disegno blueprint multi-cloud e strategie GenAI per grandi gruppi bancari europei.',
         'Integro landing zone, AI toolchain e data platform assicurando sicurezza, compliance e KPI di business.',
-        'Coordino team cross-funzionali dall’idea alla produzione con roadmap e metriche misurabili.'
+        'Coordino team cross-funzionali dallâ€™idea alla produzione con roadmap e metriche misurabili.'
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
@@ -141,7 +141,7 @@ const data: Record<Locale, Content> = {
         {
           value: '3',
           label: 'Programmi GenAI 2025',
-          detail: 'Blueprint, AI toolchain 3.0 e gateway centralizzati per Crédit Agricole e BPER.'
+          detail: 'Blueprint, AI toolchain 3.0 e gateway centralizzati per CrÃ©dit Agricole e BPER.'
         },
         {
           value: '10+',
@@ -188,19 +188,19 @@ const data: Record<Locale, Content> = {
       intro: 'Ruoli di leadership tecnica e strategica, con un approccio hands-on che connette business, architettura e delivery.',
       items: [
         {
-          company: 'Reply · Crédit Agricole',
-          period: 'Lug 2025 — Presente',
+          company: 'Reply Â· CrÃ©dit Agricole',
+          period: 'Lug 2025 â€” Presente',
           role: 'Senior Architect / PM / IT Strategy',
           bullets: [
             'Definizione del blueprint multi-cloud e GenAI: landing zone, modelli di sicurezza, data/AI service layer e integrazioni applicative.',
-            'IT strategy advisor per governance, roadmap e operating model DevSecOps/MLOps condivisi con il gruppo Crédit Agricole.',
+            'IT strategy advisor per governance, roadmap e operating model DevSecOps/MLOps condivisi con il gruppo CrÃ©dit Agricole.',
             'Coordinamento dei primi use case GenAI (document intelligence, credit risk) con KPI, compliance e change management dedicati.'
           ]
         },
         {
-          company: 'Reply · BPER Banca',
-          period: 'Lug 2025 — Presente',
-          role: 'Senior Architect · GenAI Design Authority',
+          company: 'Reply Â· BPER Banca',
+          period: 'Lug 2025 â€” Presente',
+          role: 'Senior Architect Â· GenAI Design Authority',
           bullets: [
             'Design authority sulle iniziative GenAI: assessment architetturali, blueprint contestualizzati, remediation plan e governance centralizzata.',
             'Analisi e rollout della piattaforma AI su Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run/MemoryStore).',
@@ -208,18 +208,18 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          company: 'Reply · BAPS',
-          period: 'Mar 2025 — Presente',
+          company: 'Reply Â· BAPS',
+          period: 'Mar 2025 â€” Presente',
           role: 'Technical Lead',
           bullets: [
             'Ottimizzazione di workflow cloud personalizzati, integrando SAST in pipeline Terraform-based e KPI di sicurezza.',
             'Sviluppo di dashboard BI su stack AWS per decision making data-driven e visibility operativa.',
-            'Advisor tecnico per garantire soluzioni scalabili, sicure e allineate alle priorità del cliente.'
+            'Advisor tecnico per garantire soluzioni scalabili, sicure e allineate alle prioritÃ  del cliente.'
           ]
         },
         {
-          company: 'Reply · Telepass',
-          period: 'Giu 2021 — Gen 2022',
+          company: 'Reply Â· Telepass',
+          period: 'Giu 2021 â€” Gen 2022',
           role: 'GCP Cloud Architect',
           bullets: [
             'Blueprint GCP end-to-end per migrazione lift-and-shift e modernizzazione di servizi mobility.',
@@ -227,8 +227,8 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          company: 'Accenture · CNH Industrial',
-          period: 'Giu 2019 — Giu 2021',
+          company: 'Accenture Â· CNH Industrial',
+          period: 'Giu 2019 â€” Giu 2021',
           role: 'AWS Architect & Team Leader',
           bullets: [
             'Realizzazione di soluzioni Alexa integrate con infrastruttura Azure per servizi connessi sui veicoli Iveco.',
@@ -244,16 +244,16 @@ const data: Record<Locale, Content> = {
         {
           school: 'University of Trento',
           title: 'MSc Telecommunications Engineering',
-          period: '2014 — 2016',
+          period: '2014 â€” 2016',
           bullets: [
             'Tesi su tolerance analysis per antenne a riflettore tramite interval arithmetic (C/C++).',
-            'Sviluppo di un video mixer open-source per multi-conference di alta qualità.'
+            'Sviluppo di un video mixer open-source per multi-conference di alta qualitÃ .'
           ]
         },
         {
           school: 'University of Salerno',
           title: 'BSc Electronic Engineering',
-          period: '2008 — 2013',
+          period: '2008 â€” 2013',
           bullets: [
             'Tesi su ottimizzazione della copertura radio con WinProp Suite in scenari indoor/outdoor.',
             'Focus su campi elettromagnetici, elettronica digitale e radiopropagazione.'
@@ -334,11 +334,11 @@ const data: Record<Locale, Content> = {
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
       ]
     },
-    footer: 'Marco Califano — Enterprise & Solution Architect'
+    footer: 'Marco Califano â€” Enterprise & Solution Architect'
   },
   en: {
     head: {
-      title: 'Marco Califano — Enterprise & Solution Architect',
+      title: 'Marco Califano â€” Enterprise & Solution Architect',
       description: 'Enterprise & Solution Architect delivering multi-cloud (AWS, Azure, Google Cloud) platforms and digital transformation programmes across utilities, energy, media and banking.',
       keywords: 'Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture',
       ogDescription: 'Enterprise & Solution Architect driving cloud, data & AI strategies with measurable business impact.'
@@ -353,7 +353,7 @@ const data: Record<Locale, Content> = {
         { id: 'contact', label: 'Contact' }
       ],
       cvLabel: 'Download CV',
-      contactLabel: 'Let’s talk about your project',
+      contactLabel: 'Letâ€™s talk about your project',
       languageSwitchLabel: 'IT',
       languageSwitchSr: 'Switch to Italian version',
       themeToggle: {
@@ -364,119 +364,130 @@ const data: Record<Locale, Content> = {
     hero: {
       badge: 'Enterprise & Solution Architect',
       title: "Hi, I'm Marco.",
-      lead: 'I design and lead cloud, data & AI architectures for large organisations, turning strategic roadmaps into measurable outcomes.',
+      lead: 'I lead cloud, data & AI modernisation for banks, insurers and industrial players, blending strategy, governance and hands-on execution.',
       typing: [
-        'enterprise-scale cloud roadmaps',
-        'AWS, Azure & Google Cloud landing zones',
-        'digital transformation programmes',
-        'data & AI platforms',
-        'secure-by-design architectures'
+        'multi-cloud blueprints & landing zones',
+        'GenAI governance and AI Gateway',
+        'MLOps & AI SDLC playbooks',
+        'real-time data & analytics platforms',
+        'coaching distributed DevSecOps teams'
       ],
       highlights: [
-        'Enterprise & solution architecture lead across utilities, energy, media and banking',
-        'Hands-on delivery of multi-cloud platforms on AWS, Azure and Google Cloud',
-        'Modernisation and GenAI programmes guided by measurable business KPIs'
+        'Design multi-cloud and GenAI blueprints for tier-one European banks.',
+        'Integrate landing zones, AI toolchains and data platforms with measurable business controls.',
+        'Orchestrate cross-functional teams from idea to production with shared KPIs.'
       ],
       actions: {
         primaryLabel: 'Download CV',
         primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link',
-        secondaryLabel: 'Let’s talk',
+        secondaryLabel: 'Letâ€™s talk',
         secondaryHref: '#contact'
       }
     },
     metrics: {
       title: 'Impact snapshot',
-      intro: 'Key capability pillars that I bring to enterprise programmes.',
+      intro: 'Key indicators from the programmes I run with clients.',
       items: [
         {
-          value: 'AWS • Azure • GCP',
-          label: 'Multi-cloud architecture',
-          detail: 'Hybrid landing zones, reference architectures and mission-critical governance.'
+          value: '8+',
+          label: 'Years in enterprise delivery',
+          detail: 'Cloud, data and AI across banking, insurance, mobility, energy and telecom.'
         },
         {
-          value: 'Utilities • Energy • Media • Banking',
-          label: 'Industries served',
-          detail: 'End-to-end experience across B2C and B2B transformations.'
+          value: '3',
+          label: 'GenAI programmes in 2025',
+          detail: 'Blueprints, AI toolchain 3.0 and centralised gateways for CrÃ©dit Agricole and BPER.'
         },
         {
-          value: 'Team lead & release mgmt',
-          label: 'Operational leadership',
-          detail: 'Coaching cross-functional squads and orchestrating complex release plans.'
+          value: '10+',
+          label: 'Teams & stakeholders coordinated',
+          detail: 'IT strategy, DevSecOps/MLOps and change management across distributed squads.'
         }
       ]
     },
     pillars: {
       title: 'How I approach programmes',
-      intro: 'A three-step framework that guides stakeholders from strategic alignment to measurable delivery.',
+      intro: 'An operating framework that keeps strategy, architecture and adoption aligned.',
       items: [
         {
-          title: 'Scouting & Vision',
-          blurb: 'Initial assessments and roadmap definition with business and IT stakeholders.',
+          title: 'Strategy & Governance',
+          blurb: 'Assessments, business cases and shared roadmaps with C-level stakeholders.',
           points: [
-            'Cloud readiness and gap analysis',
-            'Transformation business case & KPIs',
-            'Architecture vision and guard-rails'
+            'Cloud readiness, gap analysis and transformation KPIs',
+            'Compliance and risk-management models',
+            'Steering committees and transparent reporting'
           ]
         },
         {
           title: 'Blueprint & Enablement',
-          blurb: 'Design of reference architectures, landing zones and operating models for cross-functional teams.',
+          blurb: 'Design of reference architectures, AI toolchains and repeatable operating models.',
           points: [
-            'Reusable patterns and IaC accelerators',
-            'Operating model and governance',
-            'Security & compliance by design'
+            'Multi-cloud landing zones and centralised AI Gateways',
+            'IaC, CI/CD and security-by-design patterns',
+            'GenAI playbooks, MLOps guidelines and reusable accelerators'
           ]
         },
         {
           title: 'Delivery & Adoption',
-          blurb: 'Hands-on support to squads, release orchestration and platform adoption throughout the lifecycle.',
+          blurb: 'Hands-on support until production launch and scaling.',
           points: [
-            'Coaching distributed teams',
-            'Release and change management',
-            'Value tracking and cost optimisation'
+            'Coaching DevSecOps/MLOps teams across locations',
+            'Data-driven KPI tracking and iteration',
+            'Change management and organisational enablement'
           ]
         }
       ]
     },
     experience: {
       title: 'Experience',
-      intro: 'Leadership roles across architecture and delivery, bridging business goals with solid engineering execution.',
+      intro: 'Leadership roles across architecture and delivery, bridging business goals with engineering execution.',
       items: [
         {
-          company: 'Reply',
-          period: 'Aug 2022 — Present',
-          role: 'Enterprise & Solution Architect Manager',
+          company: 'Reply Â· CrÃ©dit Agricole',
+          period: 'Jul 2025 â€” Present',
+          role: 'Senior Architect / PM / IT Strategy',
           bullets: [
-            'Technical lead and governance across multi-cloud programmes (AWS, Azure, GCP) in utilities, energy and telecom.',
-            'Industrialised landing zones, reference architectures and security-by-design frameworks.',
-            'Coordinated GenAI and data platform initiatives driving customer experience and automation use cases.'
+            'Defined the end-to-end multi-cloud and GenAI blueprint covering landing zones, security, data/AI services and integration patterns.',
+            'Acted as IT strategy advisor on governance, roadmap and operating models for DevSecOps/MLOps teams across CrÃ©dit Agricole Group.',
+            'Led the first GenAI use cases (document intelligence, credit risk), setting KPIs, compliance controls and adoption plans.'
           ]
         },
         {
-          company: 'Sky Italy',
-          period: 'Feb 2022 — Jul 2022',
-          role: 'Solution Architect Manager',
+          company: 'Reply Â· BPER Banca',
+          period: 'Jul 2025 â€” Present',
+          role: 'Senior Architect Â· GenAI Design Authority',
           bullets: [
-            'Supported digital squads in designing resilient multi-cloud architectures.',
-            'Trusted advisor for architecture governance, modernisation and legacy integration.'
+            'Design authority for Generative AI initiatives: architectural assessments, remediation plans and contextualised blueprints.',
+            'Oversaw the rollout of the AI platform on Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run/MemoryStore).',
+            'Benchmarked and governed AI Gateway solutions covering RBAC, auditing, semantic caching, cost and token tracking.'
           ]
         },
         {
-          company: 'Telepass',
-          period: 'Jun 2021 — Jan 2022',
-          role: 'Cloud Architect',
+          company: 'Reply Â· BAPS',
+          period: 'Mar 2025 â€” Present',
+          role: 'Technical Lead',
           bullets: [
-            'Owned the GCP architecture blueprint: container platforms, data modernisation and CI/CD pipelines.',
-            'Enabled cross-functional teams to deliver real-time mobility services.'
+            'Integrated SAST tools into Terraform-based CI/CD pipelines to strengthen security and compliance early in delivery.',
+            'Built and evolved BI dashboards on AWS to drive data-informed operations and visibility.',
+            'Trusted technical advisor ensuring scalable, secure and high-performance solutions aligned with client goals.'
           ]
         },
         {
-          company: 'Accenture Italy',
-          period: 'Jun 2019 — Jun 2021',
-          role: 'AWS Cloud & Solution Architect',
+          company: 'Reply Â· Telepass',
+          period: 'Jun 2021 â€” Jan 2022',
+          role: 'GCP Cloud Architect',
           bullets: [
-            'Designed reusable AWS accelerators and supported global mobile/backend programmes.',
-            'Led cost optimisation, IaC adoption and DevOps enablement for distributed agile teams.'
+            'Owned the GCP blueprint for lift-and-shift migrations and modernisation of mobility services.',
+            'Delivered Kubernetes, managed SQL and CI/CD foundations accelerating application go-live.'
+          ]
+        },
+        {
+          company: 'Accenture Â· CNH Industrial',
+          period: 'Jun 2019 â€” Jun 2021',
+          role: 'AWS Architect & Team Leader',
+          bullets: [
+            'Delivered Alexa-based connected services integrated with CNHâ€™s Azure landscape for Iveco vehicles.',
+            'Led global development and testing teams, sprint planning and DevOps best practices.'
           ]
         }
       ]
@@ -488,7 +499,7 @@ const data: Record<Locale, Content> = {
         {
           school: 'University of Trento',
           title: 'MSc Telecommunications Engineering',
-          period: '2014 — 2016',
+          period: '2014 â€” 2016',
           bullets: [
             'Thesis on tolerance analysis for reflector antennas using interval arithmetic (C/C++).',
             'Developed an open-source video mixer for high-quality multi-conference experiences.'
@@ -497,7 +508,7 @@ const data: Record<Locale, Content> = {
         {
           school: 'University of Salerno',
           title: 'BSc Electronic Engineering',
-          period: '2008 — 2013',
+          period: '2008 â€” 2013',
           bullets: [
             'Thesis on radio coverage optimisation with WinProp Suite in indoor/outdoor scenarios.',
             'Focused on electromagnetics, digital electronics and radiopropagation.'
@@ -511,19 +522,19 @@ const data: Record<Locale, Content> = {
       groups: [
         {
           category: 'Cloud & Platforms',
-          items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Hybrid & Edge', 'Landing Zones']
+          items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Landing Zone & Hybrid', 'Edge & IoT']
+        },
+        {
+          category: 'GenAI & Data',
+          items: ['GenAI Governance', 'AI Gateway', 'Data & BI Platforms', 'MLOps', 'Real-time analytics']
         },
         {
           category: 'Architecture & Delivery',
-          items: ['Enterprise Architecture', 'Solution Design', 'Microservices', 'Event-driven', 'Serverless', 'DevOps']
-        },
-        {
-          category: 'Data & AI',
-          items: ['Data Platforms', 'GenAI Use Cases', 'MLOps', 'Analytics Modernisation', 'Automation']
+          items: ['Enterprise Architecture', 'Reference Blueprint', 'Microservices & Event-driven', 'IaC & DevSecOps', 'Modern Application Design']
         },
         {
           category: 'Leadership & Governance',
-          items: ['Architecture Governance', 'Team Coaching', 'Stakeholder Engagement', 'Regulatory Compliance']
+          items: ['IT Strategy & PM', 'Cross-team orchestration', 'Compliance & Security', 'Stakeholder Engagement']
         }
       ]
     },
@@ -568,7 +579,7 @@ const data: Record<Locale, Content> = {
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
       ]
     },
-    footer: 'Marco Califano — Enterprise & Solution Architect'
+    footer: 'Marco Califano â€” Enterprise & Solution Architect'
   }
 };
 
@@ -579,3 +590,4 @@ export function getContent(locale: Locale): Content {
 export function isLocale(value: string | undefined): value is Locale {
   return value !== undefined && locales.includes(value as Locale);
 }
+
