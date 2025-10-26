@@ -7,7 +7,7 @@ const requestedLocale = requestUrl.searchParams.get('lang') ?? undefined;
 const locale = isLocale(requestedLocale) ? requestedLocale : fallbackLocale;
 const content = getContent(locale);
 
-const { head, nav, hero, metrics, pillars, experience, education, skills, certifications, contact, footer } = content;
+const { head, nav, hero, metrics, pillars, experience, education, skills, projects, certifications, contact, footer } = content;
 
 const alternateLocale = locales.find((code) => code !== locale) ?? fallbackLocale;
 const localeSwitchUrl = new URL(requestUrl);
@@ -17,7 +17,7 @@ const localeSwitchHref = `${localeSwitchUrl.pathname}${localeSwitchUrl.search}`;
 const emailCard = contact.cards.find((card) => card.href?.startsWith('mailto:'));
 const phoneCard = contact.cards.find((card) => card.href?.startsWith('tel:'));
 
-const structuredData = {
+const metadataScript = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: nav.brand,
@@ -33,17 +33,19 @@ const structuredData = {
   sameAs: ['https://www.linkedin.com/in/marcocalifano/', 'https://github.com/marcocalifano89'],
   knowsAbout: hero.typing,
   description: head.description
-};
+});
+void metadataScript;
 
-const footerText = footer.startsWith('©') ? `© ${new Date().getFullYear()} ${footer.slice(1).trim()}` : footer;
+const footerText = `© ${new Date().getFullYear()} ${footer}`;
 const navLabel = locale === 'it' ? 'Navigazione principale' : 'Primary navigation';
 const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
+const projectLinkLabel = locale === 'it' ? 'Dettagli' : 'Case study';
 ---
 <BaseLayout title={head.title} description={head.description} keywords={head.keywords} lang={locale}>
   <meta slot="meta" property="og:title" content={head.title} />
   <meta slot="meta" property="og:description" content={head.ogDescription} />
-  <script slot="meta" type="application/ld+json">{JSON.stringify(structuredData)}</script>
+  <script slot="meta" type="application/ld+json" is:inline>{metadataScript}</script>
 
   <header class="site-header" id="top">
     <div class="site-header__inner">
@@ -58,8 +60,9 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
           class="control control--language"
           href={localeSwitchHref}
           aria-label={nav.languageSwitchSr}
+          data-locale-target={alternateLocale}
         >
-            {nav.languageSwitchLabel}
+          {nav.languageSwitchLabel}
         </a>
         <button
           class="control control--theme"
@@ -228,6 +231,31 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
       </div>
     </section>
 
+    <section id="projects" class="section">
+      <div class="section-heading">
+        <h2>{projects.title}</h2>
+        <p>{projects.intro}</p>
+      </div>
+      <div class="projects-grid">
+        {projects.items.map(({ name, summary, tags, href }) => (
+          <article class="project-card">
+            <div class="project-card__header">
+              <h3>{name}</h3>
+              {href && (
+                <a class="project-card__link" href={href} target="_blank" rel="noopener noreferrer">
+                  {projectLinkLabel}
+                </a>
+              )}
+            </div>
+            <p>{summary}</p>
+            <div class="project-card__tags">
+              {tags.map((tag) => <span class="chip">{tag}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
     <section id="certifications" class="section">
       <div class="section-heading">
         <h2>{certifications.title}</h2>
@@ -275,7 +303,7 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
     <i class="ri-arrow-up-line" aria-hidden="true"></i>
   </button>
 
-  <script slot="scripts" type="module" data-phrases={JSON.stringify(hero.typing)}>
+  <script slot="scripts" is:inline data-phrases={JSON.stringify(hero.typing)}>
       const phrases = JSON.parse(document.currentScript.dataset.phrases || '[]');
       const target = document.querySelector('.typing');
       if (phrases.length && target) {
@@ -311,13 +339,39 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
         tick();
       }
     </script>
-  <script slot="scripts">
+  <script slot="scripts" is:inline>
       document.addEventListener('DOMContentLoaded', () => {
         const docEl = document.documentElement;
         const backToTopEl = document.querySelector('.back-to-top');
         const themeToggleEl = document.querySelector('[data-theme-toggle]');
+        const localeToggleEl = document.querySelector('[data-locale-target]');
         const backToTopButton = backToTopEl instanceof HTMLElement ? backToTopEl : null;
         const themeButton = themeToggleEl instanceof HTMLElement ? themeToggleEl : null;
+        const localeButton = localeToggleEl instanceof HTMLAnchorElement ? localeToggleEl : null;
+        const currentLocale = docEl.lang || '${locale}';
+        let storedLocale = null;
+
+        try {
+          storedLocale = localStorage.getItem('locale');
+        } catch (error) {
+          storedLocale = null;
+        }
+
+        if (storedLocale && storedLocale !== currentLocale) {
+          const url = new URL(window.location.href);
+          if (url.searchParams.get('lang') !== storedLocale) {
+            url.searchParams.set('lang', storedLocale);
+            window.location.replace(`${url.pathname}${url.search}${url.hash}`);
+            return;
+          }
+        }
+
+        try {
+          localStorage.setItem('locale', currentLocale);
+        } catch (error) {
+          // Storage might be unavailable; ignore
+        }
+
         const prefersReducedMotion =
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -391,6 +445,19 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
           });
         }
 
+        if (localeButton) {
+          localeButton.addEventListener('click', () => {
+            const targetLocale = localeButton.dataset.localeTarget;
+            if (targetLocale) {
+              try {
+                localStorage.setItem('locale', targetLocale);
+              } catch (error) {
+                // Storage might be unavailable; ignore
+              }
+            }
+          });
+        }
+
         if (window.matchMedia) {
           const media = window.matchMedia('(prefers-color-scheme: dark)');
           const handleChange = (/** @type {MediaQueryListEvent} */ event) => {
@@ -406,8 +473,6 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
           };
           if (typeof media.addEventListener === 'function') {
             media.addEventListener('change', handleChange);
-          } else if (typeof media.addListener === 'function') {
-            media.addListener(handleChange);
           }
         }
 

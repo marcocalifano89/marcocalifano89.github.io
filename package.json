@@ -9,10 +9,17 @@
     "build": "npx astro build",
     "preview": "npx astro preview",
     "lint": "npx astro check",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:ci": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.9.1",
     "astro": "^4.8.6",
     "typescript": "^5.9.3"
   }
