@@ -396,7 +396,7 @@ const data: Record<Locale, Content> = {
         {
           value: '3',
           label: 'GenAI programmes in 2025',
-          detail: 'Blueprints, AI toolchain 3.0 and centralised gateways for Crédit Agricole and BPER.'
+          detail: 'Blueprints, AI toolchain 3.0 and centralised gateways for next-generation banking initiatives.'
         },
         {
           value: '10+',
