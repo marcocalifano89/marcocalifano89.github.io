@@ -109,18 +109,18 @@ const data: Record<Locale, Content> = {
     hero: {
       badge: 'Enterprise & Solution Architect',
       title: 'Ciao, sono Marco.',
-      lead: 'Guido programmi di modernizzazione cloud, data & AI per banche, assicurazioni e industria, unendo governance strategica e delivery hands-on.',
+      lead: 'Guido programmi di modernizzazione cloud, data e AI per banche, assicurazioni e aziende industriali, unendo governance strategica e delivery hands-on.',
       typing: [
         'blueprint multi-cloud e landing zone',
-        'governance GenAI e AI Gateway',
+        'governance GenAI e AI gateway',
         'toolchain MLOps e AI SDLC',
-        'data platform e analytics in tempo reale',
+        'data platform e analytics realtime',
         'coaching di team DevSecOps distribuiti'
       ],
       highlights: [
-        'Disegno blueprint multi-cloud e strategie GenAI per grandi gruppi bancari europei.',
-        'Integro landing zone, AI toolchain e data platform assicurando sicurezza, compliance e KPI di business.',
-        'Coordino team cross-funzionali dall’idea alla produzione con roadmap e metriche misurabili.'
+        'Disegno blueprint multi-cloud e GenAI per trasformazioni enterprise a livello europeo.',
+        'Integro landing zone, toolchain AI e data platform con controlli di sicurezza e KPI misurabili.',
+        'Coordino team cross-funzionali dalla strategia alla produzione con roadmap e metriche condivise.'
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
@@ -141,7 +141,7 @@ const data: Record<Locale, Content> = {
         {
           value: '3',
           label: 'Programmi GenAI 2025',
-          detail: 'Blueprint, AI toolchain 3.0 e gateway centralizzati per Crédit Agricole e BPER.'
+          detail: 'Blueprint, AI toolchain 3.0 e gateway centralizzati per iniziative bancarie di nuova generazione.'
         },
         {
           value: '10+',
