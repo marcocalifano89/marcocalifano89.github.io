@@ -133,7 +133,7 @@ const data: Record<Locale, Content> = {
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
-        primaryHref: 'https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link',
+        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link',
         secondaryLabel: 'Parliamo del tuo progetto',
         secondaryHref: '#contact'
       }
@@ -389,7 +389,7 @@ const data: Record<Locale, Content> = {
       ],
       actions: {
         primaryLabel: 'Download CV',
-        primaryHref: 'https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link',
+        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link',
         secondaryLabel: 'Let’s talk',
         secondaryHref: '#contact'
       }
