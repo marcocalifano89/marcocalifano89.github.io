@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = 'Marco Califano';
-const pageDescription = 'Enterprise & Solution Architect with multi-cloud expertise across AWS, Azure, and Google Cloud.';
+const pageDescription = 'Enterprise & Solution Architect specialising in multi-cloud platforms, digital transformation and data-driven innovation.';
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -29,466 +29,391 @@ const structuredData = {
     'Digital Transformation'
   ]
 };
+
+const typedPhrases = [
+  'enterprise-scale cloud roadmaps',
+  'AWS, Azure & GCP landing zones',
+  'digital transformation programmes',
+  'data & AI platforms',
+  'secure-by-design architectures'
+];
+
+const heroHighlights = [
+  '20+ enterprise programmes guided end-to-end',
+  'Hands-on with AWS, Azure, Google Cloud & hybrid estates',
+  'Driving GenAI and data initiatives with measurable ROI'
+];
+
+const metrics = [
+  {
+    value: '20+',
+    label: 'Enterprise programmes',
+    detail: 'From discovery to go-live in utilities, banking, energy and media.'
+  },
+  {
+    value: '30%',
+    label: 'Average cost optimisation',
+    detail: 'Achieved through cloud economics, FinOps and architecture governance.'
+  },
+  {
+    value: '10+',
+    label: 'Years leading teams',
+    detail: 'Mentoring architects and engineers across distributed delivery teams.'
+  }
+];
+
+const experiences = [
+  {
+    company: 'Reply',
+    period: 'Aug 2022 — Present',
+    role: 'Enterprise & Solution Architect Manager',
+    bullets: [
+      'Guiding multi-year transformation roadmaps across utilities, energy and telecom with hybrid cloud foundations.',
+      'Leading architecture governance for AWS, Azure and GCP platforms, enforcing security and compliance patterns.',
+      'Driving GenAI and data platform programmes, enabling new customer experiences and automation initiatives.'
+    ]
+  },
+  {
+    company: 'Sky Italy',
+    period: 'Feb 2022 — Jul 2022',
+    role: 'Solution Architect Manager',
+    bullets: [
+      'Supported digital product squads in designing resilient architectures spanning AWS, Azure and GCP.',
+      'Acted as trusted advisor for governance, modernisation and integration initiatives.'
+    ]
+  },
+  {
+    company: 'Telepass',
+    period: 'Jun 2021 — Jan 2022',
+    role: 'Cloud Architect',
+    bullets: [
+      'Owned the GCP architecture blueprint, introducing container platforms, SQL modernisation and CI/CD pipelines.',
+      'Enabled a cross-functional engineering team to deliver real-time mobility services.'
+    ]
+  },
+  {
+    company: 'Accenture Italy',
+    period: 'Jun 2019 — Jun 2021',
+    role: 'AWS Cloud & Solution Architect',
+    bullets: [
+      'Designed and delivered reusable AWS accelerators across mobile and backend programmes.',
+      'Led cost optimisation, IaC adoption and DevOps enablement across distributed agile teams.'
+    ]
+  }
+];
+
+const education = [
+  {
+    school: 'University of Trento',
+    title: 'MSc Telecommunications Engineering',
+    period: '2014 — 2016',
+    bullets: [
+      'Thesis on tolerance analysis for reflector antennas using interval arithmetic (C/C++).',
+      'Built an open-source video mixer for high-quality multi-conference experiences.'
+    ]
+  },
+  {
+    school: 'University of Salerno',
+    title: 'BSc Electronic Engineering',
+    period: '2008 — 2013',
+    bullets: [
+      'Thesis on radio coverage optimisation with WinProp Suite for indoor/outdoor scenarios.',
+      'Focus on electromagnetics, digital electronics and radiopropagation.'
+    ]
+  }
+];
+
+const skillGroups = [
+  {
+    category: 'Cloud & Platforms',
+    items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Hybrid & Edge', 'Landing Zones']
+  },
+  {
+    category: 'Architecture & Delivery',
+    items: ['Enterprise Architecture', 'Solution Design', 'Microservices', 'Event-driven', 'Serverless', 'DevOps']
+  },
+  {
+    category: 'Data & AI',
+    items: ['Data Platforms', 'GenAI Use Cases', 'MLOps', 'Analytics Modernisation', 'Automation']
+  },
+  {
+    category: 'Leadership & Governance',
+    items: ['Architecture Governance', 'Team Coaching', 'Stakeholder Engagement', 'Regulatory Compliance']
+  }
+];
+
+const certifications = [
+  {
+    name: 'Azure Solutions Architect Expert',
+    issuer: 'Microsoft',
+    href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/BC062EA070865656?sharingId=CAB9C76CF28D6EAE'
+  },
+  {
+    name: 'Azure Administrator Associate',
+    issuer: 'Microsoft',
+    href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/4C72C1888660AB9A?sharingId=CAB9C76CF28D6EAE'
+  },
+  {
+    name: 'AWS Solutions Architect Associate',
+    issuer: 'Amazon Web Services',
+    href: 'https://www.credly.com/badges/d902b397-e33c-419c-84dc-f66d32e94fc3'
+  },
+  {
+    name: 'Databricks Generative AI Fundamentals',
+    issuer: 'Databricks',
+    href: 'https://sgq.io/GodJh3O'
+  },
+  {
+    name: 'Professional Scrum Master I',
+    issuer: 'Scrum.org',
+    href: 'https://www.credly.com/badges/3a6c266f-578b-468d-b1a9-89e633976ac1/public_url'
+  }
+];
+
+const contactCards = [
+  {
+    icon: 'ri-map-pin-2-line',
+    label: 'Home Town',
+    text: 'Milan, Italy'
+  },
+  {
+    icon: 'ri-mail-line',
+    label: 'Email',
+    text: 'marcocalifano89@gmail.com',
+    href: 'mailto:marcocalifano89@gmail.com'
+  },
+  {
+    icon: 'ri-phone-line',
+    label: 'Phone',
+    text: '+39 348 878 2506',
+    href: 'tel:+393488782506'
+  },
+  {
+    icon: 'ri-linkedin-box-line',
+    label: 'LinkedIn',
+    text: 'linkedin.com/in/marcocalifano',
+    href: 'https://www.linkedin.com/in/marcocalifano/'
+  }
+];
 ---
 <BaseLayout title={pageTitle} description={pageDescription}>
   <astro:fragment slot="meta">
     <meta name="keywords" content="Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture" />
     <meta name="author" content="Marco Califano" />
     <meta property="og:title" content="Marco Califano — Solution Architect" />
-    <meta property="og:description" content="Certified Enterprise & Solution Architect leading multi-cloud strategies, innovation programs, and large-scale transformations." />
+    <meta property="og:description" content="Certified Enterprise & Solution Architect leading multi-cloud strategies, innovation programmes and data-driven transformation." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://marcocalifano89.github.io" />
     <meta property="og:image" content="https://marcocalifano89.github.io/solutionarchitect.png" />
-    <meta name="theme-color" content="#09203a" />
+    <meta name="theme-color" content="#101829" />
     <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169007209-3"></script>
     <script>
-      {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-169007209-3');`}
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-169007209-3');
     </script>
   </astro:fragment>
 
-  <header id="header" class="header-tops">
-    <div class="container">
-      <h1><a href="index.html">Marco Califano</a></h1>
-      <h2 class="hero-subtitle">I'm <span class="typing"></span></h2>
-      <nav class="nav-menu d-none d-lg-block" aria-label="Primary navigation">
-        <ul>
-          <li class="active"><a href="#header"><span>Home</span></a></li>
-          <li><a href="#about"><span>About</span></a></li>
-          <li><a href="#experience"><span>Experience</span></a></li>
-          <li><a href="#skills"><span>Skills</span></a></li>
-          <li><a href="#certifications"><span>Certifications</span></a></li>
-          <li><a href="#education"><span>Education</span></a></li>
-          <li><a href="https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link" target="_blank" rel="noopener noreferrer"><span>Resume</span></a></li>
-          <li><a href="#contacts"><span>Contact</span></a></li>
-        </ul>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="#about">Marco Califano</a>
+      <nav class="site-nav">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
       </nav>
-
-      <div class="social-links" aria-label="Primary social links">
-        <a href="https://www.linkedin.com/in/marcocalifano/" target="_blank" rel="noopener noreferrer" class="linkedin" aria-label="LinkedIn profile">
-          <i class="bx bxl-linkedin"></i>
-        </a>
-        <a href="mailto:marcocalifano89@gmail.com" target="_blank" rel="noopener noreferrer" class="google" aria-label="Send an email to Marco Califano">
-          <i class="bx bxl-google"></i>
-        </a>
-      </div>
+      <a class="button button--ghost" href="https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link" target="_blank" rel="noopener noreferrer">Download CV</a>
     </div>
   </header>
 
-  <main id="main">
-    <section id="about" class="about">
-      <div class="about-me container">
-        <div class="section-title">
-          <h2>About</h2>
+  <main class="page">
+    <section id="about" class="hero">
+      <div class="hero__content">
+        <span class="hero__badge">Enterprise &amp; Solution Architect</span>
+        <h1>Ciao, sono Marco.</h1>
+        <p class="hero__lead">
+          Progetto e guido architetture cloud, data &amp; AI per grandi organizzazioni, trasformando roadmap strategiche in risultati concreti e misurabili.
+        </p>
+        <p class="hero__typing">Specialised in <span class="typing" aria-live="polite"></span></p>
+        <div class="hero__highlights">
+          {heroHighlights.map((item) => (
+            <span class="chip" key={item}>{item}</span>
+          ))}
         </div>
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img loading="lazy" decoding="async" src="assets/img/profile.jpeg" class="img-fluid" alt="Portrait of Marco Califano" width="766" height="743" />
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <p>
-              Enterprise &amp; Solution Architect con oltre dieci anni di esperienza nel guidare programmi di trasformazione digitale. Ho progettato roadmap cloud su AWS, Azure e GCP, riducendo i costi infrastrutturali fino al 30% e accelerando i cicli di rilascio con approcci DevOps, microservizi e serverless. Mi appassiona costruire team cross-funzionali, diffondere cultura del dato e portare innovazione concreta in contesti enterprise complessi.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 08 September 1989</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> <a href="tel:+393488782506">+39 348 878 2506</a></li>
-                </ul>
+        <div class="hero__actions">
+          <a class="button" href="https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link" target="_blank" rel="noopener noreferrer">Scarica il CV</a>
+          <a class="button button--ghost" href="#contact">Parliamo del tuo progetto</a>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__image-frame">
+          <img src="/assets/img/profile.jpeg" alt="Portrait of Marco Califano" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section metrics">
+      <div class="section-heading">
+        <h2>Impact snapshot</h2>
+        <p>Una panoramica dei risultati più ricorrenti che porto nei programmi enterprise.</p>
+      </div>
+      <div class="card-grid metrics__grid">
+        {metrics.map(({ value, label, detail }) => (
+          <article class="metric-card" key={label}>
+            <span class="metric-card__value">{value}</span>
+            <h3>{label}</h3>
+            <p>{detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="section-heading">
+        <h2>Experience</h2>
+        <p>Ruoli di leadership tecnica e strategica, con un approccio hands-on che connette business, architettura e delivery.</p>
+      </div>
+      <div class="timeline">
+        {experiences.map(({ company, period, role, bullets }) => (
+          <div class="timeline-item" key={company + period}>
+            <div class="timeline-item__marker" aria-hidden="true"></div>
+            <div class="timeline-item__content">
+              <div class="timeline-item__meta">
+                <span class="timeline-item__period">{period}</span>
+                <h3>{role}</h3>
+                <p class="timeline-item__company">{company}</p>
               </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>City:</strong> Milan, Italy</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> <a href="mailto:marcocalifano89@gmail.com">marcocalifano89@gmail.com</a></li>
-                </ul>
+              <ul>
+                {bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="education" class="section section--compact">
+      <div class="section-heading">
+        <h2>Education</h2>
+        <p>Formazione ingegneristica con forte attenzione a telecomunicazioni, sistemi distribuiti e innovazione.</p>
+      </div>
+      <div class="timeline timeline--compact">
+        {education.map(({ school, title, period, bullets }) => (
+          <div class="timeline-item" key={school}>
+            <div class="timeline-item__marker" aria-hidden="true"></div>
+            <div class="timeline-item__content">
+              <div class="timeline-item__meta">
+                <span class="timeline-item__period">{period}</span>
+                <h3>{title}</h3>
+                <p class="timeline-item__company">{school}</p>
               </div>
+              <ul>
+                {bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="interests container">
-        <div class="section-title">
-          <h2>Interests</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-4">
-            <div class="icon-box">
-              <i class="ri-cloud-line interest-icon interest-icon--cloud"></i>
-              <h3>Solution &amp; Cloud Architecture</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="ri-global-line interest-icon interest-icon--devops"></i>
-              <h3>DevOps</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="ri-pencil-ruler-line interest-icon interest-icon--design"></i>
-              <h3>Solution Design</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-            <div class="icon-box">
-              <i class="ri-key-2-fill interest-icon interest-icon--security"></i>
-              <h3>Security Architecture Design</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-code-s-slash-fill interest-icon interest-icon--software"></i>
-              <h3>Software Engineering</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-home-gear-fill interest-icon interest-icon--integration"></i>
-              <h3>Integration</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-code-box-fill interest-icon interest-icon--emerging-tech"></i>
-              <h3>Blockchain &amp; ML</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-lightbulb-fill interest-icon interest-icon--problem-solving"></i>
-              <h3>Problem Solving</h3>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
 
-    <section id="experience" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Experience</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="experience-company">Reply</h4>
-              <h5>August 2022 - Present</h5>
-              <p><em>Enterprise &amp; Solution Architect Manager</em></p>
-              <ul>
-                <li>IT Strategy &amp; Architecture Leadership: Designed and implemented enterprise and solution architectures, aligning IT strategies with business goals across diverse industries, including B2C markets in Utilities, Energy, and Telecom.</li>
-                <li>Cloud Infrastructure &amp; Architectural Governance: Led architectural governance, ensuring seamless integration of cloud infrastructures (AWS, Azure, GCP) to support scalable and resilient enterprise solutions.</li>
-                <li>Infrastructure, Architecture &amp; Application Analysis Lead: Primary point of reference for all infrastructure, architectural, and application analyses, ensuring alignment with business and technical requirements. GenAI &amp; Data Initiatives: Spearheaded projects in Generative AI and Data, driving innovation through AI-powered solutions, data-driven architectures, and advanced analytics to enhance business decision-making and automation</li>
-                <li>Innovation &amp; Team Development: Fostered a culture of innovation, mentoring and upskilling teams in adopting emerging digital and IT methodologies, significantly contributing to the company’s digital transformation journey.</li>
-                <li>Internal Development Team Leadership: Led an internal development team, overseeing technical execution and ensuring high-quality delivery of innovative solutions.</li>
-                <li>Banking Program Release Management: Acted as Release Manager in a large-scale banking transformation program, driving the modernization and renewal of the entire IT ecosystem.</li>
-              </ul>
+    <section id="skills" class="section">
+      <div class="section-heading">
+        <h2>Focus areas &amp; skills</h2>
+        <p>Competenze principali su cui costruisco strategie, architetture e delivery roadmap.</p>
+      </div>
+      <div class="skills-grid">
+        {skillGroups.map(({ category, items }) => (
+          <article class="skills-card" key={category}>
+            <h3>{category}</h3>
+            <div class="skills-card__chips">
+              {items.map((item) => (
+                <span class="chip chip--ghost" key={item}>{item}</span>
+              ))}
             </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="experience-company">Sky Italy</h4>
-              <h5>February 2022 - July 2022</h5>
-              <p><em>Solution Architect Manager</em></p>
-              <ul>
-                <li>Working in Architecture Team in Sky Italy supporting in the architecture definition, creation and optimization in all different IT environments guiding team of developers, business analysts, business technical analysts.</li>
-                <li>Architectural Governance in digital projects guiding develop and software teams in the creation of new solutions mixing up technology from AWS, GCP and Azure</li>
-              </ul>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="experience-company">Telepass</h4>
-              <h5>June 2021 - January 2022</h5>
-              <p><em>Cloud Architect</em></p>
-              <ul>
-                <li>GCP Cloud Architect working in the definition, creation and optimization of all Cloud flows in Telepass guiding a develop team up to 7 people.</li>
-                <li>Usage of multiple GCP and Cloud services like Kubernetes Cluster, SQL Database, Docker guiding and managing develop teams in Java and Python to achieve business requirements.</li>
-              </ul>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="experience-company">Accenture Italy</h4>
-              <h5>June 2019 - June 2021</h5>
-              <p><em>AWS Cloud and Solution Architect</em></p>
-              <ul>
-                <li>Working in the definition and creation for international assets development in AWS made of mobile app and Cloud backend</li>
-                <li>Point of Contact for AWS architecture creation, supporting developers in solving security and architecture issues gaining experience in Angular, Kotlin and Docker. The role required the guidance of 2 teams in Agile environment around the world made of 20 people of backend and frontend developers, business analysts.</li>
-                <li>Usage of multiple AWS Services for multiple reasons and requests. As example: CloudFormation (for infrastructure automation deploy), Cost Explorer for cost and resource optimization helping the teams to save more than 50% of total monthly amount, CodeDeploy to automatize and align the platform in multiple AWS regions.</li>
-              </ul>
-              <p><em>AWS Expert and Solution Architect</em></p>
-              <ul>
-                <li>Alexa Skills development and integration into Azure infrastructure for a Tier 1 Client</li>
-                <li>Solution design and definition for German Charging Point Operator</li>
-                <li>Creation of E2E Electric Mobility Platform with experience in OCPP Protocol managing Mobile and BE Development in the creation of a PoC for italian government company.</li>
-              </ul>
-              <p><em>Scrum Master</em></p>
-              <ul>
-                <li>Scrum Master with responsibilities in planning, priorities, technical and functional stuffs managing two teams spread worldwide in the development of AWS Cloud Infrastructure</li>
-              </ul>
-              <p><em>Technical Product Owner</em></p>
-              <ul>
-                <li>Acting as link between the UI/UX team, the developers and architect team making sure that the user experience was consistent with both the functional and the technical architecture, also in a Cloud-to-Cloud integration between AWS and Azure.</li>
-                <li>Guiding the developers through the requirements analysis checking that each sprint backlog included all the needed user stories and tasks.</li>
-                <li>Collect info from Delivery Leads and Leadership to define the development priorities</li>
-              </ul>
-              <p><em>Business Analyst</em></p>
-              <ul>
-                <li>Business Integration Team leader in the creation of complex Cloud monitoring solution (based on microservices) to prevent issues on existing customer environment.</li>
-              </ul>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="experience-company">Harting SPA</h4>
-              <h5>July 2018 - June 2019</h5>
-              <p><em>Product Specialist Integrated Industry</em></p>
-              <ul>
-                <li>Product Specialist focused on Edge Computing, RFID Solutions (Antennas, Transponders and Readers) and Passive Switches</li>
-                <li>Technical support for client integrated solution implementation in collaboration with System Integrator Partners</li>
-              </ul>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="experience-company">Capgemini</h4>
-              <h5>January 2018 - July 2018</h5>
-              <p><em>IoT Network Engineer</em></p>
-              <ul>
-                <li>2nd level assistance in M2M IoT project for Vodafone Global – Network</li>
-                <li>Queue Manager and Troubleshooting expert on Network division recently acquired by Capgemini on IoT Platform for Vodafone. My role consists to be the responsible of all incidents (major/minor) and requests coming from customers.</li>
-              </ul>
-              <h5>January 2017 - December 2017</h5>
-              <p><em>IoT Application Engineer</em></p>
-              <ul>
-                <li>2nd level assistance in M2M IoT project for Vodafone Global - GDSP</li>
-                <li>In coordination with Service Governance and team members, to become the principal reference point in case of major issue in order to address them and solve in more urgent SLA time during night or business hours in work-linked with other colleagues.</li>
-              </ul>
-              <h5>April 2016 - December 2016</h5>
-              <p><em>PMO</em></p>
-              <ul>
-                <li>Sustain and consultancy in the Vodafone IT group CP&amp;P: Remote Channels and VAS areas</li>
-                <li>Generation and definition of workflows to plan activities</li>
-                <li>Organization of external stakeholders and estimation of delivery time and costs</li>
-              </ul>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box panel-light" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="experience-company">Accenture</h4>
-              <h5>February 2016 - April 2016</h5>
-              <p><em>Stage Tester</em></p>
-              <ul>
-                <li>Creation of DSL and IMS test scenarios with simulation analysis through IXIA and Abacus simulators for Vodafone Italia at the Vodafone Testing Center</li>
-                <li>VRU and DSL network provisioning on HSS / ENUM</li>
-                <li>CPE configurations for voice and adsl scenarios</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          </article>
+        ))}
       </div>
     </section>
 
-    <section id="education" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Education</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-            <div class="col-md-4 mt-4 mt-md-0 icon-box education-card" data-aos="fade-up" data-aos-delay="100">
-              <img loading="lazy" decoding="async" src="assets/img/education/trentoUNI.jpg" class="img-fluid" alt="University of Trento crest" width="1574" height="1063" />
-              <p class="education-summary"><em>Master Degree in Telecommunications Engineering</em></p>
-              <h5>2014 - 2016</h5>
-              <h6 class="education-details">Relevant Details</h6>
-              <ul class="education-list">
-                <li>Thesis: Study and Development of an Innovative Tolerance Analysis Tool for Membrane Reflector Antennas based on Interval Arithmetic in C/C++</li>
-                <li>Cloud VideoMixer: Creation of High-quality Multi-Conference Opensource system</li>
-                <li>Chord Structure: Project in Python during Distributed System’s course</li>
-              </ul>
-            </div>
-            <div class="col-md-4 mt-4 mt-md-0 icon-box education-card" data-aos="fade-up" data-aos-delay="100">
-              <img loading="lazy" decoding="async" src="assets/img/education/salernoUNI.png" class="img-fluid" alt="University of Salerno emblem" width="450" height="300" />
-              <p class="education-summary"><em>Bachelor Degree in Electronic Engineering</em></p>
-              <h5>2008 - 2013</h5>
-              <h6 class="education-details">Relevant Details</h6>
-              <ul class="education-list">
-                <li>Thesis: Radio coverage project using commercial software. Usage of WinProp Suite for Cellular and Wi-Fi coverage over Outdoor and Indoor Environment to understand the best propagation pattern</li>
-                <li>Main Courses: Electromagnetic Fields, Digital and Analog Electronic, Optical Fiber, Radiopropagation</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <section id="certifications" class="section">
+      <div class="section-heading">
+        <h2>Certifications</h2>
+        <p>Credenziali che attestano il mio impegno continuo nell'evoluzione tecnologica e metodologica.</p>
+      </div>
+      <div class="card-grid">
+        {certifications.map(({ name, issuer, href }) => (
+          <article class="cert-card" key={name}>
+            <h3>{name}</h3>
+            <p>{issuer}</p>
+            <a class="cert-card__link" href={href} target="_blank" rel="noopener noreferrer">Vedi credenziale</a>
+          </article>
+        ))}
       </div>
     </section>
 
-    <!-- Projects section temporarily hidden -->
-
-    <section id="skills" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Skills</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-            <div class="col-md-12 mt-4 mt-md-0 icon-box panel-light" data-aos="lefade-up" data-aos-delay="100">
-              <h4 class="section-heading">Tools &amp; Technologies</h4>
-              <p>
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg" alt="AWS logo" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-ar21.svg" alt="Google Cloud logo" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-ar21.svg" alt="Microsoft Azure logo" height="90" width="170" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg" alt="Git logo" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/atlassian_jira/atlassian_jira-ar21.svg" alt="Atlassian Jira logo" height="100" width="190" />
-              </p>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box panel-light" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="section-heading">Languages &amp; Databases</h4>
-              <p>
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/python/python-horizontal.svg" alt="Python logo" height="50" width="100" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/java/java-horizontal.svg" alt="Java logo" height="50" width="120" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/oracle/oracle-ar21.svg" alt="Oracle logo" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-ar21.svg" alt="HTML5 logo" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/mysql/mysql-horizontal.svg" alt="MySQL logo" height="70" width="130" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/postgresql/postgresql-horizontal.svg" alt="PostgreSQL logo" height="50" width="190" />
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/yaml/yaml-ar21.svg" alt="YAML logo" height="50" width="100" />
-              </p>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box panel-light" data-aos="lefade-up" data-aos-delay="100">
-              <h4 class="section-heading">Frameworks &amp; Methodologies</h4>
-              <p>
-                <img loading="lazy" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-horizontal.svg" alt="Node.js logo" height="60" width="120" />
-                <img loading="lazy" src="https://www.csy.it/wp-content/uploads/2019/06/itil-logo.png" alt="ITIL framework logo" height="80" width="150" />
-                <img loading="lazy" src="https://cdn.worldvectorlogo.com/logos/scrumorg-1.svg" alt="Scrum.org logo" height="70" width="140" />
-                <img loading="lazy" src="https://cdn.worldvectorlogo.com/logos/devops-2.svg" alt="DevOps infinite loop illustration" height="100" width="170" />
-                <img loading="lazy" src="https://devcom.com/wp-content/uploads/2019/08/methodology-agile.png" alt="Agile methodology illustration" height="70" width="140" />
-              </p>
-            </div>
-          </div>
-        </div>
+    <section id="contact" class="section section--compact">
+      <div class="section-heading">
+        <h2>Contact</h2>
+        <p>Scrivimi per discutere del tuo prossimo progetto o per una consulenza architetturale.</p>
       </div>
-    </section>
-
-    <section id="certifications" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Certifications</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-            <div class="col-md-12 mt-4 mt-md-0 icon-box panel-light" data-aos="fade-up" data-aos-delay="100">
-              <h4 class="section-heading">Certifications</h4>
-              <div class="certification-container">
-                <a href="https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/BC062EA070865656?sharingId=CAB9C76CF28D6EAE">
-                  <img loading="lazy" src="assets/img/certification/azuresolutionarchitectexpert.png" alt="Azure Solutions Architect Expert" class="certification-badge" />
-                </a>
-                <a href="https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/4C72C1888660AB9A?sharingId=CAB9C76CF28D6EAE">
-                  <img loading="lazy" src="assets/img/certification/AzureAdministrator.png" alt="Azure Administrator Certification" class="certification-badge" />
-                </a>
-                <a href="https://www.credly.com/badges/d902b397-e33c-419c-84dc-f66d32e94fc3">
-                  <img loading="lazy" src="assets/img/certification/AWSSAAssociate.png" alt="AWS Solutions Architect Associate" class="certification-badge" />
-                </a>
-                <a href="https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/FB64D18989F3E67B?sharingId=CAB9C76CF28D6EAE">
-                  <img loading="lazy" src="assets/img/certification/azureaifundamentals.png" alt="Azure AI Fundamentals" class="certification-badge" />
-                </a>
-                <a href="https://www.credly.com/badges/832a8300-e26d-47aa-a9d3-63a5b0cb35d4/public_url">
-                  <img loading="lazy" src="assets/img/certification/AWSPartnerAccreditationTechnical.png" alt="AWS Technical Accreditation" class="certification-badge" />
-                </a>
-                <a href="https://www.credly.com/badges/3a6c266f-578b-468d-b1a9-89e633976ac1/public_url">
-                  <img loading="lazy" src="assets/img/certification/PSM1.png" alt="Professional Scrum Master I" class="certification-badge" />
-                </a>
-                <a href="https://sgq.io/GodJh3O">
-                  <img loading="lazy" src="assets/img/certification/Databricks-GenAI.png" alt="Databricks Generative AI Fundamentals" class="certification-badge" />
-                </a>
-                <a href="https://www.linkedin.com/learning/certificates/d960f9596f5cfb19b97d968fb8feba1a86ce00d6e149719e1abac89b94cbe964">
-                  <img loading="lazy" src="assets/img/certification/GenAI-MSFTLinkedin.png" alt="Career Essentials in Generative AI by Microsoft and LinkedIn" class="certification-badge" />
-                </a>
-              </div>
-
-    <section id="links" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Resume & Links</h2>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mt-4 mt-md-0 icon-box panel-light link-card" data-aos="fade-up" data-aos-delay="100">
-            <a href="https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link" target="_blank" rel="noopener noreferrer">
-              <div class="icon"><i class="icofont-page"></i></div>
-            </a>
-            <h4 class="title">
-              <a href="https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link" target="_blank" rel="noopener noreferrer">Resume</a>
-            </h4>
-            <p class="description">Download my latest resume in PDF format.</p>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 icon-box panel-light link-card" data-aos="fade-up">
-            <a href="https://github.com/marcocalifano89" target="_blank" rel="noopener noreferrer">
-              <div class="icon"><i class="icofont-link"></i></div>
-            </a>
-            <h4 class="title">
-              <a href="https://github.com/marcocalifano89" target="_blank" rel="noopener noreferrer">GitHub Portfolio</a>
-            </h4>
-            <p class="description">Explore architecture accelerators, automation scripts, and personal projects.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacts" class="contact">
-      <div class="container">
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card">
-            <i class="bx bx-map"></i>
-            <h3>Home Town</h3>
-            <p>Milan, Italy</p>
-          </div>
-          <div class="contact-card">
-            <i class="bx bx-envelope"></i>
-            <h3>Email</h3>
-            <p><a href="mailto:marcocalifano89@gmail.com">marcocalifano89@gmail.com</a></p>
-          </div>
-          <div class="contact-card">
-            <i class="bx bx-phone"></i>
-            <h3>Phone</h3>
-            <p><a href="tel:+393488782506">+39 348 878 2506</a></p>
-          </div>
-          <div class="contact-card">
-            <i class="bx bx-share-alt"></i>
-            <h3>Social</h3>
-            <p>
-              <a href="https://www.linkedin.com/in/marcocalifano/" target="_blank" rel="noopener noreferrer">LinkedIn</a><br />
-              <a href="mailto:marcocalifano89@gmail.com" rel="noopener noreferrer">Email</a>
-            </p>
-          </div>
-        </div>
+      <div class="contact-grid">
+        {contactCards.map(({ icon, label, text, href }) => (
+          <article class="contact-card" key={label}>
+            <i class={icon} aria-hidden="true"></i>
+            <h3>{label}</h3>
+            {href ? (
+              <a href={href} rel="noopener noreferrer">{text}</a>
+            ) : (
+              <p>{text}</p>
+            )}
+          </article>
+        ))}
       </div>
     </section>
   </main>
 
-  <astro:fragment slot="scripts">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" defer></script>
-    <script src="/assets/vendor/php-email-form/validate.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.9.3/venobox.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" defer></script>
-    <script src="/assets/js/main.js" defer></script>
-    <script type="text/javascript">
-      {`document.addEventListener('DOMContentLoaded', () => {
-  const startTyping = () => {
-    if (typeof window.Typed !== 'undefined') {
-      new window.Typed('.typing', {
-        strings: ["Enterprise & Solution Architect", "Multi-cloud Strategist across AWS, Azure & GCP", "Generative AI and Data Advocate", "Digital Transformation Leader", "Scrum Master Certified", "Cloud Lover"],
-        loop: true,
-        typeSpeed: 65,
-        backSpeed: 65
-      });
-    }
-  };
+  <footer class="site-footer">
+    <p>&copy; {new Date().getFullYear()} Marco Califano — Enterprise &amp; Solution Architect.</p>
+  </footer>
 
-  if (typeof window.Typed !== 'undefined') {
-    startTyping();
-  } else {
-    window.addEventListener('load', startTyping);
-  }
-});`}
+  <astro:fragment slot="scripts">
+    <script type="module" data-phrases={JSON.stringify(typedPhrases)}>
+      const phrases = JSON.parse(document.currentScript.dataset.phrases || '[]');
+      const target = document.querySelector('.typing');
+      if (phrases.length && target) {
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const tick = () => {
+          const current = phrases[phraseIndex];
+          if (isDeleting) {
+            charIndex = Math.max(0, charIndex - 1);
+          } else {
+            charIndex = Math.min(current.length, charIndex + 1);
+          }
+          target.textContent = current.slice(0, charIndex);
+          if (!isDeleting && charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(tick, 1600);
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(tick, 400);
+          } else {
+            const delay = isDeleting ? 45 : 90;
+            setTimeout(tick, delay);
+          }
+        };
+        tick();
+      }
     </script>
   </astro:fragment>
 </BaseLayout>
