@@ -189,24 +189,6 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
-.nav-menu .nav-cta a {
-  background: #12d640;
-  color: #0b1f36;
-  padding: 10px 18px;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.nav-menu .nav-cta a:before {
-  display: none;
-}
-
-.nav-menu .nav-cta a:hover {
-  background: #0b1f36;
-  color: #f8f9fa;
-}
-
 /* Mobile Navigation */
 .mobile-nav-toggle {
   position: fixed;
@@ -1338,28 +1320,3 @@ section .container {
   transform: translateY(-5px); /* Sposta leggermente verso l'alto l'immagine al passaggio del mouse */
 }
 
-
-.contact-cta {
-  background: #0b1f36;
-  border-radius: 12px;
-  padding: 32px;
-  margin-bottom: 30px;
-  box-shadow: 0 20px 48px -32px rgba(18, 214, 64, 0.55);
-}
-
-.contact-cta h3 {
-  color: #12d640;
-  font-size: 24px;
-  margin-bottom: 12px;
-}
-
-.contact-cta p {
-  color: #dfe4ea;
-  margin-bottom: 18px;
-}
-
-.contact-cta .btn {
-  padding: 10px 26px;
-  border-radius: 30px;
-  font-weight: 600;
-}
