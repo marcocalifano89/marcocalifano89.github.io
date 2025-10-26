@@ -497,6 +497,41 @@ section {
   font-size: 0.85rem;
 }
 
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(18, 214, 64, 0.5);
+  background: rgba(9, 21, 40, 0.85);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 16px 40px -28px rgba(18, 214, 64, 0.45);
+}
+
+.back-to-top i {
+  font-size: 1.4rem;
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: rgba(18, 214, 64, 0.12);
+}
+
 @media (max-width: 960px) {
   .site-header__inner {
     flex-wrap: wrap;

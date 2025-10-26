@@ -422,6 +422,10 @@ const contactCards = [
     <p>&copy; {new Date().getFullYear()} Marco Califano — Enterprise &amp; Solution Architect.</p>
   </footer>
 
+  <button class="back-to-top" type="button" aria-label="Torna in alto">
+    <i class="ri-arrow-up-line" aria-hidden="true"></i>
+  </button>
+
   <astro:fragment slot="scripts">
     <script type="module" data-phrases={JSON.stringify(typedPhrases)}>
       const phrases = JSON.parse(document.currentScript.dataset.phrases || '[]');
@@ -452,6 +456,24 @@ const contactCards = [
         };
         tick();
       }
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const button = document.querySelector('.back-to-top');
+        if (!button) return;
+        const toggleVisibility = () => {
+          if (window.scrollY > 320) {
+            button.classList.add('back-to-top--visible');
+          } else {
+            button.classList.remove('back-to-top--visible');
+          }
+        };
+        toggleVisibility();
+        window.addEventListener('scroll', toggleVisibility, { passive: true });
+        button.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
     </script>
   </astro:fragment>
 </BaseLayout>
