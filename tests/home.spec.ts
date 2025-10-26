@@ -18,7 +18,9 @@ test.describe('Homepage experience', () => {
   test('language toggle switches to English copy', async ({ page }) => {
     await page.goto('/');
     await page.click('[data-locale-target]');
-    await page.waitForURL('**/?lang=en');
+    await page.waitForURL('**/en/');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator(heroHeadingSelector)).toContainText("Hi, I'm Marco.");
   });
 

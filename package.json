@@ -14,7 +14,7 @@
     "test:e2e:ci": "playwright test"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.2.8"
+    "@fontsource-variable/inter": "^5.2.8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",

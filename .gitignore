@@ -3,6 +3,7 @@ node_modules/
 
 # Astro build output
 dist/
+test-results/
 agents.md
 project_kb.md
 
