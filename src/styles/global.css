@@ -95,10 +95,10 @@ img {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 1rem 1.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .site-header__brand {
@@ -106,15 +106,15 @@ img {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
-  flex: 0 0 auto;
+  justify-self: start;
 }
 
 .site-nav {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  flex: 1 1 auto;
+  justify-self: center;
 }
 
 .site-nav a {
@@ -151,7 +151,7 @@ img {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  flex: 0 0 auto;
+  justify-self: end;
 }
 
 .control {
@@ -319,10 +319,30 @@ section {
 }
 
 .hero__highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   margin-bottom: 1.8rem;
+}
+
+.hero__highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.4rem 0.2rem;
+}
+
+.hero__highlight i {
+  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+.hero__highlight p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 .hero__actions {
@@ -647,23 +667,29 @@ section {
 
 @media (max-width: 960px) {
   .site-header__inner {
-    flex-wrap: wrap;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 0.75rem;
   }
 
   .site-nav {
-    order: 3;
-    flex: 1 1 100%;
+    order: 2;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1rem;
+    width: 100%;
+    gap: 0.75rem;
   }
 
   .site-header__controls {
-    order: 2;
-    flex: 1 1 100%;
+    order: 3;
+    width: 100%;
     justify-content: flex-start;
     gap: 0.6rem;
+  }
+
+  .site-header__brand {
+    align-self: flex-start;
   }
 
   .hero {
