@@ -83,7 +83,7 @@ type Content = {
 const data: Record<Locale, Content> = {
   it: {
     head: {
-      title: 'Marco Califano — Enterprise & Solution Architect',
+      title: 'Marco Califano � Enterprise & Solution Architect',
       description: 'Enterprise & Solution Architect con esperienza multi-cloud (AWS, Azure, Google Cloud) e programmi di trasformazione digitale in utilities, energy, media e banking.',
       keywords: 'Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture',
       ogDescription: 'Enterprise & Solution Architect che guida roadmap cloud, data & AI con impatto misurabile sul business.'
@@ -189,7 +189,7 @@ const data: Record<Locale, Content> = {
       items: [
         {
           company: 'Reply',
-          period: 'Lug 2025 — Presente',
+          period: 'Lug 2025 � Presente',
           role: 'Senior Architect / PM / IT Strategy',
           bullets: [
             'Definizione di blueprint multi-cloud e GenAI: landing zone, modelli di sicurezza, data/AI service layer e integrazioni applicative per un gruppo bancario internazionale.',
@@ -199,8 +199,8 @@ const data: Record<Locale, Content> = {
         },
         {
           company: 'Reply',
-          period: 'Lug 2025 — Presente',
-          role: 'Senior Architect · GenAI Design Authority',
+          period: 'Lug 2025 � Presente',
+          role: 'Senior Architect � GenAI Design Authority',
           bullets: [
             'Design authority su iniziative GenAI nel settore bancario: assessment architetturali, remediation plan e governance centralizzata.',
             'Analisi e rollout di una piattaforma AI su Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run, MemoryStore).',
@@ -209,17 +209,17 @@ const data: Record<Locale, Content> = {
         },
         {
           company: 'Reply',
-          period: 'Mar 2025 — Presente',
+          period: 'Mar 2025 � Presente',
           role: 'Technical Lead',
           bullets: [
             'Ottimizzazione di workflow cloud personalizzati, integrando SAST in pipeline Terraform-based e KPI di sicurezza.',
-            'Sviluppo di dashboard BI su stack AWS per decisioni data-driven e visibilità operativa.',
-            'Advisor tecnico per garantire soluzioni scalabili, sicure e allineate alle priorità del cliente.'
+            'Sviluppo di dashboard BI su stack AWS per decisioni data-driven e visibilit� operativa.',
+            'Advisor tecnico per garantire soluzioni scalabili, sicure e allineate alle priorit� del cliente.'
           ]
         },
         {
           company: 'Reply',
-          period: 'Giu 2021 — Gen 2022',
+          period: 'Giu 2021 � Gen 2022',
           role: 'GCP Cloud Architect',
           bullets: [
             'Blueprint GCP end-to-end per migrazione lift-and-shift e modernizzazione di servizi nel settore mobility.',
@@ -228,7 +228,7 @@ const data: Record<Locale, Content> = {
         },
         {
           company: 'Accenture',
-          period: 'Giu 2019 — Giu 2021',
+          period: 'Giu 2019 � Giu 2021',
           role: 'AWS Architect & Team Leader',
           bullets: [
             'Realizzazione di soluzioni Alexa integrate con infrastrutture Azure per servizi connessi nel settore automotive.',
@@ -244,16 +244,16 @@ const data: Record<Locale, Content> = {
         {
           school: 'University of Trento',
           title: 'MSc Telecommunications Engineering',
-          period: '2014 — 2016',
+          period: '2014 � 2016',
           bullets: [
             'Tesi su tolerance analysis per antenne a riflettore tramite interval arithmetic (C/C++).',
-            'Sviluppo di un video mixer open-source per multi-conference di alta qualità.'
+            'Sviluppo di un video mixer open-source per multi-conference di alta qualit�.'
           ]
         },
         {
           school: 'University of Salerno',
           title: 'BSc Electronic Engineering',
-          period: '2008 — 2013',
+          period: '2008 � 2013',
           bullets: [
             'Tesi su ottimizzazione della copertura radio con WinProp Suite in scenari indoor/outdoor.',
             'Focus su campi elettromagnetici, elettronica digitale e radiopropagazione.'
@@ -334,11 +334,11 @@ const data: Record<Locale, Content> = {
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
       ]
     },
-    footer: 'Marco Califano — Enterprise & Solution Architect'
+    footer: 'Marco Califano � Enterprise & Solution Architect'
   },
   en: {
     head: {
-      title: 'Marco Califano — Enterprise & Solution Architect',
+      title: 'Marco Califano � Enterprise & Solution Architect',
       description: 'Enterprise & Solution Architect delivering multi-cloud (AWS, Azure, Google Cloud) platforms and digital transformation programmes across utilities, energy, media and banking.',
       keywords: 'Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture',
       ogDescription: 'Enterprise & Solution Architect driving cloud, data & AI strategies with measurable business impact.'
@@ -443,19 +443,19 @@ const data: Record<Locale, Content> = {
       intro: 'Leadership roles across architecture and delivery, bridging business goals with engineering execution.',
       items: [
         {
-          company: 'Reply · Crédit Agricole',
-          period: 'Jul 2025 — Present',
+          company: 'Reply',
+          period: 'Jul 2025 � Present',
           role: 'Senior Architect / PM / IT Strategy',
           bullets: [
             'Defined the end-to-end multi-cloud and GenAI blueprint covering landing zones, security, data/AI services and integration patterns.',
-            'Acted as IT strategy advisor on governance, roadmap and operating models for DevSecOps/MLOps teams across Crédit Agricole Group.',
+            'Acted as IT strategy advisor on governance, roadmap and operating models for DevSecOps/MLOps teams across Cr�dit Agricole Group.',
             'Led the first GenAI use cases (document intelligence, credit risk), setting KPIs, compliance controls and adoption plans.'
           ]
         },
         {
-          company: 'Reply · BPER Banca',
-          period: 'Jul 2025 — Present',
-          role: 'Senior Architect · GenAI Design Authority',
+          company: 'Reply',
+          period: 'Jul 2025 � Present',
+          role: 'Senior Architect � GenAI Design Authority',
           bullets: [
             'Design authority for Generative AI initiatives: architectural assessments, remediation plans and contextualised blueprints.',
             'Oversaw the rollout of the AI platform on Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run/MemoryStore).',
@@ -463,8 +463,8 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          company: 'Reply · BAPS',
-          period: 'Mar 2025 — Present',
+          company: 'Reply',
+          period: 'Mar 2025 � Present',
           role: 'Technical Lead',
           bullets: [
             'Integrated SAST tools into Terraform-based CI/CD pipelines to strengthen security and compliance early in delivery.',
@@ -473,8 +473,8 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          company: 'Reply · Telepass',
-          period: 'Jun 2021 — Jan 2022',
+          company: 'Reply',
+          period: 'Jun 2021 � Jan 2022',
           role: 'GCP Cloud Architect',
           bullets: [
             'Owned the GCP blueprint for lift-and-shift migrations and modernisation of mobility services.',
@@ -482,11 +482,11 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          company: 'Accenture · CNH Industrial',
-          period: 'Jun 2019 — Jun 2021',
+          company: 'Accenture',
+          period: 'Jun 2019 � Jun 2021',
           role: 'AWS Architect & Team Leader',
           bullets: [
-            'Delivered Alexa-based connected services integrated with CNH’s Azure landscape for Iveco vehicles.',
+            'Delivered Alexa-based connected services integrated with CNH�s Azure landscape for Iveco vehicles.',
             'Led global development and testing teams, sprint planning and DevOps best practices.'
           ]
         }
@@ -499,7 +499,7 @@ const data: Record<Locale, Content> = {
         {
           school: 'University of Trento',
           title: 'MSc Telecommunications Engineering',
-          period: '2014 — 2016',
+          period: '2014 � 2016',
           bullets: [
             'Thesis on tolerance analysis for reflector antennas using interval arithmetic (C/C++).',
             'Developed an open-source video mixer for high-quality multi-conference experiences.'
@@ -508,7 +508,7 @@ const data: Record<Locale, Content> = {
         {
           school: 'University of Salerno',
           title: 'BSc Electronic Engineering',
-          period: '2008 — 2013',
+          period: '2008 � 2013',
           bullets: [
             'Thesis on radio coverage optimisation with WinProp Suite in indoor/outdoor scenarios.',
             'Focused on electromagnetics, digital electronics and radiopropagation.'
@@ -579,7 +579,7 @@ const data: Record<Locale, Content> = {
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
       ]
     },
-    footer: 'Marco Califano — Enterprise & Solution Architect'
+    footer: 'Marco Califano � Enterprise & Solution Architect'
   }
 };
 
@@ -590,4 +590,5 @@ export function getContent(locale: Locale): Content {
 export function isLocale(value: string | undefined): value is Locale {
   return value !== undefined && locales.includes(value as Locale);
 }
+
 
