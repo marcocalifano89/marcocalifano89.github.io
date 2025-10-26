@@ -12,7 +12,7 @@ const props = Astro.props as { locale?: Locale };
 const locale: Locale = props.locale && locales.includes(props.locale) ? props.locale : fallbackLocale;
 const content = getContent(locale);
 
-const { head, nav, hero, metrics, pillars, experience, education, skills, projects, certifications, contact, footer } = content;
+const { head, nav, hero, metrics, pillars, experience, education, skills, certifications, contact, footer } = content;
 
 const alternateLocale: Locale = locales.find((code) => code !== locale) ?? fallbackLocale;
 const currentPath = localePaths[locale];
@@ -45,7 +45,6 @@ const footerText = `\u00A9 ${new Date().getFullYear()} ${footer}`;
 const navLabel = locale === 'it' ? 'Navigazione principale' : 'Primary navigation';
 const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
-const projectLinkLabel = locale === 'it' ? 'Dettagli' : 'Case study';
 ---
 <BaseLayout title={head.title} description={head.description} keywords={head.keywords} lang={locale}>
   <meta slot="meta" property="og:title" content={head.title} />
@@ -225,31 +224,6 @@ const projectLinkLabel = locale === 'it' ? 'Dettagli' : 'Case study';
             <h3>{category}</h3>
             <div class="skills-card__chips">
               {items.map((item) => <span class="chip chip--ghost">{item}</span>)}
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="section-heading">
-        <h2>{projects.title}</h2>
-        <p>{projects.intro}</p>
-      </div>
-      <div class="projects-grid">
-        {projects.items.map(({ name, summary, tags, href }) => (
-          <article class="project-card">
-            <div class="project-card__header">
-              <h3>{name}</h3>
-              {href && (
-                <a class="project-card__link" href={href} target="_blank" rel="noopener noreferrer">
-                  {projectLinkLabel}
-                </a>
-              )}
-            </div>
-            <p>{summary}</p>
-            <div class="project-card__tags">
-              {tags.map((tag) => <span class="chip">{tag}</span>)}
             </div>
           </article>
         ))}

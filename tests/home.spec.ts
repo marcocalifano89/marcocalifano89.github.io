@@ -1,18 +1,13 @@
 ﻿import { test, expect } from '@playwright/test';
 
 const heroHeadingSelector = 'main .hero h1';
-const projectsSectionSelector = '#projects';
-
 test.describe('Homepage experience', () => {
-  test('renders hero, highlights and projects section', async ({ page }) => {
+  test('renders hero highlights', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.locator(heroHeadingSelector)).toContainText('Marco');
     await expect(page.locator('.hero__typing')).toBeVisible();
     await expect(page.locator('.hero__highlight')).toHaveCount(3);
-
-    await expect(page.locator(projectsSectionSelector)).toBeVisible();
-    await expect(page.locator(`${projectsSectionSelector} .project-card`)).toHaveCount(3);
   });
 
   test('language toggle switches to English copy', async ({ page }) => {

@@ -33,13 +33,6 @@ type SkillGroup = {
   items: string[];
 };
 
-type Project = {
-  name: string;
-  summary: string;
-  tags: string[];
-  href?: string;
-};
-
 type Certification = {
   name: string;
   issuer: string;
@@ -82,7 +75,6 @@ type Content = {
   experience: { title: string; intro: string; items: TimelineItem[] };
   education: { title: string; intro: string; items: EducationItem[] };
   skills: { title: string; intro: string; groups: SkillGroup[] };
-  projects: { title: string; intro: string; items: Project[] };
   certifications: { title: string; intro: string; items: Certification[] };
   contact: { title: string; intro: string; cards: ContactCard[] };
   footer: string;
@@ -101,7 +93,6 @@ const data: Record<Locale, Content> = {
       items: [
         { id: 'about', label: 'Chi sono' },
         { id: 'experience', label: 'Esperienza' },
-        { id: 'projects', label: 'Progetti' },
         { id: 'skills', label: 'Competenze' },
         { id: 'certifications', label: 'Certificazioni' },
         { id: 'contact', label: 'Contatti' }
@@ -281,27 +272,6 @@ const data: Record<Locale, Content> = {
         }
       ]
     },
-    projects: {
-      title: 'Progetti selezionati',
-      intro: 'Esempi recenti di iniziative guidate con impatto misurabile su cloud, data e AI.',
-      items: [
-        {
-          name: 'Landing zone multi-cloud per utility europea',
-          summary: 'Blueprint, guard-rail di sicurezza e automazione IaC per abilitare rollout enterprise, con time-to-market ridotto del 30% per le squadre digital.',
-          tags: ['AWS', 'Azure', 'Landing Zone']
-        },
-        {
-          name: 'Data platform per media & advertising',
-          summary: 'Definizione di data model, streaming pipeline e governance per campagne real-time, portando +25% di accuratezza sugli insight marketing.',
-          tags: ['Data Platform', 'Streaming', 'Analytics']
-        },
-        {
-          name: 'GenAI adoption framework',
-          summary: 'Playbook, valutazione use case e guard-rail di compliance per introdurre GenAI in customer service e knowledge management con KPI condivisi.',
-          tags: ['GenAI', 'Governance', 'Change Enablement']
-        }
-      ]
-    },
     certifications: {
       title: 'Certificazioni',
       intro: 'Credenziali che attestano il mio impegno continuo nell\'evoluzione tecnologica e metodologica.',
@@ -357,7 +327,6 @@ const data: Record<Locale, Content> = {
       items: [
         { id: 'about', label: 'About' },
         { id: 'experience', label: 'Experience' },
-        { id: 'projects', label: 'Projects' },
         { id: 'skills', label: 'Skills' },
         { id: 'certifications', label: 'Certifications' },
         { id: 'contact', label: 'Contact' }
@@ -534,27 +503,6 @@ const data: Record<Locale, Content> = {
         {
           category: 'Leadership & Governance',
           items: ['Architecture Governance', 'Team Coaching', 'Stakeholder Engagement', 'Regulatory Compliance']
-        }
-      ]
-    },
-    projects: {
-      title: 'Selected projects',
-      intro: 'Recent programmes delivered end-to-end with tangible business outcomes.',
-      items: [
-        {
-          name: 'Multi-cloud landing zone for a European utility',
-          summary: 'Led blueprint, security guard-rails and IaC automation to unlock enterprise-scale squads and accelerate time-to-market by 30%.',
-          tags: ['AWS', 'Azure', 'Landing Zone']
-        },
-        {
-          name: 'Media & advertising data platform',
-          summary: 'Designed data model, streaming pipelines and governance for real-time campaign insight, boosting marketing accuracy by 25%.',
-          tags: ['Data Platform', 'Streaming', 'Analytics']
-        },
-        {
-          name: 'GenAI adoption framework',
-          summary: 'Established playbooks, use-case evaluation and compliance guard-rails to introduce GenAI for customer service and knowledge management.',
-          tags: ['GenAI', 'Governance', 'Change Enablement']
         }
       ]
     },
