@@ -342,6 +342,7 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
         const backToTopEl = document.querySelector('.back-to-top');
         const themeToggleEl = document.querySelector('[data-theme-toggle]');
         const localeToggleEl = document.querySelector('[data-locale-target]');
+        const brandLink = document.querySelector('.site-header__brand');
         const backToTopButton = backToTopEl instanceof HTMLElement ? backToTopEl : null;
         const themeButton = themeToggleEl instanceof HTMLElement ? themeToggleEl : null;
         const localeButton = localeToggleEl instanceof HTMLAnchorElement ? localeToggleEl : null;
@@ -452,6 +453,17 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
               } catch (error) {
                 // Storage might be unavailable; ignore
               }
+            }
+          });
+        }
+
+        if (brandLink instanceof HTMLAnchorElement) {
+          brandLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (prefersReducedMotion) {
+              window.scrollTo(0, 0);
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }
           });
         }
