@@ -142,6 +142,7 @@ img {
 
 section {
   margin-top: 5rem;
+  scroll-margin-top: 6.5rem;
 }
 
 .section-heading {
@@ -166,6 +167,7 @@ section {
 
 .hero {
   margin-top: 4rem;
+  scroll-margin-top: 7rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
   gap: clamp(2rem, 5vw, 4rem);
