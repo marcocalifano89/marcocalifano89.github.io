@@ -277,6 +277,43 @@ section {
   line-height: 1.6;
 }
 
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.pillar-card {
+  background: var(--surface-primary);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 20px 60px -40px rgba(18, 214, 64, 0.4);
+}
+
+.pillar-card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.pillar-card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.pillar-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 .timeline {
   position: relative;
   padding-left: 1.6rem;

@@ -62,15 +62,33 @@ const metrics = [
   }
 ];
 
+const approachPillars = [
+  {
+    title: 'Scouting & Vision',
+    blurb: 'Assessment iniziali e definizione della roadmap condivisa con stakeholder business e IT.',
+    points: ['Cloud readiness & gap analysis', 'Business case e KPI di trasformazione', 'Architecture vision e guard-rail']
+  },
+  {
+    title: 'Blueprint & Enablement',
+    blurb: 'Disegno di reference architecture, landing zone e modelli operativi per squadre cross-funzionali.',
+    points: ['Pattern riutilizzabili e acceleratori IaC', 'Operating model e governance', 'Security & compliance by design']
+  },
+  {
+    title: 'Delivery & Adoption',
+    blurb: 'Supporto hands-on a squadre di sviluppo, rilascio e adozione della piattaforma lungo il ciclo di vita.',
+    points: ['Coaching a team distribuiti', 'Gestione release e change', 'Misurazione valore e ottimizzazione costi']
+  }
+];
+
 const experiences = [
   {
     company: 'Reply',
     period: 'Aug 2022 — Present',
     role: 'Enterprise & Solution Architect Manager',
     bullets: [
-      'Guiding multi-year transformation roadmaps across utilities, energy and telecom with hybrid cloud foundations.',
-      'Leading architecture governance for AWS, Azure and GCP platforms, enforcing security and compliance patterns.',
-      'Driving GenAI and data platform programmes, enabling new customer experiences and automation initiatives.'
+      'Guida tecnica e governance per programmi multi-cloud (AWS, Azure, GCP) in utilities, energy e telecom.',
+      'Definizione e industrializzazione di landing zone, reference architecture e sicurezza by design.',
+      'Coordinamento di iniziative GenAI e data platform con impatto su customer experience e automazione.'
     ]
   },
   {
@@ -78,8 +96,8 @@ const experiences = [
     period: 'Feb 2022 — Jul 2022',
     role: 'Solution Architect Manager',
     bullets: [
-      'Supported digital product squads in designing resilient architectures spanning AWS, Azure and GCP.',
-      'Acted as trusted advisor for governance, modernisation and integration initiatives.'
+      'Supporto alle digital squad nella definizione di architetture resilienti multi-cloud.',
+      'Advisor per governance architetturale, modernizzazione e integrazione ecosistemi legacy.'
     ]
   },
   {
@@ -87,8 +105,8 @@ const experiences = [
     period: 'Jun 2021 — Jan 2022',
     role: 'Cloud Architect',
     bullets: [
-      'Owned the GCP architecture blueprint, introducing container platforms, SQL modernisation and CI/CD pipelines.',
-      'Enabled a cross-functional engineering team to deliver real-time mobility services.'
+      'Responsabile del blueprint GCP: container platform, modernizzazione dati e pipeline CI/CD.',
+      'Enablement di team cross-funzionali per servizi di mobilità real-time.'
     ]
   },
   {
@@ -96,8 +114,8 @@ const experiences = [
     period: 'Jun 2019 — Jun 2021',
     role: 'AWS Cloud & Solution Architect',
     bullets: [
-      'Designed and delivered reusable AWS accelerators across mobile and backend programmes.',
-      'Led cost optimisation, IaC adoption and DevOps enablement across distributed agile teams.'
+      'Progettazione di acceleratori AWS riutilizzabili e supporto a programmi mobile/backend globali.',
+      'Ottimizzazione costi, adozione IaC e DevOps enablement per team distribuiti.'
     ]
   }
 ];
@@ -226,7 +244,7 @@ const contactCards = [
         <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="button button--ghost" href="https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link" target="_blank" rel="noopener noreferrer">Download CV</a>
+      <a class="button button--ghost" href="https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download CV</a>
     </div>
   </header>
 
@@ -245,7 +263,7 @@ const contactCards = [
           ))}
         </div>
         <div class="hero__actions">
-          <a class="button" href="https://drive.google.com/file/d/1eDVC9GzfL4X5z0Jz2K18j708Q1iVwpe7/view?usp=share_link" target="_blank" rel="noopener noreferrer">Scarica il CV</a>
+          <a class="button" href="https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Scarica il CV</a>
           <a class="button button--ghost" href="#contact">Qui i miei contatti</a>
         </div>
       </div>
@@ -267,6 +285,26 @@ const contactCards = [
             <span class="metric-card__value">{value}</span>
             <h3>{label}</h3>
             <p>{detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section pillars">
+      <div class="section-heading">
+        <h2>Come affronto i programmi</h2>
+        <p>Un framework in tre fasi che accompagna clienti e team dall’allineamento strategico alla delivery misurabile.</p>
+      </div>
+      <div class="pillars-grid">
+        {approachPillars.map(({ title, blurb, points }) => (
+          <article class="pillar-card" key={title}>
+            <h3>{title}</h3>
+            <p>{blurb}</p>
+            <ul>
+              {points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
           </article>
         ))}
       </div>
