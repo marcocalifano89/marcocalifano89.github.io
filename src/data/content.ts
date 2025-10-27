@@ -1,4 +1,4 @@
-﻿export type Locale = 'it' | 'en';
+export type Locale = 'it' | 'en';
 export const locales: Locale[] = ['it', 'en'];
 export const fallbackLocale: Locale = 'it';
 
@@ -68,7 +68,7 @@ type Content = {
     lead: string;
     typing: string[];
     highlights: string[];
-    actions: { primaryLabel: string; primaryHref: string; secondaryLabel: string; secondaryHref: string };
+    actions: { primaryLabel: string; primaryHref: string };
   };
   metrics: { title: string; intro: string; items: Metric[] };
   pillars: { title: string; intro: string; items: Pillar[] };
@@ -98,7 +98,7 @@ const data: Record<Locale, Content> = {
         { id: 'contact', label: 'Contatti' }
       ],
       cvLabel: 'Scarica il CV',
-      contactLabel: 'Parliamo del tuo progetto',
+      contactLabel: 'Contattami',
       languageSwitchLabel: 'EN',
       languageSwitchSr: 'Passa alla versione inglese',
       themeToggle: {
@@ -124,13 +124,11 @@ const data: Record<Locale, Content> = {
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
-        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link',
-        secondaryLabel: 'Parliamo del tuo progetto',
-        secondaryHref: '#contact'
+        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link'
       }
     },
     metrics: {
-      title: 'Impact snapshot',
+      title: 'Impatto in sintesi',
       intro: 'Indicatori chiave dei programmi enterprise che seguo ogni giorno.',
       items: [
         {
@@ -184,30 +182,30 @@ const data: Record<Locale, Content> = {
       ]
     },
     experience: {
-      title: 'Experience',
-      intro: 'Leadership roles across architecture and delivery, aligning business goals with engineering execution.',
+      title: 'Esperienza',
+      intro: 'Ruoli di leadership su architettura e delivery, allineando obiettivi business ed execution tecnica.',
       items: [
         {
           company: 'Reply',
-          period: '2022 - Present',
+          period: '2022 - Oggi',
           role: 'Enterprise & Solution Architect / PMO / Technical Lead',
           bullets: [
-            'Architecture & cloud strategy: multi-cloud and GenAI blueprints (AWS, Azure, GCP), landing zones, data/AI service layers and Digital Integration Hub.',
-            'GenAI & innovation: AI gateway assessments, RAG pipelines, AI Toolchain 3.0 and AI SDLC adoption on GCP.',
-            'Release & program management: release governance, dependency management and risk mitigation across complex programmes.',
-            'Technical leadership: SAST integration within Terraform pipelines, AWS BI dashboards and modernisation of .NET/Angular applications.',
-            'Team & stakeholder management: executive advisory, coordination of cloud/AI/DevSecOps/security teams and mentoring of architects and developers.'
+            'Architettura e strategia cloud: blueprint multi-cloud e GenAI (AWS, Azure, GCP), landing zone, layer dati/AI e Digital Integration Hub.',
+            'GenAI e innovazione: assessment AI gateway, pipeline RAG, adozione AI Toolchain 3.0 e AI SDLC su GCP.',
+            'Program governance: gestione delle release, delle dipendenze e dei rischi in programmi complessi.',
+            'Leadership tecnica: integrazione SAST nelle pipeline Terraform, dashboard BI su AWS, modernizzazione di applicazioni .NET/Angular.',
+            'Team e stakeholder: advisory per executive, coordinamento di team cloud/AI/DevSecOps/security e mentoring di architetti e developer.'
           ]
         },
         {
-          company: 'Prior roles',
+          company: 'Ruoli precedenti',
           period: '2016 - 2022',
           role: 'Solution Architect, Cloud Architect, Product Specialist, PMO',
           bullets: [
-            'Digital projects across AWS, GCP and Azure within media and telco domains.',
-            'Cloud architect on GCP with migrations and optimisation using Kubernetes and managed databases.',
-            'AWS architect and scrum master for mobility and IoT platforms integrating AWS and Azure.',
-            'Product specialist for edge computing and RFID, IoT engineer and PMO on large-scale M2M initiatives.'
+            'Progetti digitali su AWS, GCP e Azure nei settori media e telco.',
+            'Cloud architect su GCP con migrazioni e ottimizzazione via Kubernetes e database gestiti.',
+            'AWS architect e scrum master per piattaforme mobility e IoT integrate con AWS e Azure.',
+            'Product specialist edge computing e RFID, IoT engineer e PMO su iniziative M2M di larga scala.'
           ]
         }
       ]
@@ -222,7 +220,7 @@ const data: Record<Locale, Content> = {
           period: '2014 - 2016',
           bullets: [
             'Tesi su tolerance analysis per antenne a riflettore tramite interval arithmetic (C/C++).',
-            'Sviluppo di un video mixer open-source per multi-conference di alta qualit-.'
+            'Sviluppo di un video mixer open-source per multi-conference di alta qualita.'
           ]
         },
         {
@@ -318,7 +316,7 @@ const data: Record<Locale, Content> = {
         { id: 'contact', label: 'Contact' }
       ],
       cvLabel: 'Download CV',
-      contactLabel: 'Let\'s talk about your project',
+      contactLabel: 'Contact me',
       languageSwitchLabel: 'IT',
       languageSwitchSr: 'Switch to Italian version',
       themeToggle: {
@@ -344,9 +342,7 @@ const data: Record<Locale, Content> = {
       ],
       actions: {
         primaryLabel: 'Download CV',
-        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link',
-        secondaryLabel: 'Let\'s talk',
-        secondaryHref: '#contact'
+        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link'
       }
     },
     metrics: {

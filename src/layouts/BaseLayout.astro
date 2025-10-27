@@ -17,7 +17,7 @@ const {
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="color-scheme" content="dark light" />
-    <script>
+    <script is:inline>
       try {
         const storedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -29,12 +29,16 @@ const {
     </script>
     <link rel="icon" type="image/png" href="/solutionarchitect.png" />
     <link rel="preload" as="image" href="/assets/img/profile.jpeg" fetchpriority="high" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
 
     <slot name="meta" />
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true">
+      <span class="scroll-progress__bar"></span>
+    </div>
     <slot />
     <slot name="scripts" />
   </body>

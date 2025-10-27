@@ -45,6 +45,18 @@ const footerText = `\u00A9 ${new Date().getFullYear()} ${footer}`;
 const navLabel = locale === 'it' ? 'Navigazione principale' : 'Primary navigation';
 const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
+const highlightIcons = ['ri-magic-line', 'ri-brain-line', 'ri-team-line'];
+const heroTagline =
+  locale === 'it'
+    ? 'Strategia cloud, dati e AI con delivery misurabile.'
+    : 'Cloud, data & AI strategy with measurable delivery.';
+const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
+const contactCtaLabel = locale === 'it' ? 'Scrivimi ora' : 'Get in touch';
+const contactCtaText =
+  locale === 'it'
+    ? 'Prenotiamo una sessione di discovery per capire come supportare la tua roadmap.'
+    : "Let's schedule a discovery session to understand how I can support your roadmap.";
+const contactCtaHref = emailCard?.href ?? 'mailto:marcocalifano89@gmail.com';
 ---
 <BaseLayout title={head.title} description={head.description} keywords={head.keywords} lang={locale}>
   <meta slot="meta" property="og:title" content={head.title} />
@@ -92,18 +104,19 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
   </header>
 
   <main class="page">
-    <section id="about" class="hero">
+    <section id="about" class="hero reveal">
       <div class="hero__content">
         <span class="hero__badge">{hero.badge}</span>
+        <p class="hero__tagline">{heroTagline}</p>
         <h1>{hero.title}</h1>
         <p class="hero__lead">{hero.lead}</p>
         <p class="hero__typing" aria-live="polite">
           <span class="typing"></span>
         </p>
         <div class="hero__highlights">
-          {hero.highlights.map((highlight) => (
+          {hero.highlights.map((highlight, index) => (
             <div class="hero__highlight">
-              <i class="ri-check-line" aria-hidden="true"></i>
+              <i class={highlightIcons[index % highlightIcons.length]} aria-hidden="true"></i>
               <p>{highlight}</p>
             </div>
           ))}
@@ -129,30 +142,35 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
       </div>
     </section>
 
-    <section id="impact" class="section">
+    <section id="impact" class="section reveal">
       <div class="section-heading">
         <h2>{metrics.title}</h2>
         <p>{metrics.intro}</p>
       </div>
-      <div class="metrics__grid">
-        {metrics.items.map(({ value, label, detail }) => (
-          <article class="metric-card">
-            <span class="metric-card__value">{value}</span>
-            <h3>{label}</h3>
-            <p>{detail}</p>
+      <div class="metrics-grid">
+        {metrics.items.map(({ value, label, detail }, index) => (
+          <article class="metric-card reveal" style={`--metric-index:${index}`}>
+            <div class="metric-card__icon">
+              <i class={metricIcons[index % metricIcons.length]} aria-hidden="true"></i>
+            </div>
+            <div class="metric-card__body">
+              <span class="metric-card__value">{value}</span>
+              <h3>{label}</h3>
+              <p>{detail}</p>
+            </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section id="approach" class="section">
+    <section id="approach" class="section reveal">
       <div class="section-heading">
         <h2>{pillars.title}</h2>
         <p>{pillars.intro}</p>
       </div>
       <div class="pillars-grid">
         {pillars.items.map(({ title, blurb, points }) => (
-          <article class="pillar-card">
+          <article class="pillar-card reveal">
             <h3>{title}</h3>
             <p>{blurb}</p>
             <ul>
@@ -168,27 +186,24 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
         <h2>{experience.title}</h2>
         <p>{experience.intro}</p>
       </div>
-      <div class="timeline">
-        {experience.items.map(({ company, period, role, bullets }) => (
-          <div class="timeline-item">
-            <div class="timeline-item__header">
-              <h3>{company}</h3>
-              <span>{period}</span>
+      <div class="timeline timeline--alt">
+        {experience.items.map(({ company, period, role, bullets }, index) => (
+          <article class={`timeline-card reveal ${index % 2 === 1 ? 'timeline-card--invert' : ''}`}>
+            <span class="timeline-card__dot" aria-hidden="true"></span>
+            <div class="timeline-card__meta">
+              <span class="timeline-card__company">{company}</span>
+              <span class="timeline-card__period">{period}</span>
             </div>
-            <div class="timeline-item__body">
-              <div class="timeline-item__role">
-                <h4>{role}</h4>
-              </div>
-              <ul>
-                {bullets.map((bullet) => <li>{bullet}</li>)}
-              </ul>
-            </div>
-          </div>
+            <h3>{role}</h3>
+            <ul>
+              {bullets.map((bullet) => <li>{bullet}</li>)}
+            </ul>
+          </article>
         ))}
       </div>
     </section>
 
-    <section id="education" class="section section--compact">
+    <section id="education" class="section section--compact reveal">
       <div class="section-heading">
         <h2>{education.title}</h2>
         <p>{education.intro}</p>
@@ -213,49 +228,81 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
       </div>
     </section>
 
-    <section id="skills" class="section">
+    <section id="skills" class="section reveal">
       <div class="section-heading">
         <h2>{skills.title}</h2>
         <p>{skills.intro}</p>
       </div>
-      <div class="skills-grid">
-        {skills.groups.map(({ category, items }) => (
-          <article class="skills-card">
-            <h3>{category}</h3>
-            <div class="skills-card__chips">
-              {items.map((item) => <span class="chip chip--ghost">{item}</span>)}
+      <div class="skills-panel" data-skills>
+        <div class="skills-tabs" role="tablist" aria-label={skills.title}>
+          {skills.groups.map(({ category }, index) => (
+            <button
+              type="button"
+              role="tab"
+              class={`skills-tab ${index === 0 ? 'is-active' : ''}`}
+              data-skill-tab={category}
+              aria-selected={index === 0 ? 'true' : 'false'}
+              tabindex={index === 0 ? '0' : '-1'}
+              aria-controls={`skills-pane-${index}`}
+              id={`skills-tab-${index}`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+        <div class="skills-panes">
+          {skills.groups.map(({ category, items }, index) => (
+            <div
+              role="tabpanel"
+              class={`skills-pane ${index === 0 ? 'is-active' : ''}`}
+              data-skill-pane={category}
+              id={`skills-pane-${index}`}
+              aria-labelledby={`skills-tab-${index}`}
+              aria-hidden={index === 0 ? 'false' : 'true'}
+              hidden={index === 0 ? undefined : true}
+            >
+              <div class="skills-pane__chips">
+                {items.map((item) => <span class="chip chip--ghost">{item}</span>)}
+              </div>
             </div>
-          </article>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
 
-    <section id="certifications" class="section">
+    <section id="certifications" class="section reveal">
       <div class="section-heading">
         <h2>{certifications.title}</h2>
         <p>{certifications.intro}</p>
       </div>
-      <div class="card-grid">
+      <div class="card-grid card-grid--cert">
         {certifications.items.map(({ name, issuer, href }) => (
-          <article class="cert-card">
-            <h3>{name}</h3>
-            <p>{issuer}</p>
+          <article class="cert-card reveal">
+            <div class="cert-card__meta">
+              <h3>{name}</h3>
+              <span>{issuer}</span>
+            </div>
             <a class="cert-card__link" href={href} target="_blank" rel="noopener noreferrer">
               {credentialLabel}
+              <i class="ri-external-link-line" aria-hidden="true"></i>
             </a>
           </article>
         ))}
       </div>
     </section>
 
-    <section id="contact" class="section section--compact">
+    <section id="contact" class="section section--compact contact-section reveal">
       <div class="section-heading">
         <h2>{contact.title}</h2>
         <p>{contact.intro}</p>
       </div>
+      <div class="contact-cta">
+        <p>{contactCtaText}</p>
+        <a class="button" href={contactCtaHref}>{contactCtaLabel}</a>
+      </div>
       <div class="contact-grid">
         {contact.cards.map(({ icon, label, text, href }) => (
-          <article class="contact-card">
+          <article class="contact-card reveal">
             <i class={icon} aria-hidden="true"></i>
             <h3>{label}</h3>
             {href ? (
@@ -346,6 +393,11 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
         const backToTopButton = backToTopEl instanceof HTMLElement ? backToTopEl : null;
         const themeButton = themeToggleEl instanceof HTMLElement ? themeToggleEl : null;
         const localeButton = localeToggleEl instanceof HTMLAnchorElement ? localeToggleEl : null;
+        const scrollProgressEl = document.querySelector('.scroll-progress__bar');
+        const revealEls = Array.from(document.querySelectorAll('.reveal'));
+        const skillsRoot = document.querySelector('[data-skills]');
+        const skillTabs = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-tab]')) : [];
+        const skillPanes = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-pane]')) : [];
         const currentLocale = docEl.lang || initialLocale;
         let storedLocale = null;
 
@@ -374,6 +426,27 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
         const prefersReducedMotion =
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        if (revealEls.length) {
+          if (prefersReducedMotion) {
+            revealEls.forEach((element) => element.classList.add('is-visible'));
+          } else if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(
+              (entries, obs) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    obs.unobserve(entry.target);
+                  }
+                });
+              },
+              { threshold: 0.2, rootMargin: '0px 0px -10%' }
+            );
+            revealEls.forEach((element) => observer.observe(element));
+          } else {
+            revealEls.forEach((element) => element.classList.add('is-visible'));
+          }
+        }
+
         const toggleVisibility = () => {
           if (!backToTopButton) return;
           if (window.scrollY > 320) {
@@ -382,6 +455,77 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
             backToTopButton.classList.remove('back-to-top--visible');
           }
         };
+
+        const updateScrollProgress = () => {
+          if (!scrollProgressEl) return;
+          const scrollable = docEl.scrollHeight - window.innerHeight;
+          const ratio = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+          const clamped = Math.max(0, Math.min(100, ratio));
+          scrollProgressEl.style.width = `${clamped.toFixed(2)}%`;
+        };
+
+        const setActiveSkill = (targetId) => {
+          if (!targetId) return;
+          skillTabs.forEach((tab) => {
+            const isActive = tab.dataset.skillTab === targetId;
+            tab.classList.toggle('is-active', isActive);
+            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            tab.setAttribute('tabindex', isActive ? '0' : '-1');
+          });
+          skillPanes.forEach((pane) => {
+            const isActive = pane.dataset.skillPane === targetId;
+            pane.classList.toggle('is-active', isActive);
+            if (isActive) {
+              pane.removeAttribute('hidden');
+              pane.setAttribute('aria-hidden', 'false');
+            } else {
+              pane.setAttribute('hidden', '');
+              pane.setAttribute('aria-hidden', 'true');
+            }
+          });
+        };
+
+        if (skillTabs.length && skillPanes.length) {
+          const defaultTab =
+            skillTabs.find((tab) => tab.classList.contains('is-active')) ?? skillTabs[0];
+          if (defaultTab && defaultTab.dataset.skillTab) {
+            setActiveSkill(defaultTab.dataset.skillTab);
+          }
+
+          skillTabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+              const targetId = tab.dataset.skillTab;
+              if (targetId) {
+                setActiveSkill(targetId);
+              }
+            });
+
+            tab.addEventListener('keydown', (event) => {
+              if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+                return;
+              }
+              event.preventDefault();
+              const total = skillTabs.length;
+              let nextIndex = index;
+              if (event.key === 'ArrowRight') {
+                nextIndex = (index + 1) % total;
+              } else if (event.key === 'ArrowLeft') {
+                nextIndex = (index - 1 + total) % total;
+              } else if (event.key === 'Home') {
+                nextIndex = 0;
+              } else if (event.key === 'End') {
+                nextIndex = total - 1;
+              }
+              const nextTab = skillTabs[nextIndex];
+              if (nextTab) {
+                nextTab.focus();
+                if (nextTab.dataset.skillTab) {
+                  setActiveSkill(nextTab.dataset.skillTab);
+                }
+              }
+            });
+          });
+        }
 
         const persistTheme = (/** @type {'light' | 'dark'} */ theme) => {
           try {
@@ -486,8 +630,13 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
           }
         }
 
-        toggleVisibility();
-        window.addEventListener('scroll', toggleVisibility, { passive: true });
+        const handleScroll = () => {
+          toggleVisibility();
+          updateScrollProgress();
+        };
+
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         if (backToTopButton) {
           backToTopButton.addEventListener('click', () => {
