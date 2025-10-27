@@ -289,7 +289,7 @@ const data: Record<Locale, Content> = {
     },
     contact: {
       title: 'Contatti',
-      intro: 'Scrivimi per discutere del tuo prossimo progetto o per una consulenza architetturale.',
+      intro: 'Qui di seguito i miei riferimenti.',
       cards: [
         { icon: 'ri-map-pin-2-line', label: 'Home Town', text: 'Milan, Italy' },
         { icon: 'ri-mail-line', label: 'Email', text: 'marcocalifano89@gmail.com', href: 'mailto:marcocalifano89@gmail.com' },
@@ -507,7 +507,7 @@ const data: Record<Locale, Content> = {
     },
     contact: {
       title: 'Contact',
-      intro: 'Get in touch to discuss your next project or architect a new platform together.',
+      intro: 'Below you can find my contact details.',
       cards: [
         { icon: 'ri-map-pin-2-line', label: 'Home Town', text: 'Milan, Italy' },
         { icon: 'ri-mail-line', label: 'Email', text: 'marcocalifano89@gmail.com', href: 'mailto:marcocalifano89@gmail.com' },
