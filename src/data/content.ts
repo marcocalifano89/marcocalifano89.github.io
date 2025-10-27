@@ -109,7 +109,7 @@ const data: Record<Locale, Content> = {
     hero: {
       badge: 'Enterprise & Solution Architect',
       title: 'Ciao, sono Marco.',
-      lead: 'Guido programmi di modernizzazione cloud, dati e AI per realta finance, assicurative e industriali, unendo visione strategica e delivery hands-on.',
+      lead: 'Disegno e coordino programmi di modernizzazione cloud, dati e AI per realta finance, assicurative e industriali, unendo visione strategica e delivery hands-on.',
       typing: [
         'blueprint multi-cloud e landing zone',
         'governance GenAI e AI gateway',
@@ -327,7 +327,7 @@ const data: Record<Locale, Content> = {
     hero: {
       badge: 'Enterprise & Solution Architect',
       title: "Hi, I'm Marco.",
-      lead: 'I lead cloud, data and AI modernisation for financial, insurance and industrial organisations, blending strategic governance with hands-on delivery.',
+      lead: 'I architect and steer cloud, data and AI modernisation for financial, insurance and industrial organisations, blending strategic governance with hands-on delivery.',
       typing: [
         'multi-cloud blueprints & landing zones',
         'GenAI governance and AI Gateway',
