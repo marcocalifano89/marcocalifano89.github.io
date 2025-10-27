@@ -859,31 +859,6 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.contact-cta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  background: var(--surface-primary);
-  border: 1px solid var(--border-subtle);
-  border-radius: 18px;
-  padding: 1.8rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 24px 60px -38px rgba(18, 214, 64, 0.35);
-}
-
-.contact-cta p {
-  margin: 0;
-  color: var(--text-muted);
-  max-width: 42ch;
-  font-size: 0.95rem;
-}
-
-.contact-cta .button {
-  flex-shrink: 0;
-}
-
 .contact-card {
   background: var(--surface-secondary);
   border-radius: 14px;
@@ -1052,14 +1027,6 @@ section {
   .skills-tab {
     width: 100%;
     justify-content: center;
-  }
-
-  .contact-cta {
-    gap: 1.2rem;
-  }
-
-  .contact-cta .button {
-    width: 100%;
   }
 
   .page {

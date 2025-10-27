@@ -51,12 +51,6 @@ const heroTagline =
     ? 'Strategia cloud, dati e AI con delivery misurabile.'
     : 'Cloud, data & AI strategy with measurable delivery.';
 const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
-const contactCtaLabel = locale === 'it' ? 'Scrivimi ora' : 'Get in touch';
-const contactCtaText =
-  locale === 'it'
-    ? 'Prenotiamo una sessione di discovery per capire come supportare la tua roadmap.'
-    : "Let's schedule a discovery session to understand how I can support your roadmap.";
-const contactCtaHref = emailCard?.href ?? 'mailto:marcocalifano89@gmail.com';
 ---
 <BaseLayout title={head.title} description={head.description} keywords={head.keywords} lang={locale}>
   <meta slot="meta" property="og:title" content={head.title} />
@@ -295,10 +289,6 @@ const contactCtaHref = emailCard?.href ?? 'mailto:marcocalifano89@gmail.com';
       <div class="section-heading">
         <h2>{contact.title}</h2>
         <p>{contact.intro}</p>
-      </div>
-      <div class="contact-cta">
-        <p>{contactCtaText}</p>
-        <a class="button" href={contactCtaHref}>{contactCtaLabel}</a>
       </div>
       <div class="contact-grid">
         {contact.cards.map(({ icon, label, text, href }) => (
