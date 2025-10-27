@@ -99,6 +99,8 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 
   <main class="page">
     <section id="about" class="hero reveal">
+      <span class="hero__parallax hero__parallax--primary" data-parallax data-depth="0.18" aria-hidden="true"></span>
+      <span class="hero__parallax hero__parallax--secondary" data-parallax data-depth="0.28" aria-hidden="true"></span>
       <div class="hero__content">
         <span class="hero__badge">{hero.badge}</span>
         <p class="hero__tagline">{heroTagline}</p>
@@ -388,6 +390,8 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const skillsRoot = document.querySelector('[data-skills]');
         const skillTabs = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-tab]')) : [];
         const skillPanes = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-pane]')) : [];
+        const heroSection = document.querySelector('.hero');
+        let parallaxItems = [];
         const currentLocale = docEl.lang || initialLocale;
         let storedLocale = null;
 
@@ -416,6 +420,14 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const prefersReducedMotion =
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        if (!prefersReducedMotion && heroSection) {
+          parallaxItems = Array.from(heroSection.querySelectorAll('[data-parallax]'));
+        } else if (prefersReducedMotion && heroSection) {
+          heroSection
+            .querySelectorAll('[data-parallax]')
+            .forEach((element) => element.removeAttribute('style'));
+        }
+
         if (revealEls.length) {
           if (prefersReducedMotion) {
             revealEls.forEach((element) => element.classList.add('is-visible'));
@@ -436,6 +448,19 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
             revealEls.forEach((element) => element.classList.add('is-visible'));
           }
         }
+
+        const updateParallax = () => {
+          if (!parallaxItems.length || !heroSection) return;
+          const rect = heroSection.getBoundingClientRect();
+          const centerY = rect.top + rect.height / 2;
+          const viewportCenter = window.innerHeight / 2;
+          const deltaY = centerY - viewportCenter;
+          parallaxItems.forEach((item) => {
+            const depth = Number(item.getAttribute('data-depth') || '0.15');
+            const translateY = -deltaY * depth;
+            item.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0)`;
+          });
+        };
 
         const toggleVisibility = () => {
           if (!backToTopButton) return;
@@ -623,10 +648,14 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const handleScroll = () => {
           toggleVisibility();
           updateScrollProgress();
+          updateParallax();
         };
 
         handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
+        if (!prefersReducedMotion) {
+          window.addEventListener('resize', updateParallax);
+        }
 
         if (backToTopButton) {
           backToTopButton.addEventListener('click', () => {

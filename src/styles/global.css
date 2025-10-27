@@ -337,6 +337,46 @@ section {
   pointer-events: none;
 }
 
+.hero__parallax {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  will-change: transform;
+  transition: transform 0.45s ease-out;
+  transform: translate3d(0, 0, 0);
+  z-index: 0;
+}
+
+.hero__parallax--primary {
+  width: clamp(260px, 38vw, 420px);
+  height: clamp(260px, 38vw, 420px);
+  top: -18%;
+  left: -12%;
+  background: radial-gradient(circle at 35% 35%, rgba(18, 214, 64, 0.45) 0%, rgba(18, 214, 64, 0.18) 52%, transparent 75%);
+  box-shadow: 0 50px 120px -70px rgba(18, 214, 64, 0.45);
+}
+
+.hero__parallax--secondary {
+  width: clamp(220px, 32vw, 360px);
+  height: clamp(220px, 32vw, 360px);
+  bottom: -22%;
+  right: -10%;
+  background: radial-gradient(circle at 50% 50%, rgba(42, 111, 151, 0.35) 0%, rgba(42, 111, 151, 0.2) 48%, transparent 78%);
+  opacity: 0.4;
+  box-shadow: 0 40px 100px -60px rgba(42, 111, 151, 0.4);
+}
+
+:root[data-theme='light'] .hero {
+  background: linear-gradient(135deg, rgba(18, 214, 64, 0.08) 0%, rgba(42, 111, 151, 0.12) 40%, rgba(255, 255, 255, 0.9) 100%);
+}
+
+:root[data-theme='light'] .hero__parallax {
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
 .hero__content {
   position: relative;
   z-index: 1;
@@ -401,6 +441,11 @@ section {
     transition-duration: 0.01ms !important;
   }
 
+  .hero__parallax {
+    transition: none !important;
+    transform: none !important;
+  }
+
   .cursor {
     animation: none;
   }
@@ -442,6 +487,7 @@ section {
 .hero__visual {
   position: relative;
   justify-self: center;
+  z-index: 1;
 }
 
 .hero__image-frame {
@@ -972,6 +1018,16 @@ section {
     order: -1;
   }
 
+  .hero__parallax--primary {
+    top: -30%;
+    left: -24%;
+  }
+
+  .hero__parallax--secondary {
+    bottom: -28%;
+    right: -24%;
+  }
+
   .metrics-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
@@ -1022,6 +1078,16 @@ section {
   .hero__actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hero__parallax--primary {
+    top: -42%;
+    left: -38%;
+  }
+
+  .hero__parallax--secondary {
+    bottom: -35%;
+    right: -36%;
   }
 
   .skills-tab {
