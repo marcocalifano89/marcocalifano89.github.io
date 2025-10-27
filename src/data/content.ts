@@ -109,18 +109,18 @@ const data: Record<Locale, Content> = {
     hero: {
       badge: 'Enterprise & Solution Architect',
       title: 'Ciao, sono Marco.',
-      lead: 'Guido programmi di modernizzazione cloud, data e AI per banche, assicurazioni e aziende industriali, unendo governance strategica e delivery hands-on.',
+      lead: 'Guido programmi di modernizzazione cloud, dati e AI per realta finance, assicurative e industriali, unendo visione strategica e delivery hands-on.',
       typing: [
         'blueprint multi-cloud e landing zone',
         'governance GenAI e AI gateway',
         'toolchain MLOps e AI SDLC',
-        'data platform e analytics realtime',
+        'digital integration hub su Azure',
         'coaching di team DevSecOps distribuiti'
       ],
       highlights: [
-        'Disegno blueprint multi-cloud e GenAI per trasformazioni enterprise a livello europeo.',
-        'Integro landing zone, toolchain AI e data platform con controlli di sicurezza e KPI misurabili.',
-        'Coordino team cross-funzionali dalla strategia alla produzione con roadmap e metriche condivise.'
+        'Architettura e strategia cloud: blueprint multi-cloud, landing zone e integrazione dei canali digitali.',
+        'GenAI e innovazione: AI gateway, pipeline RAG e toolchain AI SDLC conformi a standard MLOps/DevSecOps.',
+        'Leadership operativa: governance dei rilasci, dashboard BI su AWS e mentoring di team distribuiti.'
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
@@ -136,12 +136,12 @@ const data: Record<Locale, Content> = {
         {
           value: '8+',
           label: 'Anni di esperienza enterprise',
-          detail: 'Cloud, data e AI in banking, insurance, mobility, energy e telecomunicazioni.'
+          detail: 'Cloud, dati e AI in banking, insurance, mobility, energy e telecom.'
         },
         {
           value: '3',
           label: 'Programmi GenAI 2025',
-          detail: 'Blueprint, AI toolchain 3.0 e gateway centralizzati per iniziative bancarie di nuova generazione.'
+          detail: 'Blueprint, AI toolchain 3.0 e AI gateway per iniziative di nuova generazione.'
         },
         {
           value: '10+',
@@ -152,11 +152,11 @@ const data: Record<Locale, Content> = {
     },
     pillars: {
       title: 'Come affronto i programmi',
-      intro: 'Un framework operativo che allinea strategia, architettura e adozione.',
+      intro: 'Un framework operativo che mantiene allineati strategia, architettura e adozione.',
       items: [
         {
-          title: 'Strategia & Governance',
-          blurb: 'Assessment, business case e roadmap condivise con C-level e team di delivery.',
+          title: 'Strategia e governance',
+          blurb: 'Assessment, business case e roadmap condivise con stakeholder business e IT.',
           points: [
             'Cloud readiness, gap analysis e KPI di trasformazione',
             'Modelli di compliance e risk management',
@@ -164,8 +164,8 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          title: 'Blueprint & Enablement',
-          blurb: 'Disegno di reference architecture, AI toolchain e modelli operativi ripetibili.',
+          title: 'Blueprint e enablement',
+          blurb: 'Disegno di reference architecture, toolchain AI e modelli operativi riutilizzabili.',
           points: [
             'Landing zone multi-cloud e AI Gateway centralizzati',
             'Pattern IaC, CI/CD e sicurezza by design',
@@ -173,11 +173,11 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          title: 'Delivery & Adoption',
-          blurb: 'Supporto hands-on a squadre cross-funzionali fino alla produzione e allo scaling.',
+          title: 'Delivery e adozione',
+          blurb: 'Supporto hands-on fino al go-live e allo scaling della piattaforma.',
           points: [
             'Coaching di team DevSecOps/MLOps distribuiti',
-            'Misurazione valore, KPI e iterazioni guidate dai dati',
+            'Misurazione di valore e viste KPI condivise',
             'Change management e abilitazione organizzativa'
           ]
         }
@@ -189,50 +189,25 @@ const data: Record<Locale, Content> = {
       items: [
         {
           company: 'Reply',
-          period: 'Jul 2025 - Present',
-          role: 'Senior Architect / PM / IT Strategy',
+          period: '2022 - Present',
+          role: 'Enterprise & Solution Architect / PMO / Technical Lead',
           bullets: [
-            'Defined end-to-end multi-cloud and GenAI blueprints covering landing zones, security, data/AI services and integration patterns for a leading banking group.',
-            'Acted as IT strategy advisor on governance, roadmap and operating models for DevSecOps/MLOps teams across business and technology stakeholders.',
-            'Led initial GenAI use cases (document intelligence, credit risk) with shared KPIs, compliance controls and adoption plans.'
+            'Architecture & cloud strategy: multi-cloud and GenAI blueprints (AWS, Azure, GCP), landing zones, data/AI service layers and Digital Integration Hub.',
+            'GenAI & innovation: AI gateway assessments, RAG pipelines, AI Toolchain 3.0 and AI SDLC adoption on GCP.',
+            'Release & program management: release governance, dependency management and risk mitigation across complex programmes.',
+            'Technical leadership: SAST integration within Terraform pipelines, AWS BI dashboards and modernisation of .NET/Angular applications.',
+            'Team & stakeholder management: executive advisory, coordination of cloud/AI/DevSecOps/security teams and mentoring of architects and developers.'
           ]
         },
         {
-          company: 'Reply',
-          period: 'Jul 2025 - Present',
-          role: 'Senior Architect - GenAI Design Authority',
+          company: 'Prior roles',
+          period: '2016 - 2022',
+          role: 'Solution Architect, Cloud Architect, Product Specialist, PMO',
           bullets: [
-            'Served as design authority for Generative AI initiatives within the banking sector, providing assessments, remediation plans and contextualised blueprints.',
-            'Oversaw the rollout of an AI platform on Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run, MemoryStore).',
-            'Benchmarked and governed AI Gateway solutions covering RBAC, auditing, semantic caching, cost tracking and adoption roadmap.'
-          ]
-        },
-        {
-          company: 'Reply',
-          period: 'Mar 2025 - Present',
-          role: 'Technical Lead',
-          bullets: [
-            'Integrated SAST tooling into Terraform-based CI/CD pipelines to strengthen security and compliance from the outset.',
-            'Built and evolved AWS business intelligence dashboards enabling data-driven operations and visibility.',
-            'Acted as trusted advisor to deliver scalable, secure and high-performance solutions aligned with client objectives.'
-          ]
-        },
-        {
-          company: 'Reply',
-          period: 'Jun 2021 - Jan 2022',
-          role: 'GCP Cloud Architect',
-          bullets: [
-            'Owned the GCP blueprint for lift-and-shift migrations and modernisation across the mobility domain.',
-            'Delivered Kubernetes, managed SQL and CI/CD foundations to accelerate application go-live.'
-          ]
-        },
-        {
-          company: 'Accenture',
-          period: 'Jun 2019 - Jun 2021',
-          role: 'AWS Architect & Team Leader',
-          bullets: [
-            'Delivered Alexa-based connected services integrated with Azure platforms for the automotive sector.',
-            'Led global development and testing teams, sprint planning and DevOps best practices.'
+            'Digital projects across AWS, GCP and Azure within media and telco domains.',
+            'Cloud architect on GCP with migrations and optimisation using Kubernetes and managed databases.',
+            'AWS architect and scrum master for mobility and IoT platforms integrating AWS and Azure.',
+            'Product specialist for edge computing and RFID, IoT engineer and PMO on large-scale M2M initiatives.'
           ]
         }
       ]
@@ -263,23 +238,23 @@ const data: Record<Locale, Content> = {
     },
     skills: {
       title: 'Focus & competenze',
-      intro: 'Competenze principali su cui costruisco strategie, architetture e delivery roadmap.',
+      intro: 'Competenze principali che portano valore a programmi cloud, dati e AI.',
       groups: [
         {
           category: 'Cloud & Platforms',
-          items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Landing Zone & Hybrid', 'Edge & IoT']
+          items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Landing zone e ambienti ibridi', 'Edge e IoT']
         },
         {
           category: 'GenAI & Data',
-          items: ['GenAI Governance', 'AI Gateway', 'Data & BI Platform', 'MLOps', 'Analytics in tempo reale']
+          items: ['Governance GenAI', 'AI gateway e RAG', 'Data e BI platform', 'MLOps', 'Analytics realtime']
         },
         {
           category: 'Architecture & Delivery',
-          items: ['Enterprise Architecture', 'Reference Blueprint', 'Microservizi & Event-driven', 'IaC & DevSecOps', 'Modern Application Design']
+          items: ['Enterprise architecture', 'Blueprint e Digital Integration Hub', 'Microservizi ed event-driven', 'IaC e DevSecOps', 'Modern application design']
         },
         {
           category: 'Leadership & Governance',
-          items: ['IT Strategy & PM', 'Cross-team orchestration', 'Compliance & Security', 'Stakeholder Engagement']
+          items: ['IT strategy e PMO', 'Orchestrazione di team cross-funzionali', 'Compliance e security', 'Stakeholder engagement']
         }
       ]
     },
@@ -295,7 +270,7 @@ const data: Record<Locale, Content> = {
         {
           name: 'Azure AI Fundamentals',
           issuer: 'Microsoft',
-          href: 'https://www.credly.com/badges/83fa5e74-5a25-4a19-8aac-4e7c0f815508' // placeholder? need actual link but unknown
+          href: ''
         },
         {
           name: 'Azure Administrator Associate',
@@ -308,19 +283,9 @@ const data: Record<Locale, Content> = {
           href: 'https://www.credly.com/badges/d902b397-e33c-419c-84dc-f66d32e94fc3'
         },
         {
-          name: 'Databricks Generative AI Fundamentals',
-          issuer: 'Databricks',
-          href: 'https://sgq.io/GodJh3O'
-        },
-        {
           name: 'Professional Scrum Master I',
           issuer: 'Scrum.org',
           href: 'https://www.credly.com/badges/3a6c266f-578b-468d-b1a9-89e633976ac1/public_url'
-        },
-        {
-          name: 'Associate Cloud Engineer',
-          issuer: 'Google Cloud',
-          href: 'https://www.credly.com/users/marcocalifano/badges' // placeholder
         }
       ]
     },
@@ -364,7 +329,7 @@ const data: Record<Locale, Content> = {
     hero: {
       badge: 'Enterprise & Solution Architect',
       title: "Hi, I'm Marco.",
-      lead: 'I lead cloud, data & AI modernisation for banks, insurers and industrial players, blending strategy, governance and hands-on execution.',
+      lead: 'I lead cloud, data and AI modernisation for financial, insurance and industrial organisations, blending strategic governance with hands-on delivery.',
       typing: [
         'multi-cloud blueprints & landing zones',
         'GenAI governance and AI Gateway',
@@ -373,9 +338,9 @@ const data: Record<Locale, Content> = {
         'coaching distributed DevSecOps teams'
       ],
       highlights: [
-        'Design multi-cloud and GenAI blueprints for tier-one European banks.',
-        'Integrate landing zones, AI toolchains and data platforms with measurable business controls.',
-        'Orchestrate cross-functional teams from idea to production with shared KPIs.'
+        'Architecture & cloud strategy: multi-cloud blueprints, landing zones and resilient digital channels.',
+        'GenAI & innovation: AI gateways, RAG pipelines and AI SDLC aligned with MLOps/DevSecOps standards.',
+        'Operational leadership: release governance, AWS BI dashboards and mentoring of distributed teams.'
       ],
       actions: {
         primaryLabel: 'Download CV',
@@ -391,7 +356,7 @@ const data: Record<Locale, Content> = {
         {
           value: '8+',
           label: 'Years in enterprise delivery',
-          detail: 'Cloud, data and AI across banking, insurance, mobility, energy and telecom.'
+          detail: 'Cloud, data and AI across banking, insurance, mobility, energy and telecom sectors.'
         },
         {
           value: '3',
@@ -401,7 +366,7 @@ const data: Record<Locale, Content> = {
         {
           value: '10+',
           label: 'Teams & stakeholders coordinated',
-          detail: 'IT strategy, DevSecOps/MLOps and change management across distributed squads.'
+          detail: 'IT strategy, DevSecOps/MLOps and change management across distributed teams.'
         }
       ]
     },
@@ -419,7 +384,7 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          title: 'Blueprint & Enablement',
+          title: 'Blueprint e enablement',
           blurb: 'Design of reference architectures, AI toolchains and repeatable operating models.',
           points: [
             'Multi-cloud landing zones and centralised AI Gateways',
@@ -428,7 +393,7 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          title: 'Delivery & Adoption',
+          title: 'Delivery e adozione',
           blurb: 'Hands-on support until production launch and scaling.',
           points: [
             'Coaching DevSecOps/MLOps teams across locations',
@@ -444,50 +409,25 @@ const data: Record<Locale, Content> = {
       items: [
         {
           company: 'Reply',
-          period: 'Jul 2025 - Present',
-          role: 'Senior Architect / PM / IT Strategy',
+          period: '2022 - Present',
+          role: 'Enterprise & Solution Architect / PMO / Technical Lead',
           bullets: [
-            'Defined end-to-end multi-cloud and GenAI blueprints covering landing zones, security, data/AI services and integration patterns for a leading banking group.',
-            'Acted as IT strategy advisor on governance, roadmap and operating models for DevSecOps/MLOps teams across business and technology stakeholders.',
-            'Led initial GenAI use cases (document intelligence, credit risk) with shared KPIs, compliance controls and adoption plans.'
+            'Architecture & cloud strategy: multi-cloud and GenAI blueprints (AWS, Azure, GCP), landing zones, data/AI service layers and Digital Integration Hub.',
+            'GenAI & innovation: AI gateway assessments, RAG pipelines, AI Toolchain 3.0 and AI SDLC adoption on GCP.',
+            'Release & program management: release governance, dependency management and risk mitigation across complex programmes.',
+            'Technical leadership: SAST integration within Terraform pipelines, AWS BI dashboards and modernisation of .NET/Angular applications.',
+            'Team & stakeholder management: executive advisory, coordination of cloud/AI/DevSecOps/security teams and mentoring of architects and developers.'
           ]
         },
         {
-          company: 'Reply',
-          period: 'Jul 2025 - Present',
-          role: 'Senior Architect - GenAI Design Authority',
+          company: 'Prior roles',
+          period: '2016 - 2022',
+          role: 'Solution Architect, Cloud Architect, Product Specialist, PMO',
           bullets: [
-            'Served as design authority for Generative AI initiatives within the banking sector, providing assessments, remediation plans and contextualised blueprints.',
-            'Oversaw the rollout of an AI platform on Google Cloud (MongoDB Atlas, Neo4j Aura, Elastic, Cloud Run, MemoryStore).',
-            'Benchmarked and governed AI Gateway solutions covering RBAC, auditing, semantic caching, cost tracking and adoption roadmap.'
-          ]
-        },
-        {
-          company: 'Reply',
-          period: 'Mar 2025 - Present',
-          role: 'Technical Lead',
-          bullets: [
-            'Integrated SAST tooling into Terraform-based CI/CD pipelines to strengthen security and compliance from the outset.',
-            'Built and evolved AWS business intelligence dashboards enabling data-driven operations and visibility.',
-            'Acted as trusted advisor to deliver scalable, secure and high-performance solutions aligned with client objectives.'
-          ]
-        },
-        {
-          company: 'Reply',
-          period: 'Jun 2021 - Jan 2022',
-          role: 'GCP Cloud Architect',
-          bullets: [
-            'Owned the GCP blueprint for lift-and-shift migrations and modernisation across the mobility domain.',
-            'Delivered Kubernetes, managed SQL and CI/CD foundations to accelerate application go-live.'
-          ]
-        },
-        {
-          company: 'Accenture',
-          period: 'Jun 2019 - Jun 2021',
-          role: 'AWS Architect & Team Leader',
-          bullets: [
-            'Delivered Alexa-based connected services integrated with Azure platforms for the automotive sector.',
-            'Led global development and testing teams, sprint planning and DevOps best practices.'
+            'Digital projects across AWS, GCP and Azure within media and telco domains.',
+            'Cloud architect on GCP with migrations and optimisation using Kubernetes and managed databases.',
+            'AWS architect and scrum master for mobility and IoT platforms integrating AWS and Azure.',
+            'Product specialist for edge computing and RFID, IoT engineer and PMO on large-scale M2M initiatives.'
           ]
         }
       ]
@@ -522,19 +462,19 @@ const data: Record<Locale, Content> = {
       groups: [
         {
           category: 'Cloud & Platforms',
-          items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Landing Zone & Hybrid', 'Edge & IoT']
+          items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Landing zones & hybrid environments', 'Edge & IoT']
         },
         {
           category: 'GenAI & Data',
-          items: ['GenAI Governance', 'AI Gateway', 'Data & BI Platforms', 'MLOps', 'Real-time analytics']
+          items: ['GenAI governance', 'AI gateways & RAG', 'Data and BI platforms', 'MLOps', 'Real-time analytics']
         },
         {
           category: 'Architecture & Delivery',
-          items: ['Enterprise Architecture', 'Reference Blueprint', 'Microservices & Event-driven', 'IaC & DevSecOps', 'Modern Application Design']
+          items: ['Enterprise architecture', 'Blueprints & Digital Integration Hub', 'Microservices & event-driven design', 'IaC & DevSecOps', 'Modern application design']
         },
         {
           category: 'Leadership & Governance',
-          items: ['IT Strategy & PM', 'Cross-team orchestration', 'Compliance & Security', 'Stakeholder Engagement']
+          items: ['IT strategy & PMO', 'Cross-team orchestration', 'Compliance & security', 'Stakeholder management']
         }
       ]
     },
@@ -548,6 +488,11 @@ const data: Record<Locale, Content> = {
           href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/BC062EA070865656?sharingId=CAB9C76CF28D6EAE'
         },
         {
+          name: 'Azure AI Fundamentals',
+          issuer: 'Microsoft',
+          href: ''
+        },
+        {
           name: 'Azure Administrator Associate',
           issuer: 'Microsoft',
           href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/4C72C1888660AB9A?sharingId=CAB9C76CF28D6EAE'
@@ -556,11 +501,6 @@ const data: Record<Locale, Content> = {
           name: 'AWS Solutions Architect Associate',
           issuer: 'Amazon Web Services',
           href: 'https://www.credly.com/badges/d902b397-e33c-419c-84dc-f66d32e94fc3'
-        },
-        {
-          name: 'Databricks Generative AI Fundamentals',
-          issuer: 'Databricks',
-          href: 'https://sgq.io/GodJh3O'
         },
         {
           name: 'Professional Scrum Master I',
