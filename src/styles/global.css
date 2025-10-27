@@ -403,6 +403,7 @@ section {
   color: var(--accent-secondary);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: pre-line;
 }
 
 .hero__content h1 {
