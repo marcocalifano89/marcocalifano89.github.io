@@ -171,19 +171,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
             <span class="hero__focus-tag">{tag}</span>
           ))}
         </div>
-        <div class="hero__highlights">
-          {hero.highlights.map((highlight, index) => (
-            <div class="hero__highlight">
-              <i class={highlightIcons[index % highlightIcons.length]} aria-hidden="true"></i>
-              <p>{highlight}</p>
-            </div>
-          ))}
-        </div>
-        <div class="hero__actions">
-          <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
-            {hero.actions.primaryLabel}
-          </a>
-        </div>
       </div>
       <div class="hero__visual">
         <div class="hero__image-frame">
@@ -201,6 +188,19 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
             />
           </picture>
         </div>
+      </div>
+      <div class="hero__highlights">
+        {hero.highlights.map((highlight, index) => (
+          <div class="hero__highlight">
+            <i class={highlightIcons[index % highlightIcons.length]} aria-hidden="true"></i>
+            <p>{highlight}</p>
+          </div>
+        ))}
+      </div>
+      <div class="hero__actions">
+        <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
+          {hero.actions.primaryLabel}
+        </a>
       </div>
     </section>
 

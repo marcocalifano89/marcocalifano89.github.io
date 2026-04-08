@@ -595,8 +595,10 @@ section {
 .hero__highlights {
   display: grid;
   gap: 0.85rem;
-  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
-  margin-bottom: 0;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-self: start;
+  margin: clamp(0.35rem, 0.9vw, 0.7rem) 0 0;
 }
 
 .hero__highlight {
@@ -627,7 +629,8 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
-  margin-top: 0.2rem;
+  grid-column: 1 / -1;
+  margin-top: 0.15rem;
 }
 
 .hero__visual {
@@ -1278,6 +1281,7 @@ section {
 
   .hero__highlights {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0.95rem;
   }
 
   .hero__visual {
@@ -1355,6 +1359,7 @@ section {
   .hero__actions {
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 0.9rem;
   }
 
   .hero__content h1 {
