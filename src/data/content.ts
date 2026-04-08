@@ -267,7 +267,8 @@ const data: Record<Locale, Content> = {
         },
         {
           name: 'Azure AI Fundamentals',
-          issuer: 'Microsoft'
+          issuer: 'Microsoft',
+          href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/FB64D18989F3E67B?sharingId=CAB9C76CF28D6EAE'
         },
         {
           name: 'Azure Administrator Associate',
@@ -484,7 +485,8 @@ const data: Record<Locale, Content> = {
         },
         {
           name: 'Azure AI Fundamentals',
-          issuer: 'Microsoft'
+          issuer: 'Microsoft',
+          href: 'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/FB64D18989F3E67B?sharingId=CAB9C76CF28D6EAE'
         },
         {
           name: 'Azure Administrator Associate',
@@ -524,5 +526,4 @@ export function getContent(locale: Locale): Content {
 export function isLocale(value: string | undefined): value is Locale {
   return value !== undefined && locales.includes(value as Locale);
 }
-
 

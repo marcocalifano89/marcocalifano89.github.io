@@ -57,6 +57,32 @@ const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
 const unavailableCredentialLabel =
   locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
+const heroSecondaryActionLabel = locale === 'it' ? 'Parliamone' : "Let's talk";
+const heroFocusLabel = locale === 'it' ? 'Focus' : 'Focus';
+const heroNoteLabel = locale === 'it' ? 'In evidenza' : 'Featured';
+const heroFocusTags = skills.groups.slice(0, 3).map(({ category }) => category);
+const heroNote = hero.typing[1] ?? hero.typing[0] ?? hero.badge;
+const heroProof = metrics.items[0];
+const sectionEyebrows =
+  locale === 'it'
+    ? {
+        impact: 'Impatto',
+        approach: 'Metodo',
+        experience: 'Percorso',
+        education: 'Formazione',
+        skills: 'Competenze',
+        certifications: 'Credenziali',
+        contact: 'Contatto'
+      }
+    : {
+        impact: 'Impact',
+        approach: 'Approach',
+        experience: 'Journey',
+        education: 'Education',
+        skills: 'Capabilities',
+        certifications: 'Credentials',
+        contact: 'Contact'
+      };
 const highlightIcons = ['ri-magic-line', 'ri-brain-line', 'ri-team-line'];
 const heroTagline =
   locale === 'it'
@@ -137,6 +163,11 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         <p class="hero__typing" aria-live="polite">
           <span class="typing"></span>
         </p>
+        <div class="hero__focus" aria-label={heroFocusLabel}>
+          {heroFocusTags.map((tag) => (
+            <span class="hero__focus-tag">{tag}</span>
+          ))}
+        </div>
         <div class="hero__highlights">
           {hero.highlights.map((highlight, index) => (
             <div class="hero__highlight">
@@ -149,9 +180,16 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
             {hero.actions.primaryLabel}
           </a>
+          <a class="button button--ghost" href="#contact">
+            {heroSecondaryActionLabel}
+          </a>
         </div>
       </div>
       <div class="hero__visual">
+        <div class="hero__note-card">
+          <span>{heroNoteLabel}</span>
+          <p>{heroNote}</p>
+        </div>
         <div class="hero__image-frame">
           <picture>
             <source srcset="/assets/img/profile.avif" type="image/avif" />
@@ -167,11 +205,19 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
             />
           </picture>
         </div>
+        {heroProof && (
+          <div class="hero__proof-card">
+            <span>{sectionEyebrows.impact}</span>
+            <strong>{heroProof.value}</strong>
+            <p>{heroProof.label}</p>
+          </div>
+        )}
       </div>
     </section>
 
     <section id="impact" class="section reveal">
       <div class="section-heading">
+        <span class="section-heading__eyebrow">{sectionEyebrows.impact}</span>
         <h2>{metrics.title}</h2>
         <p>{metrics.intro}</p>
       </div>
@@ -193,12 +239,14 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 
     <section id="approach" class="section reveal">
       <div class="section-heading">
+        <span class="section-heading__eyebrow">{sectionEyebrows.approach}</span>
         <h2>{pillars.title}</h2>
         <p>{pillars.intro}</p>
       </div>
       <div class="pillars-grid">
-        {pillars.items.map(({ title, blurb, points }) => (
+        {pillars.items.map(({ title, blurb, points }, index) => (
           <article class="pillar-card reveal">
+            <span class="pillar-card__index">{String(index + 1).padStart(2, '0')}</span>
             <h3>{title}</h3>
             <p>{blurb}</p>
             <ul>
@@ -211,6 +259,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 
     <section id="experience" class="section">
       <div class="section-heading">
+        <span class="section-heading__eyebrow">{sectionEyebrows.experience}</span>
         <h2>{experience.title}</h2>
         <p>{experience.intro}</p>
       </div>
@@ -233,6 +282,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 
     <section id="education" class="section section--compact reveal">
       <div class="section-heading">
+        <span class="section-heading__eyebrow">{sectionEyebrows.education}</span>
         <h2>{education.title}</h2>
         <p>{education.intro}</p>
       </div>
@@ -258,6 +308,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 
     <section id="skills" class="section reveal">
       <div class="section-heading">
+        <span class="section-heading__eyebrow">{sectionEyebrows.skills}</span>
         <h2>{skills.title}</h2>
         <p>{skills.intro}</p>
       </div>
@@ -300,6 +351,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 
     <section id="certifications" class="section reveal">
       <div class="section-heading">
+        <span class="section-heading__eyebrow">{sectionEyebrows.certifications}</span>
         <h2>{certifications.title}</h2>
         <p>{certifications.intro}</p>
       </div>
@@ -327,6 +379,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 
     <section id="contact" class="section section--compact contact-section reveal">
       <div class="section-heading">
+        <span class="section-heading__eyebrow">{sectionEyebrows.contact}</span>
         <h2>{contact.title}</h2>
         <p>{contact.intro}</p>
       </div>

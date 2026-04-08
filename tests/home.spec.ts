@@ -130,8 +130,12 @@ test.describe('Homepage experience', () => {
     await page.goto('/');
 
     await expect(page.locator('a.cert-card__link[href=""]')).toHaveCount(0);
-    await expect(page.locator('.cert-card__link--disabled')).toContainText(
-      'Credenziale non disponibile'
+    await expect(page.locator('.cert-card__link--disabled')).toHaveCount(0);
+    await expect(
+      page.locator('article.cert-card', { hasText: 'Azure AI Fundamentals' }).locator('a.cert-card__link')
+    ).toHaveAttribute(
+      'href',
+      'https://learn.microsoft.com/api/credentials/share/en-us/MarcoCalifano89/FB64D18989F3E67B?sharingId=CAB9C76CF28D6EAE'
     );
   });
 });
