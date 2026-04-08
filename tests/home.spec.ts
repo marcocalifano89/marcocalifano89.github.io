@@ -10,9 +10,39 @@ test.describe('Homepage experience', () => {
     await expect(page.locator('.typing')).toHaveText(/.+/);
     await expect(page.locator('.hero__actions .button')).toHaveCount(1);
     await expect(page.locator('.hero__proof-card')).toHaveCount(0);
-    await expect(page.locator('.hero__highlight')).toHaveCount(3);
+    await expect(page.locator('.hero__note-card')).toHaveCount(0);
+    await expect(page.locator('.hero__highlight')).toHaveCount(6);
     await expect(page.locator('.hero__image-frame source[type="image/avif"]')).toHaveCount(1);
     await expect(page.locator('.hero__image-frame source[type="image/webp"]')).toHaveCount(1);
+  });
+
+  test('accent typing copy starts with an uppercase letter in both locales', async ({ page }) => {
+    for (const path of ['/', '/en/']) {
+      await page.goto(path);
+
+      const phrasesData = await page.locator('script[data-phrases]').getAttribute('data-phrases');
+      const phrases = JSON.parse(phrasesData ?? '[]') as string[];
+      expect(phrases.length).toBeGreaterThan(0);
+      expect(phrases.every((phrase) => /^[A-Z]/.test(phrase))).toBe(true);
+
+      const typingText = ((await page.locator('.typing').textContent()) ?? '').trim();
+      expect(typingText).toMatch(/^[A-Z]/);
+    }
+  });
+
+  test('keeps the impact section visually separated from the hero', async ({ page }) => {
+    await page.goto('/');
+
+    const heroBox = await page.locator('#about').boundingBox();
+    const impactHeadingBox = await page.locator('#impact .section-heading').boundingBox();
+
+    expect(heroBox).not.toBeNull();
+    expect(impactHeadingBox).not.toBeNull();
+
+    const heroBottom = (heroBox?.y ?? 0) + (heroBox?.height ?? 0);
+    const impactTop = impactHeadingBox?.y ?? 0;
+
+    expect(impactTop - heroBottom).toBeGreaterThan(16);
   });
 
   test('emits valid structured data', async ({ page }) => {

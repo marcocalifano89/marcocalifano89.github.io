@@ -58,9 +58,7 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
 const unavailableCredentialLabel =
   locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
 const heroFocusLabel = locale === 'it' ? 'Focus' : 'Focus';
-const heroNoteLabel = locale === 'it' ? 'In evidenza' : 'Featured';
 const heroFocusTags = skills.groups.slice(0, 3).map(({ category }) => category);
-const heroNote = hero.typing[1] ?? hero.typing[0] ?? hero.badge;
 const sectionEyebrows =
   locale === 'it'
     ? {
@@ -81,7 +79,14 @@ const sectionEyebrows =
         certifications: 'Credentials',
         contact: 'Contact'
       };
-const highlightIcons = ['ri-magic-line', 'ri-brain-line', 'ri-team-line'];
+const highlightIcons = [
+  'ri-magic-line',
+  'ri-brain-line',
+  'ri-team-line',
+  'ri-route-line',
+  'ri-database-2-line',
+  'ri-rocket-line'
+];
 const heroTagline =
   locale === 'it'
     ? `Leader IT focalizzato su innovazione digitale, cloud, dati e AI.
@@ -181,10 +186,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         </div>
       </div>
       <div class="hero__visual">
-        <div class="hero__note-card">
-          <span>{heroNoteLabel}</span>
-          <p>{heroNote}</p>
-        </div>
         <div class="hero__image-frame">
           <picture>
             <source srcset="/assets/img/profile.avif" type="image/avif" />

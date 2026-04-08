@@ -111,16 +111,19 @@ const data: Record<Locale, Content> = {
       title: 'Ciao, sono Marco.',
       lead: 'Disegno e coordino programmi di modernizzazione cloud, dati e AI per organizzazioni finanziarie, assicurative e industriali, unendo visione strategica e delivery hands-on.',
       typing: [
-        'blueprint multi-cloud e landing zone',
-        'governance GenAI e AI gateway',
-        'toolchain MLOps e AI SDLC',
-        'digital integration hub su Azure',
-        'coaching di team DevSecOps distribuiti'
+        'Blueprint multi-cloud e landing zone',
+        'Governance GenAI e AI gateway',
+        'Toolchain MLOps e AI SDLC',
+        'Digital integration hub su Azure',
+        'Coaching di team DevSecOps distribuiti'
       ],
       highlights: [
         'Architettura e strategia cloud: blueprint multi-cloud, landing zone e integrazione dei canali digitali.',
         'GenAI e innovazione: AI gateway, pipeline RAG e toolchain AI SDLC conformi a standard MLOps/DevSecOps.',
-        'Leadership operativa: governance dei rilasci, dashboard BI su AWS e mentoring di team distribuiti.'
+        'Leadership operativa: governance dei rilasci, dashboard BI su AWS e mentoring di team distribuiti.',
+        'Governance di programma: roadmap esecutive, dipendenze cross-team e priorita allineate agli obiettivi di business.',
+        'Data platform: ambienti Azure e AWS pensati per analytics, resilienza operativa e adozione continua.',
+        'Adozione e change: onboarding, runbook operativi e metriche d\'uso condivise fino al go-live.'
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
@@ -329,16 +332,19 @@ const data: Record<Locale, Content> = {
       title: "Hi, I'm Marco.",
       lead: 'I architect and steer cloud, data and AI modernisation for financial, insurance and industrial organisations, blending strategic governance with hands-on delivery.',
       typing: [
-        'multi-cloud blueprints & landing zones',
+        'Multi-cloud blueprints & landing zones',
         'GenAI governance and AI Gateway',
         'MLOps & AI SDLC playbooks',
-        'real-time data & analytics platforms',
-        'coaching distributed DevSecOps teams'
+        'Real-time data & analytics platforms',
+        'Coaching distributed DevSecOps teams'
       ],
       highlights: [
         'Architecture & cloud strategy: multi-cloud blueprints, landing zones and resilient digital channels.',
         'GenAI & innovation: AI gateways, RAG pipelines and AI SDLC aligned with MLOps/DevSecOps standards.',
-        'Operational leadership: release governance, AWS BI dashboards and mentoring of distributed teams.'
+        'Operational leadership: release governance, AWS BI dashboards and mentoring of distributed teams.',
+        'Programme delivery: execution roadmaps, cross-team dependencies and priorities aligned with business outcomes.',
+        'Data & platform enablement: Azure and AWS environments built for analytics, resilience and continuous adoption.',
+        'Adoption & change: onboarding, runbooks and shared usage metrics through go-live.'
       ],
       actions: {
         primaryLabel: 'Download CV',
