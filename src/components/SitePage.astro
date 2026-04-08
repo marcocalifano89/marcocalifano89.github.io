@@ -57,12 +57,10 @@ const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
 const unavailableCredentialLabel =
   locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
-const heroSecondaryActionLabel = locale === 'it' ? 'Parliamone' : "Let's talk";
 const heroFocusLabel = locale === 'it' ? 'Focus' : 'Focus';
 const heroNoteLabel = locale === 'it' ? 'In evidenza' : 'Featured';
 const heroFocusTags = skills.groups.slice(0, 3).map(({ category }) => category);
 const heroNote = hero.typing[1] ?? hero.typing[0] ?? hero.badge;
-const heroProof = metrics.items[0];
 const sectionEyebrows =
   locale === 'it'
     ? {
@@ -161,7 +159,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         <h1>{hero.title}</h1>
         <p class="hero__lead">{hero.lead}</p>
         <p class="hero__typing" aria-live="polite">
-          <span class="typing"></span>
+          <span class="typing">{hero.typing[0] ?? ''}</span>
         </p>
         <div class="hero__focus" aria-label={heroFocusLabel}>
           {heroFocusTags.map((tag) => (
@@ -179,9 +177,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         <div class="hero__actions">
           <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
             {hero.actions.primaryLabel}
-          </a>
-          <a class="button button--ghost" href="#contact">
-            {heroSecondaryActionLabel}
           </a>
         </div>
       </div>
@@ -205,13 +200,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
             />
           </picture>
         </div>
-        {heroProof && (
-          <div class="hero__proof-card">
-            <span>{sectionEyebrows.impact}</span>
-            <strong>{heroProof.value}</strong>
-            <p>{heroProof.label}</p>
-          </div>
-        )}
       </div>
     </section>
 
@@ -413,33 +401,21 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       if (phrases.length && target) {
         const prefersReducedMotion =
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion) {
+        if (prefersReducedMotion || phrases.length === 1) {
           target.textContent = phrases[0] || '';
         } else {
           let phraseIndex = 0;
-          let charIndex = 0;
-          let isDeleting = false;
+          target.textContent = phrases[0] || '';
           const tick = () => {
-            const current = phrases[phraseIndex];
-            if (isDeleting) {
-              charIndex = Math.max(0, charIndex - 1);
-            } else {
-              charIndex = Math.min(current.length, charIndex + 1);
-            }
-            target.textContent = current.slice(0, charIndex);
-            if (!isDeleting && charIndex === current.length) {
-              isDeleting = true;
-              setTimeout(tick, 1600);
-            } else if (isDeleting && charIndex === 0) {
-              isDeleting = false;
+            target.classList.add('typing--changing');
+            window.setTimeout(() => {
               phraseIndex = (phraseIndex + 1) % phrases.length;
-              setTimeout(tick, 400);
-            } else {
-              const delay = isDeleting ? 45 : 90;
-              setTimeout(tick, delay);
-            }
+              target.textContent = phrases[phraseIndex] || '';
+              target.classList.remove('typing--changing');
+              window.setTimeout(tick, 2600);
+            }, 180);
           };
-          tick();
+          window.setTimeout(tick, 2600);
         }
       }
     </script>

@@ -8,6 +8,8 @@ test.describe('Homepage experience', () => {
     await expect(page.locator(heroHeadingSelector)).toContainText('Marco');
     await expect(page.locator('.hero__typing')).toBeVisible();
     await expect(page.locator('.typing')).toHaveText(/.+/);
+    await expect(page.locator('.hero__actions .button')).toHaveCount(1);
+    await expect(page.locator('.hero__proof-card')).toHaveCount(0);
     await expect(page.locator('.hero__highlight')).toHaveCount(3);
     await expect(page.locator('.hero__image-frame source[type="image/avif"]')).toHaveCount(1);
     await expect(page.locator('.hero__image-frame source[type="image/webp"]')).toHaveCount(1);

@@ -40,8 +40,13 @@ const twitterImage = Astro.props.twitterImage ?? ogImage;
       try {
         const storedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const prefersReducedMotion =
+          window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : prefersDark ? 'dark' : 'light';
         document.documentElement.dataset.theme = theme;
+        if (!prefersReducedMotion) {
+          document.documentElement.classList.add('has-motion');
+        }
       } catch (error) {
         document.documentElement.dataset.theme = 'dark';
       }

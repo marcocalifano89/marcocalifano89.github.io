@@ -132,7 +132,7 @@ const data: Record<Locale, Content> = {
       intro: 'Indicatori chiave dei programmi enterprise che seguo ogni giorno.',
       items: [
         {
-          value: '8+',
+          value: '10+',
           label: 'Anni di esperienza enterprise',
           detail: 'Cloud, dati e AI in banking, insurance, mobility, energy e telecom.'
         },
@@ -350,7 +350,7 @@ const data: Record<Locale, Content> = {
       intro: 'Key indicators from the programmes I run with clients.',
       items: [
         {
-          value: '8+',
+          value: '10+',
           label: 'Years in enterprise delivery',
           detail: 'Cloud, data and AI across banking, insurance, mobility, energy and telecom sectors.'
         },
@@ -526,4 +526,3 @@ export function getContent(locale: Locale): Content {
 export function isLocale(value: string | undefined): value is Locale {
   return value !== undefined && locales.includes(value as Locale);
 }
-
