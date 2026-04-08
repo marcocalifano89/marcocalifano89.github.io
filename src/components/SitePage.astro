@@ -15,8 +15,14 @@ const content = getContent(locale);
 const { head, nav, hero, metrics, pillars, experience, education, skills, certifications, contact, footer } = content;
 
 const alternateLocale: Locale = locales.find((code) => code !== locale) ?? fallbackLocale;
-const currentPath = localePaths[locale];
+const siteOrigin = Astro.site?.toString() ?? 'https://marcocalifano89.github.io';
 const alternatePath = localePaths[alternateLocale];
+const fallbackPath = localePaths[fallbackLocale];
+const pagePath = localePaths[locale];
+const canonicalUrl = new URL(pagePath, siteOrigin).toString();
+const alternateUrl = new URL(alternatePath, siteOrigin).toString();
+const fallbackUrl = new URL(fallbackPath, siteOrigin).toString();
+const socialImageUrl = new URL('/assets/img/profile.jpeg', siteOrigin).toString();
 const localeRoutesScript = JSON.stringify(localePaths);
 
 const emailCard = contact.cards.find((card) => card.href?.startsWith('mailto:'));
@@ -24,27 +30,33 @@ const phoneCard = contact.cards.find((card) => card.href?.startsWith('tel:'));
 
 const metadataScript = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: nav.brand,
-  jobTitle: hero.badge,
-  url: 'https://marcocalifano89.github.io',
-  image: 'https://marcocalifano89.github.io/assets/img/profile.jpeg',
-  email: emailCard?.href ?? 'mailto:marcocalifano89@gmail.com',
-  telephone: phoneCard?.href?.replace('tel:', '') ?? phoneCard?.text ?? '+393488782506',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Reply'
-  },
-  sameAs: ['https://www.linkedin.com/in/marcocalifano/', 'https://github.com/marcocalifano89'],
-  knowsAbout: hero.typing,
-  description: head.description
+  '@type': 'ProfilePage',
+  url: canonicalUrl,
+  inLanguage: locale,
+  mainEntity: {
+    '@type': 'Person',
+    name: nav.brand,
+    jobTitle: hero.badge,
+    url: canonicalUrl,
+    image: socialImageUrl,
+    email: emailCard?.href ?? 'mailto:marcocalifano89@gmail.com',
+    telephone: phoneCard?.href?.replace('tel:', '') ?? phoneCard?.text ?? '+393488782506',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Reply'
+    },
+    sameAs: ['https://www.linkedin.com/in/marcocalifano/', 'https://github.com/marcocalifano89'],
+    knowsAbout: hero.typing,
+    description: head.description
+  }
 });
-void metadataScript;
 
 const footerText = `\u00A9 ${new Date().getFullYear()} ${footer}`;
 const navLabel = locale === 'it' ? 'Navigazione principale' : 'Primary navigation';
 const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
+const unavailableCredentialLabel =
+  locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
 const highlightIcons = ['ri-magic-line', 'ri-brain-line', 'ri-team-line'];
 const heroTagline =
   locale === 'it'
@@ -54,10 +66,24 @@ Guido team cross-funzionali per trasformare la strategia in risultati misurabili
 I lead cross-functional teams to translate strategy into measurable outcomes.`;
 const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 ---
-<BaseLayout title={head.title} description={head.description} keywords={head.keywords} lang={locale}>
-  <meta slot="meta" property="og:title" content={head.title} />
-  <meta slot="meta" property="og:description" content={head.ogDescription} />
-  <script slot="meta" type="application/ld+json" is:inline>{metadataScript}</script>
+<BaseLayout
+  title={head.title}
+  description={head.description}
+  keywords={head.keywords}
+  lang={locale}
+  canonical={canonicalUrl}
+  ogUrl={canonicalUrl}
+  ogImage={socialImageUrl}
+  ogImageAlt={nav.brand}
+  twitterCard="summary_large_image"
+  twitterTitle={head.title}
+  twitterDescription={head.ogDescription}
+  twitterImage={socialImageUrl}
+>
+  <link slot="meta" rel="alternate" hreflang={locale} href={canonicalUrl} />
+  <link slot="meta" rel="alternate" hreflang={alternateLocale} href={alternateUrl} />
+  <link slot="meta" rel="alternate" hreflang="x-default" href={fallbackUrl} />
+  <script slot="meta" type="application/ld+json" is:inline set:html={metadataScript}></script>
 
   <header class="site-header" id="top">
     <div class="site-header__inner">
@@ -127,15 +153,19 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
       <div class="hero__visual">
         <div class="hero__image-frame">
-          <img
-            src="/assets/img/profile.jpeg"
-            alt="Marco Califano"
-            width="766"
-            height="743"
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-          />
+          <picture>
+            <source srcset="/assets/img/profile.avif" type="image/avif" />
+            <source srcset="/assets/img/profile.webp" type="image/webp" />
+            <img
+              src="/assets/img/profile.jpeg"
+              alt="Marco Califano"
+              width="766"
+              height="743"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
         </div>
       </div>
     </section>
@@ -280,10 +310,16 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
               <h3>{name}</h3>
               <span>{issuer}</span>
             </div>
-            <a class="cert-card__link" href={href} target="_blank" rel="noopener noreferrer">
-              {credentialLabel}
-              <i class="ri-external-link-line" aria-hidden="true"></i>
-            </a>
+            {href ? (
+              <a class="cert-card__link" href={href} target="_blank" rel="noopener noreferrer">
+                {credentialLabel}
+                <i class="ri-external-link-line" aria-hidden="true"></i>
+              </a>
+            ) : (
+              <span class="cert-card__link cert-card__link--disabled" aria-disabled="true">
+                {unavailableCredentialLabel}
+              </span>
+            )}
           </article>
         ))}
       </div>
@@ -326,32 +362,32 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) {
           target.textContent = phrases[0] || '';
-          return;
+        } else {
+          let phraseIndex = 0;
+          let charIndex = 0;
+          let isDeleting = false;
+          const tick = () => {
+            const current = phrases[phraseIndex];
+            if (isDeleting) {
+              charIndex = Math.max(0, charIndex - 1);
+            } else {
+              charIndex = Math.min(current.length, charIndex + 1);
+            }
+            target.textContent = current.slice(0, charIndex);
+            if (!isDeleting && charIndex === current.length) {
+              isDeleting = true;
+              setTimeout(tick, 1600);
+            } else if (isDeleting && charIndex === 0) {
+              isDeleting = false;
+              phraseIndex = (phraseIndex + 1) % phrases.length;
+              setTimeout(tick, 400);
+            } else {
+              const delay = isDeleting ? 45 : 90;
+              setTimeout(tick, delay);
+            }
+          };
+          tick();
         }
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const tick = () => {
-          const current = phrases[phraseIndex];
-          if (isDeleting) {
-            charIndex = Math.max(0, charIndex - 1);
-          } else {
-            charIndex = Math.min(current.length, charIndex + 1);
-          }
-          target.textContent = current.slice(0, charIndex);
-          if (!isDeleting && charIndex === current.length) {
-            isDeleting = true;
-            setTimeout(tick, 1600);
-          } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            setTimeout(tick, 400);
-          } else {
-            const delay = isDeleting ? 45 : 90;
-            setTimeout(tick, delay);
-          }
-        };
-        tick();
       }
     </script>
   <script
@@ -359,11 +395,12 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
     is:inline
     data-locale-routes={localeRoutesScript}
     data-current-locale={locale}
-    data-current-path={currentPath}
+    data-fallback-path={fallbackPath}
   >
       const scriptEl = document.currentScript;
       let routeMap = {"it":"/","en":"/en/"};
-      let initialLocale = '${locale}';
+      let initialLocale = 'it';
+      let fallbackPath = '/';
 
       if (scriptEl instanceof HTMLScriptElement) {
         if (scriptEl.dataset.localeRoutes) {
@@ -375,6 +412,9 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         }
         if (scriptEl.dataset.currentLocale) {
           initialLocale = scriptEl.dataset.currentLocale;
+        }
+        if (scriptEl.dataset.fallbackPath) {
+          fallbackPath = scriptEl.dataset.fallbackPath;
         }
       }
 
@@ -397,13 +437,31 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const currentLocale = docEl.lang || initialLocale;
         let storedLocale = null;
 
+        const buildLocaleHref = (targetLocale) => {
+          const targetPath = routeMap[targetLocale] || '/';
+          const search = window.location.search || '';
+          const hash = window.location.hash || '';
+          return `${targetPath}${search}${hash}`;
+        };
+
+        const syncLocaleHref = () => {
+          if (!localeButton) return;
+          const targetLocale = localeButton.dataset.localeTarget;
+          if (!targetLocale) return;
+          localeButton.href = buildLocaleHref(targetLocale);
+        };
+
         try {
           storedLocale = localStorage.getItem('locale');
         } catch (error) {
           storedLocale = null;
         }
 
-        if (storedLocale && storedLocale !== currentLocale) {
+        if (
+          storedLocale &&
+          storedLocale !== currentLocale &&
+          window.location.pathname === fallbackPath
+        ) {
           const targetPath = routeMap[storedLocale] || '/';
           if (window.location.pathname !== targetPath) {
             const search = window.location.search || '';
@@ -418,6 +476,8 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         } catch (error) {
           // Storage might be unavailable; ignore
         }
+
+        syncLocaleHref();
 
         const prefersReducedMotion =
           window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -609,6 +669,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           localeButton.addEventListener('click', () => {
             const targetLocale = localeButton.dataset.localeTarget;
             if (targetLocale) {
+              localeButton.href = buildLocaleHref(targetLocale);
               try {
                 localStorage.setItem('locale', targetLocale);
               } catch (error) {
@@ -617,6 +678,8 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
             }
           });
         }
+
+        window.addEventListener('hashchange', syncLocaleHref);
 
         if (brandLink instanceof HTMLAnchorElement) {
           brandLink.addEventListener('click', (event) => {

@@ -519,7 +519,14 @@ section {
   pointer-events: none;
 }
 
+.hero__image-frame picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero__image-frame img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -898,6 +905,10 @@ section {
   margin-top: 0.5rem;
   font-size: 0.9rem;
   color: var(--accent);
+}
+
+.cert-card__link--disabled {
+  color: var(--text-muted);
 }
 
 .contact-grid {

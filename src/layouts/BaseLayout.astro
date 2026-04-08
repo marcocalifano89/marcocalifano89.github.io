@@ -1,12 +1,20 @@
 ---
 import '../styles/global.css';
 
-const {
-  title = 'Marco Califano',
-  description = 'Enterprise & Solution Architect with multi-cloud expertise across AWS, Azure, and Google Cloud.',
-  keywords = '',
-  lang = 'en'
-} = Astro.props;
+const title = Astro.props.title ?? 'Marco Califano';
+const description =
+  Astro.props.description ??
+  'Enterprise & Solution Architect with multi-cloud expertise across AWS, Azure, and Google Cloud.';
+const keywords = Astro.props.keywords ?? '';
+const lang = Astro.props.lang ?? 'en';
+const canonical = Astro.props.canonical ?? '';
+const ogUrl = Astro.props.ogUrl ?? canonical;
+const ogImage = Astro.props.ogImage ?? '';
+const ogImageAlt = Astro.props.ogImageAlt ?? title;
+const twitterCard = Astro.props.twitterCard ?? 'summary_large_image';
+const twitterTitle = Astro.props.twitterTitle ?? title;
+const twitterDescription = Astro.props.twitterDescription ?? description;
+const twitterImage = Astro.props.twitterImage ?? ogImage;
 ---
 <!DOCTYPE html>
 <html lang={lang} data-theme="dark">
@@ -17,6 +25,17 @@ const {
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="color-scheme" content="dark light" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogUrl && <meta property="og:url" content={ogUrl} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image:alt" content={ogImageAlt} />}
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={twitterTitle} />
+    <meta name="twitter:description" content={twitterDescription} />
+    {twitterImage && <meta name="twitter:image" content={twitterImage} />}
     <script is:inline>
       try {
         const storedTheme = localStorage.getItem('theme');
@@ -28,7 +47,7 @@ const {
       }
     </script>
     <link rel="icon" type="image/png" href="/solutionarchitect.png" />
-    <link rel="preload" as="image" href="/assets/img/profile.jpeg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/assets/img/profile.avif" type="image/avif" fetchpriority="high" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />

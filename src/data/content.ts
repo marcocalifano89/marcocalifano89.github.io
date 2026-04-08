@@ -36,7 +36,7 @@ type SkillGroup = {
 type Certification = {
   name: string;
   issuer: string;
-  href: string;
+  href?: string;
 };
 
 type ContactCard = {
@@ -109,7 +109,7 @@ const data: Record<Locale, Content> = {
     hero: {
       badge: 'Enterprise & Solution Architect',
       title: 'Ciao, sono Marco.',
-      lead: 'Disegno e coordino programmi di modernizzazione cloud, dati e AI per realta finance, assicurative e industriali, unendo visione strategica e delivery hands-on.',
+      lead: 'Disegno e coordino programmi di modernizzazione cloud, dati e AI per organizzazioni finanziarie, assicurative e industriali, unendo visione strategica e delivery hands-on.',
       typing: [
         'blueprint multi-cloud e landing zone',
         'governance GenAI e AI gateway',
@@ -267,8 +267,7 @@ const data: Record<Locale, Content> = {
         },
         {
           name: 'Azure AI Fundamentals',
-          issuer: 'Microsoft',
-          href: ''
+          issuer: 'Microsoft'
         },
         {
           name: 'Azure Administrator Associate',
@@ -289,11 +288,11 @@ const data: Record<Locale, Content> = {
     },
     contact: {
       title: 'Contatti',
-      intro: 'Qui di seguito i miei riferimenti.',
+      intro: 'Qui trovi i miei riferimenti principali.',
       cards: [
-        { icon: 'ri-map-pin-2-line', label: 'Home Town', text: 'Milan, Italy' },
+        { icon: 'ri-map-pin-2-line', label: 'Base', text: 'Milano, Italia' },
         { icon: 'ri-mail-line', label: 'Email', text: 'marcocalifano89@gmail.com', href: 'mailto:marcocalifano89@gmail.com' },
-        { icon: 'ri-phone-line', label: 'Phone', text: '+39 348 878 2506', href: 'tel:+393488782506' },
+        { icon: 'ri-phone-line', label: 'Telefono', text: '+39 348 878 2506', href: 'tel:+393488782506' },
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
       ]
     },
@@ -380,7 +379,7 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          title: 'Blueprint e enablement',
+          title: 'Blueprint & enablement',
           blurb: 'Design of reference architectures, AI toolchains and repeatable operating models.',
           points: [
             'Multi-cloud landing zones and centralised AI Gateways',
@@ -389,7 +388,7 @@ const data: Record<Locale, Content> = {
           ]
         },
         {
-          title: 'Delivery e adozione',
+          title: 'Delivery & adoption',
           blurb: 'Hands-on support until production launch and scaling.',
           points: [
             'Coaching DevSecOps/MLOps teams across locations',
@@ -485,8 +484,7 @@ const data: Record<Locale, Content> = {
         },
         {
           name: 'Azure AI Fundamentals',
-          issuer: 'Microsoft',
-          href: ''
+          issuer: 'Microsoft'
         },
         {
           name: 'Azure Administrator Associate',
@@ -507,9 +505,9 @@ const data: Record<Locale, Content> = {
     },
     contact: {
       title: 'Contact',
-      intro: 'Below you can find my contact details.',
+      intro: 'Here are the best ways to reach me.',
       cards: [
-        { icon: 'ri-map-pin-2-line', label: 'Home Town', text: 'Milan, Italy' },
+        { icon: 'ri-map-pin-2-line', label: 'Location', text: 'Milan, Italy' },
         { icon: 'ri-mail-line', label: 'Email', text: 'marcocalifano89@gmail.com', href: 'mailto:marcocalifano89@gmail.com' },
         { icon: 'ri-phone-line', label: 'Phone', text: '+39 348 878 2506', href: 'tel:+393488782506' },
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
