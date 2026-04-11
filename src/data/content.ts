@@ -15,6 +15,10 @@ type HeroHighlight = {
   detail: string;
 };
 
+type HeroProofSignal = {
+  text: string;
+};
+
 type Pillar = {
   title: string;
   blurb: string;
@@ -76,6 +80,7 @@ type Content = {
     title: string;
     lead: string;
     typing: string[];
+    proofSignals: HeroProofSignal[];
     highlights: HeroHighlight[];
     actions: { primaryLabel: string; primaryHref: string };
   };
@@ -127,6 +132,11 @@ const data: Record<Locale, Content> = {
         'Toolchain MLOps e AI SDLC',
         'Digital integration hub su Azure',
         'Coaching di team DevSecOps distribuiti'
+      ],
+      proofSignals: [
+        { text: '10+ anni di delivery enterprise' },
+        { text: 'AWS / Azure / GCP' },
+        { text: 'Governance GenAI e AI gateway' }
       ],
       highlights: [
         { title: 'Strategia cloud', detail: 'Blueprint, landing zone' },
@@ -357,6 +367,11 @@ const data: Record<Locale, Content> = {
         'MLOps & AI SDLC playbooks',
         'Real-time data & analytics platforms',
         'Coaching distributed DevSecOps teams'
+      ],
+      proofSignals: [
+        { text: '10+ years in enterprise delivery' },
+        { text: 'AWS / Azure / GCP' },
+        { text: 'GenAI governance & AI gateway' }
       ],
       highlights: [
         { title: 'Cloud strategy', detail: 'Blueprints, landing zones' },

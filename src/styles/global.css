@@ -579,19 +579,20 @@ section {
 .hero__focus {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .hero__focus-tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.45rem 0.9rem;
+  padding: 0.4rem 0.78rem;
   border-radius: 999px;
   background: var(--surface-tertiary);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -686,7 +687,7 @@ section {
   z-index: 1;
   width: min(100%, 320px);
   display: grid;
-  gap: 0;
+  gap: 0.8rem;
   padding: 0;
 }
 
@@ -735,8 +736,44 @@ section {
   transform: scale(1.02);
 }
 
+.hero__proof-strip {
+  list-style: none;
+  margin: 0;
+  padding: 0.82rem 0.95rem;
+  display: grid;
+  gap: 0.55rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, var(--surface-tertiary), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 22px 56px -44px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+}
+
+.hero__proof-signal {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.hero__proof-signal::before {
+  content: '';
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  flex: none;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.28rem rgba(var(--accent-rgb), 0.12);
+}
+
 :root[data-theme='light'] .hero__typing,
 :root[data-theme='light'] .hero__highlight,
+:root[data-theme='light'] .hero__proof-strip,
 :root[data-theme='light'] .hero__focus-tag,
 :root[data-theme='light'] .skills-tab,
 :root[data-theme='light'] .timeline-card__period,
@@ -1437,6 +1474,11 @@ section {
     padding: 0;
   }
 
+  .hero__proof-strip {
+    width: min(100%, 360px);
+    justify-self: center;
+  }
+
   .has-motion .reveal {
     opacity: 1;
     transform: none;
@@ -1530,6 +1572,14 @@ section {
 
   .hero__visual {
     width: 100%;
+  }
+
+  .hero__proof-strip {
+    padding: 0.78rem 0.86rem;
+  }
+
+  .hero__proof-signal {
+    font-size: 0.74rem;
   }
 
   .hero__parallax--primary {

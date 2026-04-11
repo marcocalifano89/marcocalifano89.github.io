@@ -58,7 +58,9 @@ const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential'
 const unavailableCredentialLabel =
   locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
 const heroFocusLabel = locale === 'it' ? 'Focus' : 'Focus';
-const heroFocusTags = skills.groups.slice(0, 3).map(({ category }) => category);
+const heroProofLabel = locale === 'it' ? 'Segnali di esperienza' : 'Proof signals';
+const heroFocusTags = skills.groups.slice(0, 4).map(({ category }) => category);
+const heroProofSignals = hero.proofSignals;
 const heroHighlights = hero.highlights;
 const sectionEyebrows =
   locale === 'it'
@@ -195,6 +197,11 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
               />
             </picture>
           </div>
+          <ul class="hero__proof-strip" aria-label={heroProofLabel}>
+            {heroProofSignals.map(({ text }) => (
+              <li class="hero__proof-signal">{text}</li>
+            ))}
+          </ul>
         </div>
       </div>
       <ul class="hero__highlights" aria-label={heroFocusLabel}>

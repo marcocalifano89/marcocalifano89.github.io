@@ -8,12 +8,39 @@ test.describe('Homepage experience', () => {
     await expect(page.locator(heroHeadingSelector)).toContainText('Marco');
     await expect(page.locator('.hero__typing')).toBeVisible();
     await expect(page.locator('.typing')).toHaveText(/.+/);
+    await expect(page.locator('.hero__focus-tag')).toHaveCount(4);
+    await expect(page.locator('.hero__proof-strip')).toHaveCount(1);
+    await expect(page.locator('.hero__proof-signal')).toHaveCount(3);
     await expect(page.locator('.hero__actions .button')).toHaveCount(1);
     await expect(page.locator('.hero__proof-card')).toHaveCount(0);
     await expect(page.locator('.hero__note-card')).toHaveCount(0);
     await expect(page.locator('.hero__highlight')).toHaveCount(6);
     await expect(page.locator('.hero__image-frame source[type="image/avif"]')).toHaveCount(1);
     await expect(page.locator('.hero__image-frame source[type="image/webp"]')).toHaveCount(1);
+  });
+
+  test('renders a compact proof strip below the hero portrait', async ({ page }) => {
+    await page.goto('/en/');
+
+    const strip = page.locator('.hero__visual .hero__proof-strip');
+    await expect(strip).toBeVisible();
+    await expect(strip.locator('.hero__proof-signal')).toHaveCount(3);
+    await expect(strip).toContainText('10+ years in enterprise delivery');
+    await expect(strip).toContainText('AWS / Azure / GCP');
+  });
+
+  test('keeps hero focus tags on a single desktop row', async ({ page }) => {
+    await page.setViewportSize({ width: 1512, height: 982 });
+    await page.goto('/en/');
+
+    await expect(page.locator('.hero__focus-tag')).toHaveCount(4);
+
+    const firstBox = await page.locator('.hero__focus-tag').first().boundingBox();
+    const lastBox = await page.locator('.hero__focus-tag').last().boundingBox();
+
+    expect(firstBox).not.toBeNull();
+    expect(lastBox).not.toBeNull();
+    expect(Math.abs((firstBox?.y ?? 0) - (lastBox?.y ?? 0))).toBeLessThan(8);
   });
 
   test('lays out hero highlights as a single full-width desktop row', async ({ page }) => {
