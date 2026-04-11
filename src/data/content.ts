@@ -6,6 +6,13 @@ type Metric = {
   value: string;
   label: string;
   detail: string;
+  eyebrow?: string;
+  signals?: string[];
+};
+
+type HeroHighlight = {
+  title: string;
+  detail: string;
 };
 
 type Pillar = {
@@ -18,6 +25,8 @@ type TimelineItem = {
   company: string;
   period: string;
   role: string;
+  summary: string;
+  highlights?: string[];
   bullets: string[];
 };
 
@@ -67,7 +76,7 @@ type Content = {
     title: string;
     lead: string;
     typing: string[];
-    highlights: string[];
+    highlights: HeroHighlight[];
     actions: { primaryLabel: string; primaryHref: string };
   };
   metrics: { title: string; intro: string; items: Metric[] };
@@ -92,6 +101,8 @@ const data: Record<Locale, Content> = {
       brand: 'Marco Califano',
       items: [
         { id: 'about', label: 'Chi sono' },
+        { id: 'impact', label: 'Impatto' },
+        { id: 'approach', label: 'Metodo' },
         { id: 'experience', label: 'Esperienza' },
         { id: 'skills', label: 'Competenze' },
         { id: 'certifications', label: 'Certificazioni' },
@@ -118,12 +129,12 @@ const data: Record<Locale, Content> = {
         'Coaching di team DevSecOps distribuiti'
       ],
       highlights: [
-        'Architettura e strategia cloud: blueprint multi-cloud, landing zone e integrazione dei canali digitali.',
-        'GenAI e innovazione: AI gateway, pipeline RAG e toolchain AI SDLC conformi a standard MLOps/DevSecOps.',
-        'Leadership operativa: governance dei rilasci, dashboard BI su AWS e mentoring di team distribuiti.',
-        'Governance di programma: roadmap esecutive, dipendenze cross-team e priorita allineate agli obiettivi di business.',
-        'Data platform: ambienti Azure e AWS pensati per analytics, resilienza operativa e adozione continua.',
-        'Adozione e change: onboarding, runbook operativi e metriche d\'uso condivise fino al go-live.'
+        { title: 'Strategia cloud', detail: 'Blueprint, landing zone' },
+        { title: 'Orchestrazione GenAI', detail: 'Gateway, RAG, AI SDLC' },
+        { title: 'Leadership operativa', detail: 'Release governance, BI' },
+        { title: 'Governance programma', detail: 'Roadmap, dipendenze' },
+        { title: 'Data platform', detail: 'Azure, AWS, analytics' },
+        { title: 'Adozione e change', detail: 'Onboarding, runbook' }
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
@@ -131,23 +142,29 @@ const data: Record<Locale, Content> = {
       }
     },
     metrics: {
-      title: 'Impatto in sintesi',
-      intro: 'Indicatori chiave dei programmi enterprise che seguo ogni giorno.',
+      title: 'Outcome selezionati',
+      intro: 'Una vista rapida sui programmi che porto dalla strategia al go-live.',
       items: [
         {
-          value: '10+',
-          label: 'Anni di esperienza enterprise',
-          detail: 'Cloud, dati e AI in banking, insurance, mobility, energy e telecom.'
+          eyebrow: 'Banking & insurance',
+          value: 'Multi-cloud',
+          label: 'Blueprint, landing zone e layer data/AI',
+          detail: 'Architetture target AWS, Azure e GCP per iniziative regulated con governance e pattern riutilizzabili.',
+          signals: ['AWS / Azure / GCP', 'Landing zone', 'Risk-aware']
         },
         {
-          value: '3',
-          label: 'Programmi GenAI 2025',
-          detail: 'Blueprint, AI toolchain 3.0 e AI gateway per iniziative di nuova generazione.'
+          eyebrow: 'GenAI delivery',
+          value: 'GenAI',
+          label: 'Gateway centralizzati, RAG e AI SDLC',
+          detail: 'Dall’assessment dell’AI gateway ai playbook MLOps/DevSecOps con controlli, KPI e modelli operativi condivisi.',
+          signals: ['AI gateway', 'RAG', 'AI SDLC']
         },
         {
+          eyebrow: 'Programme orchestration',
           value: '10+',
-          label: 'Team e stakeholder orchestrati',
-          detail: 'IT strategy, DevSecOps/MLOps e change management con squadre distribuite.'
+          label: 'Team e stakeholder allineati fino al go-live',
+          detail: 'Release governance, dashboard BI, mentoring tecnico ed executive advisory su stream cross-funzionali.',
+          signals: ['Executive advisory', 'Release governance', 'Change enablement']
         }
       ]
     },
@@ -192,23 +209,24 @@ const data: Record<Locale, Content> = {
           company: 'Reply',
           period: '2022 - Oggi',
           role: 'Enterprise & Solution Architect / PMO / Technical Lead',
+          summary: 'Ruolo di regia tra architettura, governance di programma e delivery tecnico su iniziative cloud, data e AI.',
+          highlights: ['AWS / Azure / GCP', 'AI gateway & RAG', 'Release governance'],
           bullets: [
-            'Architettura e strategia cloud: blueprint multi-cloud e GenAI (AWS, Azure, GCP), landing zone, layer dati/AI e Digital Integration Hub.',
-            'GenAI e innovazione: assessment AI gateway, pipeline RAG, adozione AI Toolchain 3.0 e AI SDLC su GCP.',
-            'Program governance: gestione delle release, delle dipendenze e dei rischi in programmi complessi.',
-            'Leadership tecnica: integrazione SAST nelle pipeline Terraform, dashboard BI su AWS, modernizzazione di applicazioni .NET/Angular.',
-            'Team e stakeholder: advisory per executive, coordinamento di team cloud/AI/DevSecOps/security e mentoring di architetti e developer.'
+            'Disegno blueprint multi-cloud, landing zone e service layer data/AI per programmi regulated in banking e insurance.',
+            'Imposto AI gateway, pipeline RAG e adozione AI SDLC/MLOps con pattern riutilizzabili e controlli condivisi.',
+            'Coordino release, dipendenze e rischio, con dashboard BI, SAST su Terraform e mentoring di team distribuiti.'
           ]
         },
         {
           company: 'Ruoli precedenti',
           period: '2016 - 2022',
           role: 'Solution Architect, Cloud Architect, Product Specialist, PMO',
+          summary: 'Percorso su architettura cloud, delivery digitale e product enablement in media, telco, mobility e IoT.',
+          highlights: ['Kubernetes & managed DB', 'AWS + Azure mobility', 'Edge / RFID / M2M'],
           bullets: [
-            'Progetti digitali su AWS, GCP e Azure nei settori media e telco.',
-            'Cloud architect su GCP con migrazioni e ottimizzazione via Kubernetes e database gestiti.',
-            'AWS architect e scrum master per piattaforme mobility e IoT integrate con AWS e Azure.',
-            'Product specialist edge computing e RFID, IoT engineer e PMO su iniziative M2M di larga scala.'
+            'Migrazioni e ottimizzazioni cloud su GCP con Kubernetes e database gestiti per workload media e telco.',
+            'Architettura AWS e scrum leadership per piattaforme mobility e IoT integrate con servizi AWS e Azure.',
+            'Ruoli su edge computing, RFID e programmi M2M con ownership tecnica e PMO.'
           ]
         }
       ]
@@ -313,6 +331,8 @@ const data: Record<Locale, Content> = {
       brand: 'Marco Califano',
       items: [
         { id: 'about', label: 'About' },
+        { id: 'impact', label: 'Impact' },
+        { id: 'approach', label: 'Approach' },
         { id: 'experience', label: 'Experience' },
         { id: 'skills', label: 'Skills' },
         { id: 'certifications', label: 'Certifications' },
@@ -339,12 +359,12 @@ const data: Record<Locale, Content> = {
         'Coaching distributed DevSecOps teams'
       ],
       highlights: [
-        'Architecture & cloud strategy: multi-cloud blueprints, landing zones and resilient digital channels.',
-        'GenAI & innovation: AI gateways, RAG pipelines and AI SDLC aligned with MLOps/DevSecOps standards.',
-        'Operational leadership: release governance, AWS BI dashboards and mentoring of distributed teams.',
-        'Programme delivery: execution roadmaps, cross-team dependencies and priorities aligned with business outcomes.',
-        'Data & platform enablement: Azure and AWS environments built for analytics, resilience and continuous adoption.',
-        'Adoption & change: onboarding, runbooks and shared usage metrics through go-live.'
+        { title: 'Cloud strategy', detail: 'Blueprints, landing zones' },
+        { title: 'GenAI orchestration', detail: 'Gateway, RAG, AI SDLC' },
+        { title: 'Operational leadership', detail: 'Release governance, BI' },
+        { title: 'Programme control', detail: 'Roadmaps, dependencies' },
+        { title: 'Data platform', detail: 'Azure, AWS, analytics' },
+        { title: 'Adoption & change', detail: 'Onboarding, runbooks' }
       ],
       actions: {
         primaryLabel: 'Download CV',
@@ -352,23 +372,29 @@ const data: Record<Locale, Content> = {
       }
     },
     metrics: {
-      title: 'Impact snapshot',
-      intro: 'Key indicators from the programmes I run with clients.',
+      title: 'Selected outcomes',
+      intro: 'A quick view of the programmes I carry from strategy into rollout.',
       items: [
         {
-          value: '10+',
-          label: 'Years in enterprise delivery',
-          detail: 'Cloud, data and AI across banking, insurance, mobility, energy and telecom sectors.'
+          eyebrow: 'Banking & insurance',
+          value: 'Multi-cloud',
+          label: 'Blueprints, landing zones and data/AI service layers',
+          detail: 'Target architectures across AWS, Azure and GCP for regulated initiatives with reusable governance patterns.',
+          signals: ['AWS / Azure / GCP', 'Landing zones', 'Risk-aware']
         },
         {
-          value: '3',
-          label: 'GenAI programmes in 2025',
-          detail: 'Blueprints, AI toolchain 3.0 and centralised gateways for next-generation banking initiatives.'
+          eyebrow: 'GenAI delivery',
+          value: 'GenAI',
+          label: 'Central gateways, RAG and AI SDLC patterns',
+          detail: 'From AI gateway assessments to MLOps/DevSecOps playbooks with shared controls, KPIs and operating models.',
+          signals: ['AI gateway', 'RAG', 'AI SDLC']
         },
         {
+          eyebrow: 'Programme orchestration',
           value: '10+',
-          label: 'Teams & stakeholders coordinated',
-          detail: 'IT strategy, DevSecOps/MLOps and change management across distributed teams.'
+          label: 'Teams and stakeholders aligned through go-live',
+          detail: 'Release governance, BI dashboards, technical mentoring and executive advisory across cross-functional streams.',
+          signals: ['Executive advisory', 'Release governance', 'Change enablement']
         }
       ]
     },
@@ -413,23 +439,24 @@ const data: Record<Locale, Content> = {
           company: 'Reply',
           period: '2022 - Present',
           role: 'Enterprise & Solution Architect / PMO / Technical Lead',
+          summary: 'A steering role spanning architecture, programme governance and technical delivery for cloud, data and AI initiatives.',
+          highlights: ['AWS / Azure / GCP', 'AI gateway & RAG', 'Release governance'],
           bullets: [
-            'Architecture & cloud strategy: multi-cloud and GenAI blueprints (AWS, Azure, GCP), landing zones, data/AI service layers and Digital Integration Hub.',
-            'GenAI & innovation: AI gateway assessments, RAG pipelines, AI Toolchain 3.0 and AI SDLC adoption on GCP.',
-            'Release & program management: release governance, dependency management and risk mitigation across complex programmes.',
-            'Technical leadership: SAST integration within Terraform pipelines, AWS BI dashboards and modernisation of .NET/Angular applications.',
-            'Team & stakeholder management: executive advisory, coordination of cloud/AI/DevSecOps/security teams and mentoring of architects and developers.'
+            'Designed multi-cloud blueprints, landing zones and data/AI service layers for regulated banking and insurance programmes.',
+            'Introduced AI gateway patterns, RAG pipelines and AI SDLC/MLOps operating models with reusable controls.',
+            'Coordinated releases, dependencies and risk while driving AWS BI dashboards, Terraform SAST and team mentoring.'
           ]
         },
         {
           company: 'Prior roles',
           period: '2016 - 2022',
           role: 'Solution Architect, Cloud Architect, Product Specialist, PMO',
+          summary: 'A track record across cloud architecture, digital delivery and product enablement in media, telco, mobility and IoT.',
+          highlights: ['Kubernetes & managed DB', 'AWS + Azure mobility', 'Edge / RFID / M2M'],
           bullets: [
-            'Digital projects across AWS, GCP and Azure within media and telco domains.',
-            'Cloud architect on GCP with migrations and optimisation using Kubernetes and managed databases.',
-            'AWS architect and scrum master for mobility and IoT platforms integrating AWS and Azure.',
-            'Product specialist for edge computing and RFID, IoT engineer and PMO on large-scale M2M initiatives.'
+            'Led migrations and optimisation work on GCP using Kubernetes and managed databases for media and telco workloads.',
+            'Worked as AWS architect and scrum lead on mobility and IoT platforms integrating AWS and Azure services.',
+            'Covered edge computing, RFID and large-scale M2M initiatives with both technical and PMO ownership.'
           ]
         }
       ]

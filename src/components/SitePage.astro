@@ -59,6 +59,7 @@ const unavailableCredentialLabel =
   locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
 const heroFocusLabel = locale === 'it' ? 'Focus' : 'Focus';
 const heroFocusTags = skills.groups.slice(0, 3).map(({ category }) => category);
+const heroHighlights = hero.highlights;
 const sectionEyebrows =
   locale === 'it'
     ? {
@@ -119,7 +120,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       <a class="site-header__brand" href="#top">{nav.brand}</a>
       <nav class="site-nav" aria-label={navLabel}>
         {nav.items.map((item) => (
-          <a href={`#${item.id}`}>{item.label}</a>
+          <a href={`#${item.id}`} data-nav-link={item.id}>{item.label}</a>
         ))}
       </nav>
       <div class="site-header__controls">
@@ -158,50 +159,55 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
     <section id="about" class="hero reveal">
       <span class="hero__parallax hero__parallax--primary" data-parallax data-depth="0.18" aria-hidden="true"></span>
       <span class="hero__parallax hero__parallax--secondary" data-parallax data-depth="0.28" aria-hidden="true"></span>
-      <div class="hero__content">
-        <span class="hero__badge">{hero.badge}</span>
-        <p class="hero__tagline">{heroTagline}</p>
-        <h1>{hero.title}</h1>
-        <p class="hero__lead">{hero.lead}</p>
-        <p class="hero__typing" aria-live="polite">
-          <span class="typing">{hero.typing[0] ?? ''}</span>
-        </p>
-        <div class="hero__focus" aria-label={heroFocusLabel}>
-          {heroFocusTags.map((tag) => (
-            <span class="hero__focus-tag">{tag}</span>
-          ))}
-        </div>
-      </div>
-      <div class="hero__visual">
-        <div class="hero__image-frame">
-          <picture>
-            <source srcset="/assets/img/profile.avif" type="image/avif" />
-            <source srcset="/assets/img/profile.webp" type="image/webp" />
-            <img
-              src="/assets/img/profile.jpeg"
-              alt="Marco Califano"
-              width="766"
-              height="743"
-              loading="eager"
-              decoding="async"
-              fetchpriority="high"
-            />
-          </picture>
-        </div>
-      </div>
-      <div class="hero__highlights">
-        {hero.highlights.map((highlight, index) => (
-          <div class="hero__highlight">
-            <i class={highlightIcons[index % highlightIcons.length]} aria-hidden="true"></i>
-            <p>{highlight}</p>
+      <div class="hero__main">
+        <div class="hero__content">
+          <span class="hero__badge">{hero.badge}</span>
+          <p class="hero__tagline">{heroTagline}</p>
+          <h1>{hero.title}</h1>
+          <p class="hero__lead">{hero.lead}</p>
+          <p class="hero__typing" aria-live="polite">
+            <span class="typing">{hero.typing[0] ?? ''}</span>
+          </p>
+          <div class="hero__focus" aria-label={heroFocusLabel}>
+            {heroFocusTags.map((tag) => (
+              <span class="hero__focus-tag">{tag}</span>
+            ))}
           </div>
+          <div class="hero__actions">
+            <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
+              {hero.actions.primaryLabel}
+            </a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="hero__image-frame">
+            <picture>
+              <source srcset="/assets/img/profile.avif" type="image/avif" />
+              <source srcset="/assets/img/profile.webp" type="image/webp" />
+              <img
+                src="/assets/img/profile.jpeg"
+                alt="Marco Califano"
+                width="766"
+                height="743"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              />
+            </picture>
+          </div>
+        </div>
+      </div>
+      <ul class="hero__highlights" aria-label={heroFocusLabel}>
+        {heroHighlights.map((highlight, index) => (
+          <li class="hero__highlight">
+            <i class={highlightIcons[index % highlightIcons.length]} aria-hidden="true"></i>
+            <div class="hero__highlight-copy">
+              <h3>{highlight.title}</h3>
+              <p>{highlight.detail}</p>
+            </div>
+          </li>
         ))}
-      </div>
-      <div class="hero__actions">
-        <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
-          {hero.actions.primaryLabel}
-        </a>
-      </div>
+      </ul>
     </section>
 
     <section id="impact" class="section reveal">
@@ -211,15 +217,23 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         <p>{metrics.intro}</p>
       </div>
       <div class="metrics-grid">
-        {metrics.items.map(({ value, label, detail }, index) => (
+        {metrics.items.map(({ value, label, detail, eyebrow, signals }, index) => (
           <article class="metric-card reveal" style={`--metric-index:${index}`}>
             <div class="metric-card__icon">
               <i class={metricIcons[index % metricIcons.length]} aria-hidden="true"></i>
             </div>
             <div class="metric-card__body">
+              {eyebrow && <span class="metric-card__eyebrow">{eyebrow}</span>}
               <span class="metric-card__value">{value}</span>
               <h3>{label}</h3>
               <p>{detail}</p>
+              {signals?.length ? (
+                <div class="metric-card__signals" aria-label={eyebrow ?? label}>
+                  {signals.map((signal) => (
+                    <span class="metric-card__signal">{signal}</span>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </article>
         ))}
@@ -253,7 +267,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         <p>{experience.intro}</p>
       </div>
       <div class="timeline timeline--alt">
-        {experience.items.map(({ company, period, role, bullets }, index) => (
+        {experience.items.map(({ company, period, role, summary, highlights, bullets }, index) => (
           <article class={`timeline-card reveal ${index % 2 === 1 ? 'timeline-card--invert' : ''}`}>
             <span class="timeline-card__dot" aria-hidden="true"></span>
             <div class="timeline-card__meta">
@@ -261,6 +275,14 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
               <span class="timeline-card__period">{period}</span>
             </div>
             <h3>{role}</h3>
+            <p class="timeline-card__summary">{summary}</p>
+            {highlights?.length ? (
+              <div class="timeline-card__highlights">
+                {highlights.map((highlight) => (
+                  <span class="timeline-card__highlight">{highlight}</span>
+                ))}
+              </div>
+            ) : null}
             <ul>
               {bullets.map((bullet) => <li>{bullet}</li>)}
             </ul>
@@ -457,12 +479,23 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const backToTopButton = backToTopEl instanceof HTMLElement ? backToTopEl : null;
         const themeButton = themeToggleEl instanceof HTMLElement ? themeToggleEl : null;
         const localeButton = localeToggleEl instanceof HTMLAnchorElement ? localeToggleEl : null;
+        const navLinks = Array.from(document.querySelectorAll('[data-nav-link]'));
         const scrollProgressEl = document.querySelector('.scroll-progress__bar');
         const revealEls = Array.from(document.querySelectorAll('.reveal'));
         const skillsRoot = document.querySelector('[data-skills]');
         const skillTabs = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-tab]')) : [];
         const skillPanes = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-pane]')) : [];
         const heroSection = document.querySelector('.hero');
+        const sectionEntries = navLinks
+          .map((link) => {
+            if (!(link instanceof HTMLAnchorElement)) return null;
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return null;
+            const section = document.querySelector(href);
+            if (!(section instanceof HTMLElement)) return null;
+            return { id: href.slice(1), link, section };
+          })
+          .filter(Boolean);
         let parallaxItems = [];
         const currentLocale = docEl.lang || initialLocale;
         let storedLocale = null;
@@ -533,7 +566,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
                   }
                 });
               },
-              { threshold: 0.2, rootMargin: '0px 0px -10%' }
+              { threshold: 0.08, rootMargin: '0px 0px 18% 0px' }
             );
             revealEls.forEach((element) => observer.observe(element));
           } else {
@@ -569,6 +602,29 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           const ratio = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
           const clamped = Math.max(0, Math.min(100, ratio));
           scrollProgressEl.style.width = `${clamped.toFixed(2)}%`;
+        };
+
+        const updateActiveNav = () => {
+          if (!sectionEntries.length) return;
+          const currentPosition = window.scrollY + Math.max(260, window.innerHeight * 0.5);
+          let activeId = sectionEntries[0]?.id ?? '';
+
+          sectionEntries.forEach((entry) => {
+            if (entry && entry.section.offsetTop <= currentPosition) {
+              activeId = entry.id;
+            }
+          });
+
+          sectionEntries.forEach((entry) => {
+            if (!entry) return;
+            const isActive = entry.id === activeId;
+            entry.link.classList.toggle('is-active', isActive);
+            if (isActive) {
+              entry.link.setAttribute('aria-current', 'location');
+            } else {
+              entry.link.removeAttribute('aria-current');
+            }
+          });
         };
 
         const setActiveSkill = (targetId) => {
@@ -744,13 +800,25 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           toggleVisibility();
           updateScrollProgress();
           updateParallax();
+          updateActiveNav();
         };
 
         handleScroll();
+        window.requestAnimationFrame(handleScroll);
+        window.setTimeout(handleScroll, 120);
+        window.addEventListener(
+          'load',
+          () => {
+            window.requestAnimationFrame(handleScroll);
+            window.setTimeout(handleScroll, 80);
+          },
+          { once: true }
+        );
         window.addEventListener('scroll', handleScroll, { passive: true });
         if (!prefersReducedMotion) {
           window.addEventListener('resize', updateParallax);
         }
+        window.addEventListener('resize', updateActiveNav);
 
         if (backToTopButton) {
           backToTopButton.addEventListener('click', () => {

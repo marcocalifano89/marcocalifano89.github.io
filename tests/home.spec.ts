@@ -16,6 +16,66 @@ test.describe('Homepage experience', () => {
     await expect(page.locator('.hero__image-frame source[type="image/webp"]')).toHaveCount(1);
   });
 
+  test('lays out hero highlights as a single full-width desktop row', async ({ page }) => {
+    await page.setViewportSize({ width: 1512, height: 982 });
+    await page.goto('/en/');
+
+    await expect(page.locator('.hero > .hero__highlights')).toHaveCount(1);
+    await expect(page.locator('.hero__content .hero__highlights')).toHaveCount(0);
+
+    const contentBox = await page.locator('.hero__content').boundingBox();
+    const highlightsBox = await page.locator('.hero__highlights').boundingBox();
+    const firstBox = await page.locator('.hero__highlight').first().boundingBox();
+    const lastBox = await page.locator('.hero__highlight').last().boundingBox();
+
+    expect(contentBox).not.toBeNull();
+    expect(highlightsBox).not.toBeNull();
+    expect(firstBox).not.toBeNull();
+    expect(lastBox).not.toBeNull();
+
+    expect((highlightsBox?.width ?? 0) / (contentBox?.width ?? 1)).toBeGreaterThan(1.25);
+    expect(Math.abs((firstBox?.y ?? 0) - (lastBox?.y ?? 0))).toBeLessThan(8);
+  });
+
+  test('keeps certification cards on a single desktop row at wide widths', async ({ page }) => {
+    await page.setViewportSize({ width: 1512, height: 982 });
+    await page.goto('/en/');
+    await page.locator('#certifications').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+
+    const columns = await page.locator('.card-grid--cert').evaluate((element) =>
+      getComputedStyle(element).gridTemplateColumns.split(' ').filter(Boolean).length
+    );
+
+    const firstBox = await page.locator('.cert-card').first().boundingBox();
+    const lastBox = await page.locator('.cert-card').last().boundingBox();
+
+    expect(columns).toBe(5);
+    expect(firstBox).not.toBeNull();
+    expect(lastBox).not.toBeNull();
+    expect(Math.abs((firstBox?.y ?? 0) - (lastBox?.y ?? 0))).toBeLessThan(8);
+  });
+
+  test('exposes impact and approach in navigation and updates the active section', async ({ page }) => {
+    await page.goto('/');
+
+    await expect(page.locator('.site-nav a[href="#impact"]')).toHaveCount(1);
+    await expect(page.locator('.site-nav a[href="#approach"]')).toHaveCount(1);
+
+    await page.evaluate(() => {
+      document.querySelector('#approach')?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    });
+    await page.waitForTimeout(400);
+    await expect(page.locator('.site-nav a[href="#approach"]')).toHaveAttribute('aria-current', 'location');
+  });
+
+  test('applies active navigation state on deep-link loads', async ({ page }) => {
+    await page.goto('/en/#impact');
+
+    await page.waitForTimeout(400);
+    await expect(page.locator('.site-nav a[href="#impact"]')).toHaveAttribute('aria-current', 'location');
+  });
+
   test('accent typing copy starts with an uppercase letter in both locales', async ({ page }) => {
     for (const path of ['/', '/en/']) {
       await page.goto(path);
@@ -43,6 +103,7 @@ test.describe('Homepage experience', () => {
     const impactTop = impactHeadingBox?.y ?? 0;
 
     expect(impactTop - heroBottom).toBeGreaterThan(16);
+    expect(impactTop - heroBottom).toBeLessThan(120);
   });
 
   test('emits valid structured data', async ({ page }) => {
