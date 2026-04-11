@@ -8,6 +8,15 @@ const localePaths: Record<Locale, string> = {
   en: '/en/'
 };
 
+const toSkillKey = (value: string) =>
+  value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
 const props = Astro.props as { locale?: Locale };
 const locale: Locale = props.locale && locales.includes(props.locale) ? props.locale : fallbackLocale;
 const content = getContent(locale);
@@ -24,6 +33,7 @@ const alternateUrl = new URL(alternatePath, siteOrigin).toString();
 const fallbackUrl = new URL(fallbackPath, siteOrigin).toString();
 const socialImageUrl = new URL('/assets/img/profile.jpeg', siteOrigin).toString();
 const localeRoutesScript = JSON.stringify(localePaths);
+const skillGroups = skills.groups.map((group) => ({ ...group, key: toSkillKey(group.category) }));
 
 const emailCard = contact.cards.find((card) => card.href?.startsWith('mailto:'));
 const phoneCard = contact.cards.find((card) => card.href?.startsWith('tel:'));
@@ -59,8 +69,10 @@ const unavailableCredentialLabel =
   locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
 const heroFocusLabel = locale === 'it' ? 'Focus' : 'Focus';
 const heroProofLabel = locale === 'it' ? 'Segnali di esperienza' : 'Proof signals';
-const heroFocusTags = skills.groups.slice(0, 4).map(({ category }) => category);
+const skillsPaneEyebrow = locale === 'it' ? 'Area selezionata' : 'Selected area';
+const heroFocusTags = skillGroups.slice(0, 4);
 const heroProofSignals = hero.proofSignals;
+const defaultSkillKey = skillGroups[0]?.key ?? '';
 const heroHighlights = hero.highlights;
 const sectionEyebrows =
   locale === 'it'
@@ -90,12 +102,6 @@ const highlightIcons = [
   'ri-database-2-line',
   'ri-rocket-line'
 ];
-const heroTagline =
-  locale === 'it'
-    ? `Leader IT focalizzato su innovazione digitale, cloud, dati e AI.
-Guido team cross-funzionali per trasformare la strategia in risultati misurabili.`
-    : `IT leader focused on digital innovation across cloud, data and AI transformations.
-I lead cross-functional teams to translate strategy into measurable outcomes.`;
 const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 ---
 <BaseLayout
@@ -164,15 +170,16 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       <div class="hero__main">
         <div class="hero__content">
           <span class="hero__badge">{hero.badge}</span>
-          <p class="hero__tagline">{heroTagline}</p>
           <h1>{hero.title}</h1>
           <p class="hero__lead">{hero.lead}</p>
           <p class="hero__typing" aria-live="polite">
             <span class="typing">{hero.typing[0] ?? ''}</span>
           </p>
           <div class="hero__focus" aria-label={heroFocusLabel}>
-            {heroFocusTags.map((tag) => (
-              <span class="hero__focus-tag">{tag}</span>
+            {heroFocusTags.map(({ category, key }) => (
+              <a class="hero__focus-tag" href={`${pagePath}?skill=${key}#skills`} data-skill-shortcut={key}>
+                {category}
+              </a>
             ))}
           </div>
           <div class="hero__actions">
@@ -330,14 +337,14 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         <h2>{skills.title}</h2>
         <p>{skills.intro}</p>
       </div>
-      <div class="skills-panel" data-skills>
+      <div class="skills-panel" data-skills data-skill-default={defaultSkillKey}>
         <div class="skills-tabs" role="tablist" aria-label={skills.title}>
-          {skills.groups.map(({ category }, index) => (
+          {skillGroups.map(({ category, key }, index) => (
             <button
               type="button"
               role="tab"
               class={`skills-tab ${index === 0 ? 'is-active' : ''}`}
-              data-skill-tab={category}
+              data-skill-tab={key}
               aria-selected={index === 0 ? 'true' : 'false'}
               tabindex={index === 0 ? '0' : '-1'}
               aria-controls={`skills-pane-${index}`}
@@ -348,18 +355,26 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           ))}
         </div>
         <div class="skills-panes">
-          {skills.groups.map(({ category, items }, index) => (
+          {skillGroups.map(({ key, summary, items }, index) => (
             <div
               role="tabpanel"
               class={`skills-pane ${index === 0 ? 'is-active' : ''}`}
-              data-skill-pane={category}
+              data-skill-pane={key}
               id={`skills-pane-${index}`}
               aria-labelledby={`skills-tab-${index}`}
               aria-hidden={index === 0 ? 'false' : 'true'}
               hidden={index === 0 ? undefined : true}
             >
-              <div class="skills-pane__chips">
-                {items.map((item) => <span class="chip chip--ghost">{item}</span>)}
+              <div class="skills-pane__intro">
+                <span class="skills-pane__eyebrow">{skillsPaneEyebrow}</span>
+                <p class="skills-pane__summary">{summary}</p>
+              </div>
+              <div class="skills-pane__grid">
+                {items.map((item) => (
+                  <div class="skills-item">
+                    <span class="skills-item__label">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
@@ -492,6 +507,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const skillsRoot = document.querySelector('[data-skills]');
         const skillTabs = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-tab]')) : [];
         const skillPanes = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-pane]')) : [];
+        const skillShortcuts = Array.from(document.querySelectorAll('[data-skill-shortcut]'));
         const heroSection = document.querySelector('.hero');
         const sectionEntries = navLinks
           .map((link) => {
@@ -634,8 +650,47 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           });
         };
 
-        const setActiveSkill = (targetId) => {
+        const defaultSkillId =
+          (skillsRoot instanceof HTMLElement ? skillsRoot.dataset.skillDefault : '') ||
+          (skillTabs[0] instanceof HTMLElement ? skillTabs[0].dataset.skillTab : '') ||
+          '';
+
+        const resolveSkillIdFromUrl = () => {
+          const params = new URLSearchParams(window.location.search);
+          const requestedSkill = params.get('skill');
+          if (!requestedSkill) {
+            return defaultSkillId;
+          }
+          const requestedTab = skillTabs.find((tab) => tab.dataset.skillTab === requestedSkill);
+          return requestedTab?.dataset.skillTab || defaultSkillId;
+        };
+
+        const syncSkillUrl = (targetId, mode = 'push') => {
+          if (!window.history || typeof window.history.pushState !== 'function') {
+            return;
+          }
+          const nextUrl = new URL(window.location.href);
+          if (targetId && targetId !== defaultSkillId) {
+            nextUrl.searchParams.set('skill', targetId);
+          } else {
+            nextUrl.searchParams.delete('skill');
+          }
+          nextUrl.hash = 'skills';
+          const nextHref = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
+          const currentHref = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+          if (nextHref === currentHref) {
+            return;
+          }
+          if (mode === 'replace') {
+            window.history.replaceState({ skill: targetId }, '', nextHref);
+          } else {
+            window.history.pushState({ skill: targetId }, '', nextHref);
+          }
+        };
+
+        const setActiveSkill = (targetId, options = {}) => {
           if (!targetId) return;
+          const { updateUrl = false, historyMode = 'push' } = options;
           skillTabs.forEach((tab) => {
             const isActive = tab.dataset.skillTab === targetId;
             tab.classList.toggle('is-active', isActive);
@@ -653,20 +708,22 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
               pane.setAttribute('aria-hidden', 'true');
             }
           });
+          if (updateUrl) {
+            syncSkillUrl(targetId, historyMode);
+          }
         };
 
         if (skillTabs.length && skillPanes.length) {
-          const defaultTab =
-            skillTabs.find((tab) => tab.classList.contains('is-active')) ?? skillTabs[0];
-          if (defaultTab && defaultTab.dataset.skillTab) {
-            setActiveSkill(defaultTab.dataset.skillTab);
+          const initialSkillId = resolveSkillIdFromUrl();
+          if (initialSkillId) {
+            setActiveSkill(initialSkillId);
           }
 
           skillTabs.forEach((tab, index) => {
             tab.addEventListener('click', () => {
               const targetId = tab.dataset.skillTab;
               if (targetId) {
-                setActiveSkill(targetId);
+                setActiveSkill(targetId, { updateUrl: true });
               }
             });
 
@@ -690,9 +747,35 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
               if (nextTab) {
                 nextTab.focus();
                 if (nextTab.dataset.skillTab) {
-                  setActiveSkill(nextTab.dataset.skillTab);
+                  setActiveSkill(nextTab.dataset.skillTab, { updateUrl: true });
                 }
               }
+            });
+          });
+
+          window.addEventListener('popstate', () => {
+            const nextSkillId = resolveSkillIdFromUrl();
+            if (nextSkillId) {
+              setActiveSkill(nextSkillId);
+            }
+          });
+        }
+
+        if (skillShortcuts.length) {
+          skillShortcuts.forEach((shortcut) => {
+            if (!(shortcut instanceof HTMLAnchorElement)) return;
+            shortcut.addEventListener('click', (event) => {
+              const targetId = shortcut.dataset.skillShortcut;
+              const skillsSection = document.getElementById('skills');
+              if (!targetId || !(skillsSection instanceof HTMLElement)) {
+                return;
+              }
+              event.preventDefault();
+              setActiveSkill(targetId, { updateUrl: true });
+              skillsSection.scrollIntoView({
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                block: 'start'
+              });
             });
           });
         }

@@ -43,6 +43,16 @@ test.describe('Homepage experience', () => {
     expect(Math.abs((firstBox?.y ?? 0) - (lastBox?.y ?? 0))).toBeLessThan(8);
   });
 
+  test('hero focus shortcuts deep-link to the matching skills tab', async ({ page }) => {
+    await page.goto('/en/');
+
+    await page.getByRole('link', { name: 'Leadership & Governance' }).click();
+
+    await expect(page).toHaveURL(/\/en\/\?skill=leadership-and-governance#skills$/);
+    await expect(page.locator('#skills-tab-3')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#skills-pane-3')).toHaveAttribute('aria-hidden', 'false');
+  });
+
   test('lays out hero highlights as a single full-width desktop row', async ({ page }) => {
     await page.setViewportSize({ width: 1512, height: 982 });
     await page.goto('/en/');
@@ -219,6 +229,42 @@ test.describe('Homepage experience', () => {
     await expect(secondTab).toBeFocused();
     await expect(secondTab).toHaveAttribute('aria-selected', 'true');
     await expect(page.locator('#skills-pane-1')).toHaveAttribute('aria-hidden', 'false');
+  });
+
+  test('persists the selected skill tab in the URL and restores it on load', async ({ page }) => {
+    await page.goto('/en/?skill=leadership-and-governance#skills');
+
+    await expect(page.locator('#skills-tab-3')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#skills-pane-3')).toHaveAttribute('aria-hidden', 'false');
+
+    await page.locator('#skills-tab-1').click();
+    await expect(page).toHaveURL(/\/en\/\?skill=genai-and-data#skills$/);
+    await expect(page.locator('#skills-tab-1')).toHaveAttribute('aria-selected', 'true');
+  });
+
+  test('uses the full skills panel width for the active capability grid on desktop', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 960 });
+    await page.goto('/en/#skills');
+    await page.locator('#skills').scrollIntoViewIfNeeded();
+
+    const activeItems = page.locator('.skills-pane.is-active .skills-item');
+    const panelBox = await page.locator('.skills-panel').boundingBox();
+    const firstItemBox = await activeItems.first().boundingBox();
+    const lastItemBox = await activeItems.last().boundingBox();
+
+    expect(panelBox).not.toBeNull();
+    expect(firstItemBox).not.toBeNull();
+    expect(lastItemBox).not.toBeNull();
+    expect(Math.abs((firstItemBox?.y ?? 0) - (lastItemBox?.y ?? 0))).toBeLessThan(8);
+    expect(((lastItemBox?.x ?? 0) + (lastItemBox?.width ?? 0)) - ((panelBox?.x ?? 0) + (panelBox?.width ?? 0))).toBeGreaterThan(-56);
+  });
+
+  test('keeps mobile skill tabs at a touch-friendly height', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/en/#skills');
+
+    const tabHeight = await page.locator('#skills-tab-0').evaluate((element) => element.getBoundingClientRect().height);
+    expect(tabHeight).toBeGreaterThanOrEqual(44);
   });
 
   test('updates the scroll progress bar while scrolling', async ({ page }) => {

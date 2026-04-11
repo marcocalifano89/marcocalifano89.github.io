@@ -43,6 +43,7 @@ type EducationItem = {
 
 type SkillGroup = {
   category: string;
+  summary: string;
   items: string[];
 };
 
@@ -271,18 +272,22 @@ const data: Record<Locale, Content> = {
       groups: [
         {
           category: 'Cloud & Platforms',
+          summary: 'Fondazioni multi-cloud, landing zone e standard di piattaforma per ambienti ibridi e regulated.',
           items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Landing zone e ambienti ibridi', 'Edge e IoT']
         },
         {
           category: 'GenAI & Data',
+          summary: 'Governance GenAI, piattaforme dati e pattern operativi per AI gateway, analytics e RAG.',
           items: ['Governance GenAI', 'AI gateway e RAG', 'Data e BI platform', 'MLOps', 'Analytics realtime']
         },
         {
           category: 'Architecture & Delivery',
+          summary: 'Reference architecture, integrazione applicativa e pratiche delivery per servizi resilienti e moderni.',
           items: ['Enterprise architecture', 'Blueprint e Digital Integration Hub', 'Microservizi ed event-driven', 'IaC e DevSecOps', 'Modern application design']
         },
         {
           category: 'Leadership & Governance',
+          summary: 'Allineamento tra stakeholder, roadmap, compliance e execution fino al go-live.',
           items: ['IT strategy e PMO', 'Orchestrazione di team cross-funzionali', 'Compliance e security', 'Stakeholder engagement']
         }
       ]
@@ -506,18 +511,22 @@ const data: Record<Locale, Content> = {
       groups: [
         {
           category: 'Cloud & Platforms',
+          summary: 'Multi-cloud foundations, landing zones and platform standards for hybrid and regulated environments.',
           items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Landing zones & hybrid environments', 'Edge & IoT']
         },
         {
           category: 'GenAI & Data',
+          summary: 'GenAI governance, data platforms and operating patterns for AI gateways, analytics and RAG.',
           items: ['GenAI governance', 'AI gateways & RAG', 'Data and BI platforms', 'MLOps', 'Real-time analytics']
         },
         {
           category: 'Architecture & Delivery',
+          summary: 'Reference architecture, application integration and delivery practices for resilient modern services.',
           items: ['Enterprise architecture', 'Blueprints & Digital Integration Hub', 'Microservices & event-driven design', 'IaC & DevSecOps', 'Modern application design']
         },
         {
           category: 'Leadership & Governance',
+          summary: 'Alignment across stakeholders, roadmaps, compliance and execution through go-live.',
           items: ['IT strategy & PMO', 'Cross-team orchestration', 'Compliance & security', 'Stakeholder management']
         }
       ]

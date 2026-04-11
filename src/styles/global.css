@@ -523,18 +523,6 @@ section {
   text-transform: uppercase;
 }
 
-.hero__tagline {
-  margin: 0.1rem 0 0;
-  font-family: inherit;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  letter-spacing: 0.15em;
-  line-height: 1.6;
-  text-transform: uppercase;
-  white-space: pre-line;
-  max-width: 42ch;
-}
-
 .hero__content h1 {
   margin: 0;
   font-size: clamp(2.95rem, 5.5vw, 5rem);
@@ -593,6 +581,17 @@ section {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.hero__focus-tag:hover,
+.hero__focus-tag:focus-visible {
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), 0.42);
+  background: rgba(var(--accent-rgb), 0.12);
+  transform: translateY(-1px);
+  outline: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1171,16 +1170,16 @@ section {
   background: linear-gradient(180deg, var(--surface-primary), var(--surface-secondary));
   border-radius: 28px;
   border: 1px solid var(--border-subtle);
-  padding: 2rem;
+  padding: 1.65rem;
   box-shadow: 0 30px 70px -45px rgba(0, 0, 0, 0.5);
   display: grid;
-  gap: 1.5rem;
+  gap: 1.15rem;
 }
 
 .skills-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
 }
 
 .skills-tab {
@@ -1189,9 +1188,14 @@ section {
   border-radius: 999px;
   background: var(--surface-tertiary);
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
   letter-spacing: 0.02em;
-  padding: 0.62rem 1.2rem;
+  min-height: 48px;
+  padding: 0.7rem 1rem;
+  text-align: center;
   cursor: pointer;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
@@ -1220,13 +1224,74 @@ section {
 }
 
 .skills-pane.is-active {
-  display: block;
+  display: grid;
+  gap: 1rem;
 }
 
-.skills-pane__chips {
+.skills-pane__intro {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.skills-pane__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.skills-pane__summary {
+  margin: 0;
+  max-width: 64ch;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.skills-pane__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+.skills-item {
+  min-height: 78px;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-tertiary);
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  align-items: flex-start;
+  box-shadow: 0 18px 40px -34px rgba(0, 0, 0, 0.22);
+}
+
+.skills-item__label {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: var(--text-primary);
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.skills-item__label::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.42rem;
+  border-radius: 999px;
+  flex: none;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.24rem rgba(var(--accent-rgb), 0.12);
+}
+
+:root[data-theme='light'] .skills-item {
+  background: rgba(255, 255, 255, 0.74);
 }
 
 .chip {
@@ -1521,6 +1586,14 @@ section {
     padding: 1.4rem;
   }
 
+  .skills-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-pane__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   section {
     margin-top: 4rem;
   }
@@ -1593,8 +1666,15 @@ section {
   }
 
   .skills-tab {
-    width: 100%;
-    justify-content: center;
+    min-height: 46px;
+  }
+
+  .skills-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-pane__grid {
+    grid-template-columns: 1fr;
   }
 
   .page {
