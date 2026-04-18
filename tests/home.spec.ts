@@ -197,6 +197,43 @@ test.describe('Homepage experience', () => {
     await expect(page.locator('#skills-tab-1')).toHaveAttribute('aria-selected', 'true');
   });
 
+  test('restores skill tabs through browser back and forward navigation', async ({ page }) => {
+    await page.goto('/en/#skills');
+
+    await page.locator('#skills-tab-1').click();
+    await expect(page).toHaveURL(/\/en\/\?skill=genai-and-data#skills$/);
+
+    await page.locator('#skills-tab-3').click();
+    await expect(page).toHaveURL(/\/en\/\?skill=leadership-and-governance#skills$/);
+
+    await page.locator('#skills-tab-0').click();
+    await expect(page).toHaveURL(/\/en\/#skills$/);
+    await expect(page.locator('#skills-tab-0')).toHaveAttribute('aria-selected', 'true');
+
+    await page.goBack();
+    await expect(page).toHaveURL(/\/en\/\?skill=leadership-and-governance#skills$/);
+    await expect(page.locator('#skills-tab-3')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#skills-pane-3')).toHaveAttribute('aria-hidden', 'false');
+
+    await page.goBack();
+    await expect(page).toHaveURL(/\/en\/\?skill=genai-and-data#skills$/);
+    await expect(page.locator('#skills-tab-1')).toHaveAttribute('aria-selected', 'true');
+    await expect(page.locator('#skills-pane-1')).toHaveAttribute('aria-hidden', 'false');
+
+    await page.goForward();
+    await expect(page).toHaveURL(/\/en\/\?skill=leadership-and-governance#skills$/);
+    await expect(page.locator('#skills-tab-3')).toHaveAttribute('aria-selected', 'true');
+  });
+
+  test('renders experience cards with explicit portfolio context lines', async ({ page }) => {
+    await page.goto('/en/#experience');
+    await page.locator('#experience').scrollIntoViewIfNeeded();
+
+    await expect(page.locator('.timeline-card__context')).toHaveCount(2);
+    await expect(page.locator('.timeline-card__context').first()).toContainText('Banking');
+    await expect(page.locator('.timeline-card__context').nth(1)).toContainText('Media');
+  });
+
   test('uses a structured full-width skills layout on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 960 });
     await page.goto('/en/#skills');

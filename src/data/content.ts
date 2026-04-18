@@ -29,6 +29,7 @@ type TimelineItem = {
   company: string;
   period: string;
   role: string;
+  context?: string;
   summary: string;
   highlights?: string[];
   bullets: string[];
@@ -214,30 +215,32 @@ const data: Record<Locale, Content> = {
     },
     experience: {
       title: 'Esperienza',
-      intro: 'Ruoli di leadership su architettura e delivery, allineando obiettivi business ed execution tecnica.',
+      intro: 'Mandati selezionati in cui ho allineato architettura target, governance e delivery per programmi cloud, dati e AI.',
       items: [
         {
           company: 'Reply',
           period: '2022 - Oggi',
           role: 'Enterprise & Solution Architect / PMO / Technical Lead',
-          summary: 'Ruolo di regia tra architettura, governance di programma e delivery tecnico su iniziative cloud, data e AI.',
-          highlights: ['AWS / Azure / GCP', 'AI gateway & RAG', 'Release governance'],
+          context: 'Banking, insurance e programmi di trasformazione regulated',
+          summary: 'Guido programmi enterprise in cui l’architettura deve tradursi in decisioni operative, governance di programma e delivery tecnico fino al go-live.',
+          highlights: ['Banking & insurance', 'Regulated cloud', 'AI gateway', 'Release governance'],
           bullets: [
-            'Disegno blueprint multi-cloud, landing zone e service layer data/AI per programmi regulated in banking e insurance.',
-            'Imposto AI gateway, pipeline RAG e adozione AI SDLC/MLOps con pattern riutilizzabili e controlli condivisi.',
-            'Coordino release, dipendenze e rischio, con dashboard BI, SAST su Terraform e mentoring di team distribuiti.'
+            'Rendo riutilizzabili blueprint multi-cloud, landing zone e service layer data/AI per programmi banking e insurance, accelerando le scelte architetturali in contesti regulated.',
+            'Porto in delivery AI gateway, pattern RAG e pratiche AI SDLC/MLOps condivise, trasformando sperimentazione GenAI in operating model governato.',
+            'Tengo allineati go-live, dipendenze e rischio con dashboard BI, controlli Terraform SAST e mentoring continuo di team distribuiti.'
           ]
         },
         {
-          company: 'Ruoli precedenti',
+          company: 'Mandati selezionati',
           period: '2016 - 2022',
           role: 'Solution Architect, Cloud Architect, Product Specialist, PMO',
-          summary: 'Percorso su architettura cloud, delivery digitale e product enablement in media, telco, mobility e IoT.',
-          highlights: ['Kubernetes & managed DB', 'AWS + Azure mobility', 'Edge / RFID / M2M'],
+          context: 'Media, telco, mobility e IoT',
+          summary: 'Percorso su modernizzazione cloud e digital delivery con ownership tecnica, coordinamento di stream e product enablement in domini diversi.',
+          highlights: ['Media & telco', 'Mobility & IoT', 'Kubernetes / GCP', 'AWS + Azure'],
           bullets: [
-            'Migrazioni e ottimizzazioni cloud su GCP con Kubernetes e database gestiti per workload media e telco.',
-            'Architettura AWS e scrum leadership per piattaforme mobility e IoT integrate con servizi AWS e Azure.',
-            'Ruoli su edge computing, RFID e programmi M2M con ownership tecnica e PMO.'
+            'Rafforzo scalabilità e operabilità di workload media e telco introducendo Kubernetes e database gestiti su GCP.',
+            'Abilito piattaforme mobility e IoT integrate su AWS e Azure, combinando architettura applicativa e scrum leadership.',
+            'Supporto iniziative edge, RFID e M2M mantenendo ownership tecnica e coordinamento PMO su stream complessi.'
           ]
         }
       ]
@@ -453,30 +456,32 @@ const data: Record<Locale, Content> = {
     },
     experience: {
       title: 'Experience',
-      intro: 'Leadership roles across architecture and delivery, aligning business goals with engineering execution.',
+      intro: 'Selected mandates where I aligned target architecture, governance and delivery across cloud, data and AI programmes.',
       items: [
         {
           company: 'Reply',
           period: '2022 - Present',
           role: 'Enterprise & Solution Architect / PMO / Technical Lead',
-          summary: 'A steering role spanning architecture, programme governance and technical delivery for cloud, data and AI initiatives.',
-          highlights: ['AWS / Azure / GCP', 'AI gateway & RAG', 'Release governance'],
+          context: 'Banking, insurance and regulated transformation programmes',
+          summary: 'I lead enterprise programmes where architecture has to translate into operating decisions, programme governance and technical delivery through go-live.',
+          highlights: ['Banking & insurance', 'Regulated cloud', 'AI gateway', 'Release governance'],
           bullets: [
-            'Designed multi-cloud blueprints, landing zones and data/AI service layers for regulated banking and insurance programmes.',
-            'Introduced AI gateway patterns, RAG pipelines and AI SDLC/MLOps operating models with reusable controls.',
-            'Coordinated releases, dependencies and risk while driving AWS BI dashboards, Terraform SAST and team mentoring.'
+            'Made multi-cloud blueprints, landing zones and data/AI service layers reusable across banking and insurance programmes, accelerating architecture decisions in regulated contexts.',
+            'Brought AI gateways, RAG patterns and shared AI SDLC/MLOps practices into delivery, turning GenAI experimentation into a governed operating model.',
+            'Kept go-live, dependencies and risk aligned through BI dashboards, Terraform SAST controls and ongoing team mentoring.'
           ]
         },
         {
-          company: 'Prior roles',
+          company: 'Selected mandates',
           period: '2016 - 2022',
           role: 'Solution Architect, Cloud Architect, Product Specialist, PMO',
-          summary: 'A track record across cloud architecture, digital delivery and product enablement in media, telco, mobility and IoT.',
-          highlights: ['Kubernetes & managed DB', 'AWS + Azure mobility', 'Edge / RFID / M2M'],
+          context: 'Media, telco, mobility and IoT',
+          summary: 'A progression through cloud modernisation and digital delivery with hands-on technical ownership, stream coordination and product enablement across different domains.',
+          highlights: ['Media & telco', 'Mobility & IoT', 'Kubernetes / GCP', 'AWS + Azure'],
           bullets: [
-            'Led migrations and optimisation work on GCP using Kubernetes and managed databases for media and telco workloads.',
-            'Worked as AWS architect and scrum lead on mobility and IoT platforms integrating AWS and Azure services.',
-            'Covered edge computing, RFID and large-scale M2M initiatives with both technical and PMO ownership.'
+            'Improved scalability and operability for media and telco workloads by introducing Kubernetes and managed databases on GCP.',
+            'Enabled integrated mobility and IoT platforms across AWS and Azure, combining application architecture with scrum leadership.',
+            'Supported edge, RFID and large-scale M2M initiatives while keeping both technical ownership and PMO coordination on complex streams.'
           ]
         }
       ]

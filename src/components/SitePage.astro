@@ -252,7 +252,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         <p>{experience.intro}</p>
       </div>
       <div class="timeline timeline--alt">
-        {experience.items.map(({ company, period, role, summary, highlights, bullets }, index) => (
+        {experience.items.map(({ company, period, role, context, summary, highlights, bullets }, index) => (
           <article class={`timeline-card reveal ${index % 2 === 1 ? 'timeline-card--invert' : ''}`}>
             <span class="timeline-card__dot" aria-hidden="true"></span>
             <div class="timeline-card__meta">
@@ -260,7 +260,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
               <span class="timeline-card__period">{period}</span>
             </div>
             <h3>{role}</h3>
-            <p class="timeline-card__summary">{summary}</p>
+            {context ? <p class="timeline-card__context">{context}</p> : null}
             {highlights?.length ? (
               <div class="timeline-card__highlights">
                 {highlights.map((highlight) => (
@@ -268,6 +268,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
                 ))}
               </div>
             ) : null}
+            <p class="timeline-card__summary">{summary}</p>
             <ul>
               {bullets.map((bullet) => <li>{bullet}</li>)}
             </ul>
