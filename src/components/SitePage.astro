@@ -67,13 +67,10 @@ const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
 const unavailableCredentialLabel =
   locale === 'it' ? 'Credenziale non disponibile' : 'Credential unavailable';
-const heroFocusLabel = locale === 'it' ? 'Focus' : 'Focus';
 const heroProofLabel = locale === 'it' ? 'Segnali di esperienza' : 'Proof signals';
 const skillsPaneEyebrow = locale === 'it' ? 'Area selezionata' : 'Selected area';
-const heroFocusTags = skillGroups.slice(0, 4);
 const heroProofSignals = hero.proofSignals;
 const defaultSkillKey = skillGroups[0]?.key ?? '';
-const heroHighlights = hero.highlights;
 const sectionEyebrows =
   locale === 'it'
     ? {
@@ -94,14 +91,6 @@ const sectionEyebrows =
         certifications: 'Credentials',
         contact: 'Contact'
       };
-const highlightIcons = [
-  'ri-magic-line',
-  'ri-brain-line',
-  'ri-team-line',
-  'ri-route-line',
-  'ri-database-2-line',
-  'ri-rocket-line'
-];
 const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
 ---
 <BaseLayout
@@ -175,13 +164,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           <p class="hero__typing" aria-live="polite">
             <span class="typing">{hero.typing[0] ?? ''}</span>
           </p>
-          <div class="hero__focus" aria-label={heroFocusLabel}>
-            {heroFocusTags.map(({ category, key }) => (
-              <a class="hero__focus-tag" href={`${pagePath}?skill=${key}#skills`} data-skill-shortcut={key}>
-                {category}
-              </a>
-            ))}
-          </div>
           <div class="hero__actions">
             <a class="button" href={hero.actions.primaryHref} target="_blank" rel="noopener noreferrer">
               {hero.actions.primaryLabel}
@@ -211,17 +193,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           </ul>
         </div>
       </div>
-      <ul class="hero__highlights" aria-label={heroFocusLabel}>
-        {heroHighlights.map((highlight, index) => (
-          <li class="hero__highlight">
-            <i class={highlightIcons[index % highlightIcons.length]} aria-hidden="true"></i>
-            <div class="hero__highlight-copy">
-              <h3>{highlight.title}</h3>
-              <p>{highlight.detail}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
     </section>
 
     <section id="impact" class="section reveal">
@@ -355,7 +326,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           ))}
         </div>
         <div class="skills-panes">
-          {skillGroups.map(({ key, summary, items }, index) => (
+          {skillGroups.map(({ category, key, summary, items }, index) => (
             <div
               role="tabpanel"
               class={`skills-pane ${index === 0 ? 'is-active' : ''}`}
@@ -365,16 +336,19 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
               aria-hidden={index === 0 ? 'false' : 'true'}
               hidden={index === 0 ? undefined : true}
             >
-              <div class="skills-pane__intro">
-                <span class="skills-pane__eyebrow">{skillsPaneEyebrow}</span>
-                <p class="skills-pane__summary">{summary}</p>
-              </div>
-              <div class="skills-pane__grid">
-                {items.map((item) => (
-                  <div class="skills-item">
-                    <span class="skills-item__label">{item}</span>
-                  </div>
-                ))}
+              <div class="skills-pane__layout">
+                <div class="skills-pane__intro">
+                  <span class="skills-pane__eyebrow">{skillsPaneEyebrow}</span>
+                  <h3 class="skills-pane__title">{category}</h3>
+                  <p class="skills-pane__summary">{summary}</p>
+                </div>
+                <div class={`skills-pane__list ${items.length % 2 !== 0 ? 'skills-pane__list--odd' : ''}`}>
+                  {items.map((item) => (
+                    <div class="skills-signal">
+                      <span class="skills-signal__label">{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -507,7 +481,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const skillsRoot = document.querySelector('[data-skills]');
         const skillTabs = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-tab]')) : [];
         const skillPanes = skillsRoot ? Array.from(skillsRoot.querySelectorAll('[data-skill-pane]')) : [];
-        const skillShortcuts = Array.from(document.querySelectorAll('[data-skill-shortcut]'));
         const heroSection = document.querySelector('.hero');
         const sectionEntries = navLinks
           .map((link) => {
@@ -758,25 +731,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
             if (nextSkillId) {
               setActiveSkill(nextSkillId);
             }
-          });
-        }
-
-        if (skillShortcuts.length) {
-          skillShortcuts.forEach((shortcut) => {
-            if (!(shortcut instanceof HTMLAnchorElement)) return;
-            shortcut.addEventListener('click', (event) => {
-              const targetId = shortcut.dataset.skillShortcut;
-              const skillsSection = document.getElementById('skills');
-              if (!targetId || !(skillsSection instanceof HTMLElement)) {
-                return;
-              }
-              event.preventDefault();
-              setActiveSkill(targetId, { updateUrl: true });
-              skillsSection.scrollIntoView({
-                behavior: prefersReducedMotion ? 'auto' : 'smooth',
-                block: 'start'
-              });
-            });
           });
         }
 

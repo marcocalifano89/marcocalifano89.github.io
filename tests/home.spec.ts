@@ -2,19 +2,19 @@
 
 const heroHeadingSelector = 'main .hero h1';
 test.describe('Homepage experience', () => {
-  test('renders hero highlights', async ({ page }) => {
+  test('renders a simplified hero with one clear proof treatment', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.locator(heroHeadingSelector)).toContainText('Marco');
     await expect(page.locator('.hero__typing')).toBeVisible();
     await expect(page.locator('.typing')).toHaveText(/.+/);
-    await expect(page.locator('.hero__focus-tag')).toHaveCount(4);
     await expect(page.locator('.hero__proof-strip')).toHaveCount(1);
     await expect(page.locator('.hero__proof-signal')).toHaveCount(3);
     await expect(page.locator('.hero__actions .button')).toHaveCount(1);
     await expect(page.locator('.hero__proof-card')).toHaveCount(0);
     await expect(page.locator('.hero__note-card')).toHaveCount(0);
-    await expect(page.locator('.hero__highlight')).toHaveCount(6);
+    await expect(page.locator('.hero__focus-tag')).toHaveCount(0);
+    await expect(page.locator('.hero__highlight')).toHaveCount(0);
     await expect(page.locator('.hero__image-frame source[type="image/avif"]')).toHaveCount(1);
     await expect(page.locator('.hero__image-frame source[type="image/webp"]')).toHaveCount(1);
   });
@@ -27,51 +27,6 @@ test.describe('Homepage experience', () => {
     await expect(strip.locator('.hero__proof-signal')).toHaveCount(3);
     await expect(strip).toContainText('10+ years in enterprise delivery');
     await expect(strip).toContainText('AWS / Azure / GCP');
-  });
-
-  test('keeps hero focus tags on a single desktop row', async ({ page }) => {
-    await page.setViewportSize({ width: 1512, height: 982 });
-    await page.goto('/en/');
-
-    await expect(page.locator('.hero__focus-tag')).toHaveCount(4);
-
-    const firstBox = await page.locator('.hero__focus-tag').first().boundingBox();
-    const lastBox = await page.locator('.hero__focus-tag').last().boundingBox();
-
-    expect(firstBox).not.toBeNull();
-    expect(lastBox).not.toBeNull();
-    expect(Math.abs((firstBox?.y ?? 0) - (lastBox?.y ?? 0))).toBeLessThan(8);
-  });
-
-  test('hero focus shortcuts deep-link to the matching skills tab', async ({ page }) => {
-    await page.goto('/en/');
-
-    await page.getByRole('link', { name: 'Leadership & Governance' }).click();
-
-    await expect(page).toHaveURL(/\/en\/\?skill=leadership-and-governance#skills$/);
-    await expect(page.locator('#skills-tab-3')).toHaveAttribute('aria-selected', 'true');
-    await expect(page.locator('#skills-pane-3')).toHaveAttribute('aria-hidden', 'false');
-  });
-
-  test('lays out hero highlights as a single full-width desktop row', async ({ page }) => {
-    await page.setViewportSize({ width: 1512, height: 982 });
-    await page.goto('/en/');
-
-    await expect(page.locator('.hero > .hero__highlights')).toHaveCount(1);
-    await expect(page.locator('.hero__content .hero__highlights')).toHaveCount(0);
-
-    const contentBox = await page.locator('.hero__content').boundingBox();
-    const highlightsBox = await page.locator('.hero__highlights').boundingBox();
-    const firstBox = await page.locator('.hero__highlight').first().boundingBox();
-    const lastBox = await page.locator('.hero__highlight').last().boundingBox();
-
-    expect(contentBox).not.toBeNull();
-    expect(highlightsBox).not.toBeNull();
-    expect(firstBox).not.toBeNull();
-    expect(lastBox).not.toBeNull();
-
-    expect((highlightsBox?.width ?? 0) / (contentBox?.width ?? 1)).toBeGreaterThan(1.25);
-    expect(Math.abs((firstBox?.y ?? 0) - (lastBox?.y ?? 0))).toBeLessThan(8);
   });
 
   test('keeps certification cards on a single desktop row at wide widths', async ({ page }) => {
@@ -242,21 +197,27 @@ test.describe('Homepage experience', () => {
     await expect(page.locator('#skills-tab-1')).toHaveAttribute('aria-selected', 'true');
   });
 
-  test('uses the full skills panel width for the active capability grid on desktop', async ({ page }) => {
+  test('uses a structured full-width skills layout on desktop', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 960 });
     await page.goto('/en/#skills');
     await page.locator('#skills').scrollIntoViewIfNeeded();
 
-    const activeItems = page.locator('.skills-pane.is-active .skills-item');
+    await expect(page.locator('.skills-pane.is-active .skills-pane__title')).toBeVisible();
+
+    const list = page.locator('.skills-pane.is-active .skills-pane__list');
+    const activeItems = page.locator('.skills-pane.is-active .skills-signal');
     const panelBox = await page.locator('.skills-panel').boundingBox();
+    const listBox = await list.boundingBox();
     const firstItemBox = await activeItems.first().boundingBox();
     const lastItemBox = await activeItems.last().boundingBox();
 
     expect(panelBox).not.toBeNull();
+    expect(listBox).not.toBeNull();
     expect(firstItemBox).not.toBeNull();
     expect(lastItemBox).not.toBeNull();
-    expect(Math.abs((firstItemBox?.y ?? 0) - (lastItemBox?.y ?? 0))).toBeLessThan(8);
+    expect((listBox?.width ?? 0) / (panelBox?.width ?? 1)).toBeGreaterThan(0.55);
     expect(((lastItemBox?.x ?? 0) + (lastItemBox?.width ?? 0)) - ((panelBox?.x ?? 0) + (panelBox?.width ?? 0))).toBeGreaterThan(-56);
+    expect((lastItemBox?.width ?? 0) / (firstItemBox?.width ?? 1)).toBeGreaterThan(1.5);
   });
 
   test('keeps mobile skill tabs at a touch-friendly height', async ({ page }) => {
@@ -264,7 +225,7 @@ test.describe('Homepage experience', () => {
     await page.goto('/en/#skills');
 
     const tabHeight = await page.locator('#skills-tab-0').evaluate((element) => element.getBoundingClientRect().height);
-    expect(tabHeight).toBeGreaterThanOrEqual(44);
+    expect(tabHeight).toBeGreaterThanOrEqual(52);
   });
 
   test('updates the scroll progress bar while scrolling', async ({ page }) => {
