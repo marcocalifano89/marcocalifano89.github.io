@@ -29,6 +29,25 @@ test.describe('Homepage experience', () => {
     await expect(strip).toContainText('AWS / Azure / GCP');
   });
 
+  test('integrates the proof strip directly into the hero portrait module', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 960 });
+    await page.goto('/en/');
+
+    const frameBox = await page.locator('.hero__image-frame').boundingBox();
+    const stripBox = await page.locator('.hero__proof-strip').boundingBox();
+
+    expect(frameBox).not.toBeNull();
+    expect(stripBox).not.toBeNull();
+
+    const frameBottom = (frameBox?.y ?? 0) + (frameBox?.height ?? 0);
+    const stripTop = stripBox?.y ?? 0;
+    const stripWidth = stripBox?.width ?? 0;
+    const frameWidth = frameBox?.width ?? 0;
+
+    expect(Math.abs(stripTop - frameBottom)).toBeLessThan(4);
+    expect(Math.abs(stripWidth - frameWidth)).toBeLessThan(4);
+  });
+
   test('keeps certification cards on a single desktop row at wide widths', async ({ page }) => {
     await page.setViewportSize({ width: 1512, height: 982 });
     await page.goto('/en/');
