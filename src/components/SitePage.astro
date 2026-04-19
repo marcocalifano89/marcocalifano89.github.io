@@ -444,12 +444,10 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
     is:inline
     data-locale-routes={localeRoutesScript}
     data-current-locale={locale}
-    data-fallback-path={fallbackPath}
   >
       const scriptEl = document.currentScript;
       let routeMap = {"it":"/","en":"/en/"};
       let initialLocale = 'it';
-      let fallbackPath = '/';
 
       if (scriptEl instanceof HTMLScriptElement) {
         if (scriptEl.dataset.localeRoutes) {
@@ -461,9 +459,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         }
         if (scriptEl.dataset.currentLocale) {
           initialLocale = scriptEl.dataset.currentLocale;
-        }
-        if (scriptEl.dataset.fallbackPath) {
-          fallbackPath = scriptEl.dataset.fallbackPath;
         }
       }
 
@@ -495,7 +490,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           .filter(Boolean);
         let parallaxItems = [];
         const currentLocale = docEl.lang || initialLocale;
-        let storedLocale = null;
 
         const buildLocaleHref = (targetLocale) => {
           const targetPath = routeMap[targetLocale] || '/';
@@ -510,26 +504,6 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           if (!targetLocale) return;
           localeButton.href = buildLocaleHref(targetLocale);
         };
-
-        try {
-          storedLocale = localStorage.getItem('locale');
-        } catch (error) {
-          storedLocale = null;
-        }
-
-        if (
-          storedLocale &&
-          storedLocale !== currentLocale &&
-          window.location.pathname === fallbackPath
-        ) {
-          const targetPath = routeMap[storedLocale] || '/';
-          if (window.location.pathname !== targetPath) {
-            const search = window.location.search || '';
-            const hash = window.location.hash || '';
-            window.location.replace(`${targetPath}${search}${hash}`);
-            return;
-          }
-        }
 
         try {
           localStorage.setItem('locale', currentLocale);

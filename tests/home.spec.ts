@@ -160,6 +160,19 @@ test.describe('Homepage experience', () => {
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   });
 
+  test('fallback italian route is not overridden by stored english preference', async ({ page }) => {
+    await page.goto('/');
+    await page.evaluate(() => localStorage.setItem('locale', 'en'));
+
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'it');
+    await expect(page.locator(heroHeadingSelector)).toContainText('Ciao, sono Marco.');
+    await expect(page.locator('.site-nav a').first()).toContainText('Chi sono');
+  });
+
   test('theme toggle flips between dark and light modes', async ({ page }) => {
     await page.goto('/');
     const html = page.locator('html');
