@@ -29,6 +29,22 @@
   --font-body: 'InterVariable', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-heading: 'Sora', 'InterVariable', system-ui, sans-serif;
   --max-width: 1180px;
+  /* Open-design audit aliases: 2 accent hues, no runtime/template dependency. */
+  --od-color-canvas: var(--bg-gradient);
+  --od-color-surface: var(--surface-primary);
+  --od-color-surface-muted: var(--surface-secondary);
+  --od-color-text: var(--text-primary);
+  --od-color-text-muted: var(--text-muted);
+  --od-color-accent-primary: var(--accent);
+  --od-color-accent-secondary: var(--accent-secondary);
+  --od-accent-count: 2;
+  --od-font-body: var(--font-body);
+  --od-font-heading: var(--font-heading);
+  --od-space-page-inline: 1.5rem;
+  --od-space-section-block: 5.2rem;
+  --od-space-section-compact: 3.85rem;
+  --od-radius-card: 24px;
+  --od-radius-hero: 36px;
 }
 
 :root[data-theme='light'] {
@@ -70,9 +86,9 @@ body {
   margin: 0;
   min-height: 100vh;
   position: relative;
-  font-family: var(--font-body);
-  color: var(--text-primary);
-  background: var(--bg-gradient);
+  font-family: var(--od-font-body);
+  color: var(--od-color-text);
+  background: var(--od-color-canvas);
   -webkit-font-smoothing: antialiased;
   transition: background 0.3s ease, color 0.3s ease;
 }
@@ -132,7 +148,7 @@ body::after {
 h1,
 h2,
 h3 {
-  font-family: var(--font-heading);
+  font-family: var(--od-font-heading);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -355,12 +371,12 @@ img {
 .page {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1.25rem 1.5rem 5rem;
+  padding: 1.25rem var(--od-space-page-inline) 5rem;
 }
 
 section {
   position: relative;
-  margin-top: 5.2rem;
+  margin-top: var(--od-space-section-block);
   scroll-margin-top: clamp(8rem, 10vw, 10.5rem);
 }
 
@@ -404,7 +420,7 @@ section {
 }
 
 .section--compact {
-  margin-top: 3.85rem;
+  margin-top: var(--od-space-section-compact);
 }
 
 .hero {
@@ -415,12 +431,12 @@ section {
   gap: clamp(1rem, 2vw, 1.5rem);
   min-height: clamp(420px, 56vh, 560px);
   padding: clamp(2.2rem, 4vw, 3rem) clamp(2.35rem, 4.2vw, 3.4rem) clamp(1.8rem, 3.2vw, 2.4rem);
-  border-radius: 36px;
+  border-radius: var(--od-radius-hero);
   border: 1px solid var(--border-strong);
   background:
     linear-gradient(145deg, rgba(var(--accent-rgb), 0.1) 0%, transparent 38%),
     linear-gradient(135deg, rgba(var(--accent-secondary-rgb), 0.14) 0%, transparent 54%),
-    var(--surface-primary);
+    var(--od-color-surface);
   backdrop-filter: blur(14px);
   box-shadow: 0 52px 120px -64px rgba(0, 0, 0, 0.62);
   overflow: hidden;
@@ -754,8 +770,8 @@ section {
   grid-template-columns: 1fr auto;
   align-items: start;
   gap: 0.9rem 1.1rem;
-  background: linear-gradient(180deg, var(--surface-secondary), rgba(255, 255, 255, 0.02));
-  border-radius: 24px;
+  background: linear-gradient(180deg, var(--od-color-surface-muted), rgba(255, 255, 255, 0.02));
+  border-radius: var(--od-radius-card);
   padding: 1.65rem;
   border: 1px solid var(--border-subtle);
   box-shadow: 0 24px 56px -34px rgba(0, 0, 0, 0.5);
@@ -857,8 +873,8 @@ section {
 
 .pillar-card {
   position: relative;
-  background: linear-gradient(180deg, var(--surface-primary), rgba(255, 255, 255, 0.01));
-  border-radius: 24px;
+  background: linear-gradient(180deg, var(--od-color-surface), rgba(255, 255, 255, 0.01));
+  border-radius: var(--od-radius-card);
   border: 1px solid var(--border-subtle);
   padding: 1.7rem;
   display: flex;
@@ -937,8 +953,8 @@ section {
   position: relative;
   margin-left: 1.5rem;
   padding: 2rem 2rem 1.8rem 2.8rem;
-  border-radius: 24px;
-  background: linear-gradient(180deg, var(--surface-primary), rgba(255, 255, 255, 0.02));
+  border-radius: var(--od-radius-card);
+  background: linear-gradient(180deg, var(--od-color-surface), rgba(255, 255, 255, 0.02));
   border: 1px solid var(--border-subtle);
   box-shadow: 0 30px 70px -44px rgba(0, 0, 0, 0.5);
   display: grid;

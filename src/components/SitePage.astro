@@ -112,7 +112,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
   <link slot="meta" rel="alternate" hreflang="x-default" href={fallbackUrl} />
   <script slot="meta" type="application/ld+json" is:inline set:html={metadataScript}></script>
 
-  <header class="site-header" id="top">
+  <header class="site-header" id="top" data-ui-section="site-header" data-od-id="portfolio.header">
     <div class="site-header__inner">
       <a class="site-header__brand" href="#top">{nav.brand}</a>
       <nav class="site-nav" aria-label={navLabel}>
@@ -152,8 +152,8 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
     </div>
   </header>
 
-  <main class="page">
-    <section id="about" class="hero reveal">
+  <main class="page" data-ui-section="page-shell" data-od-id="portfolio.page">
+    <section id="about" class="hero reveal" data-ui-section="about" data-od-id="portfolio.hero">
       <span class="hero__parallax hero__parallax--primary" data-parallax data-depth="0.18" aria-hidden="true"></span>
       <span class="hero__parallax hero__parallax--secondary" data-parallax data-depth="0.28" aria-hidden="true"></span>
       <div class="hero__main">
@@ -195,7 +195,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
     </section>
 
-    <section id="impact" class="section reveal">
+    <section id="impact" class="section reveal" data-ui-section="impact" data-od-id="portfolio.impact">
       <div class="section-heading">
         <span class="section-heading__eyebrow">{sectionEyebrows.impact}</span>
         <h2>{metrics.title}</h2>
@@ -225,7 +225,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
     </section>
 
-    <section id="approach" class="section reveal">
+    <section id="approach" class="section reveal" data-ui-section="approach" data-od-id="portfolio.approach">
       <div class="section-heading">
         <span class="section-heading__eyebrow">{sectionEyebrows.approach}</span>
         <h2>{pillars.title}</h2>
@@ -245,7 +245,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
     </section>
 
-    <section id="experience" class="section">
+    <section id="experience" class="section" data-ui-section="experience" data-od-id="portfolio.experience">
       <div class="section-heading">
         <span class="section-heading__eyebrow">{sectionEyebrows.experience}</span>
         <h2>{experience.title}</h2>
@@ -277,7 +277,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
     </section>
 
-    <section id="education" class="section section--compact reveal">
+    <section id="education" class="section section--compact reveal" data-ui-section="education" data-od-id="portfolio.education">
       <div class="section-heading">
         <span class="section-heading__eyebrow">{sectionEyebrows.education}</span>
         <h2>{education.title}</h2>
@@ -303,7 +303,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
     </section>
 
-    <section id="skills" class="section reveal">
+    <section id="skills" class="section reveal" data-ui-section="skills" data-od-id="portfolio.skills">
       <div class="section-heading">
         <span class="section-heading__eyebrow">{sectionEyebrows.skills}</span>
         <h2>{skills.title}</h2>
@@ -357,7 +357,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
     </section>
 
-    <section id="certifications" class="section reveal">
+    <section id="certifications" class="section reveal" data-ui-section="certifications" data-od-id="portfolio.certifications">
       <div class="section-heading">
         <span class="section-heading__eyebrow">{sectionEyebrows.certifications}</span>
         <h2>{certifications.title}</h2>
@@ -385,7 +385,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
       </div>
     </section>
 
-    <section id="contact" class="section section--compact contact-section reveal">
+    <section id="contact" class="section section--compact contact-section reveal" data-ui-section="contact" data-od-id="portfolio.contact">
       <div class="section-heading">
         <span class="section-heading__eyebrow">{sectionEyebrows.contact}</span>
         <h2>{contact.title}</h2>
@@ -407,7 +407,7 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" data-ui-section="site-footer" data-od-id="portfolio.footer">
     <p>{footerText}</p>
   </footer>
 
