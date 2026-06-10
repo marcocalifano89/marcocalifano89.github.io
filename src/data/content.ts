@@ -99,10 +99,10 @@ type Content = {
 const data: Record<Locale, Content> = {
   it: {
     head: {
-      title: 'Marco Califano - Enterprise & Solution Architect',
-      description: 'Enterprise & Solution Architect con esperienza multi-cloud (AWS, Azure, Google Cloud) e programmi di trasformazione digitale in utilities, energy, media e banking.',
-      keywords: 'Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture',
-      ogDescription: 'Enterprise & Solution Architect che guida roadmap cloud, data & AI con impatto misurabile sul business.'
+      title: 'Marco Califano - BU Manager, Cloud & AI Solutions',
+      description: 'BU Manager, Cloud & AI Solutions: strategia di offering, governance della delivery e crescita del team su iniziative cloud, data e GenAI, con background da Enterprise & Solution Architect multi-cloud (AWS, Azure, Google Cloud).',
+      keywords: 'Marco Califano, BU Manager, Business Unit Manager, Solution Architect, Cloud Architect, AWS, Azure, GCP, GenAI, Enterprise Architecture',
+      ogDescription: 'BU Manager, Cloud & AI Solutions: trasformo priorità di business in delivery tecnologica sicura e scalabile.'
     },
     nav: {
       brand: 'Marco Califano',
@@ -125,20 +125,20 @@ const data: Record<Locale, Content> = {
       }
     },
     hero: {
-      badge: 'Enterprise & Solution Architect',
+      badge: 'BU Manager, Cloud & AI Solutions',
       title: 'Ciao, sono Marco.',
-      lead: 'Disegno e coordino programmi di modernizzazione cloud, dati e AI per organizzazioni finanziarie, assicurative e industriali, unendo visione strategica e delivery hands-on.',
+      lead: 'Guido una Business Unit Cloud & AI con responsabilità su strategia di offering, governance della delivery e crescita del team su iniziative cloud, data e GenAI, unendo leadership e background hands-on da enterprise architect.',
       typing: [
-        'Blueprint multi-cloud e landing zone',
-        'Governance GenAI e AI gateway',
-        'Toolchain MLOps e AI SDLC',
-        'Digital integration hub su Azure',
-        'Coaching di team DevSecOps distribuiti'
+        'Strategia di offering cloud, data e GenAI',
+        'Landing zone, RAG e AI gateway',
+        'Presales e solution shaping',
+        'Governance di delivery e programmi',
+        'Mentoring di architetti e tech lead'
       ],
       proofSignals: [
         { text: '10+ anni di delivery enterprise' },
         { text: 'AWS / Azure / GCP' },
-        { text: 'Governance GenAI e AI gateway' }
+        { text: 'BU leadership e governance GenAI' }
       ],
       highlights: [
         { title: 'Strategia cloud', detail: 'Blueprint, landing zone' },
@@ -218,16 +218,30 @@ const data: Record<Locale, Content> = {
       intro: 'Mandati selezionati in cui ho allineato architettura target, governance e delivery per programmi cloud, dati e AI.',
       items: [
         {
+          company: 'Liquid',
+          period: '2026 - Oggi',
+          role: 'BU Manager, Cloud & AI Solutions',
+          context: 'Business unit cloud, data e generative AI',
+          summary: 'Guido la Business Unit con responsabilità su strategia di offering, governance della delivery e crescita del team su iniziative cloud, data e generative AI.',
+          highlights: ['BU leadership', 'Cloud & GenAI strategy', 'Presales', 'Delivery governance'],
+          bullets: [
+            'Guido pianificazione della BU, pipeline, staffing e supervisione della delivery, allineando priorità commerciali e capacità di esecuzione.',
+            'Disegno soluzioni cloud e GenAI su AWS, Azure e GCP - landing zone, architetture RAG, AI gateway e integrazione sicura - con modelli di governance su architettura, security, compliance e costi.',
+            'Guido proposal shaping, stime, technical storytelling e solution review per opportunità strategiche, con governance di release e programmi di trasformazione.',
+            'Faccio crescere architetti e technical lead e promuovo asset riutilizzabili, acceleratori e standard di delivery.'
+          ]
+        },
+        {
           company: 'Reply',
-          period: '2022 - Oggi',
+          period: '2022 - 2025',
           role: 'Enterprise & Solution Architect / PMO / Technical Lead',
           context: 'Banking, insurance e programmi di trasformazione regulated',
-          summary: 'Guido programmi enterprise in cui l’architettura deve tradursi in decisioni operative, governance di programma e delivery tecnico fino al go-live.',
+          summary: 'Ho guidato programmi enterprise in cui l’architettura doveva tradursi in decisioni operative, governance di programma e delivery tecnico fino al go-live.',
           highlights: ['Banking & insurance', 'Regulated cloud', 'AI gateway', 'Release governance'],
           bullets: [
-            'Rendo riutilizzabili blueprint multi-cloud, landing zone e service layer data/AI per programmi banking e insurance, accelerando le scelte architetturali in contesti regulated.',
-            'Porto in delivery AI gateway, pattern RAG e pratiche AI SDLC/MLOps condivise, trasformando sperimentazione GenAI in operating model governato.',
-            'Tengo allineati go-live, dipendenze e rischio con dashboard BI, controlli Terraform SAST e mentoring continuo di team distribuiti.'
+            'Ho reso riutilizzabili blueprint multi-cloud, landing zone e service layer data/AI per programmi banking e insurance, accelerando le scelte architetturali in contesti regulated.',
+            'Ho portato in delivery AI gateway, pattern RAG e pratiche AI SDLC/MLOps condivise, trasformando sperimentazione GenAI in operating model governato.',
+            'Ho tenuto allineati go-live, dipendenze e rischio con dashboard BI, controlli Terraform SAST e mentoring continuo di team distribuiti.'
           ]
         },
         {
@@ -290,8 +304,8 @@ const data: Record<Locale, Content> = {
         },
         {
           category: 'Leadership & Governance',
-          summary: 'Allineamento tra stakeholder, roadmap, compliance e execution fino al go-live.',
-          items: ['IT strategy e PMO', 'Orchestrazione di team cross-funzionali', 'Compliance e security', 'Stakeholder engagement']
+          summary: 'Leadership di business unit: offering, roadmap, compliance ed execution fino al go-live.',
+          items: ['BU management e IT strategy', 'Presales e solution shaping', 'Delivery governance e PMO', 'Orchestrazione di team cross-funzionali', 'Compliance e security', 'Stakeholder engagement']
         }
       ]
     },
@@ -336,14 +350,14 @@ const data: Record<Locale, Content> = {
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
       ]
     },
-    footer: 'Marco Califano - Enterprise & Solution Architect'
+    footer: 'Marco Califano - BU Manager, Cloud & AI Solutions'
   },
   en: {
     head: {
-      title: 'Marco Califano - Enterprise & Solution Architect',
-      description: 'Enterprise & Solution Architect delivering multi-cloud (AWS, Azure, Google Cloud) platforms and digital transformation programmes across utilities, energy, media and banking.',
-      keywords: 'Marco Califano, Solution Architect, Cloud Architect, AWS, Azure, GCP, Enterprise Architecture',
-      ogDescription: 'Enterprise & Solution Architect driving cloud, data & AI strategies with measurable business impact.'
+      title: 'Marco Califano - BU Manager, Cloud & AI Solutions',
+      description: 'BU Manager, Cloud & AI Solutions: offering strategy, delivery governance and team growth across cloud, data and GenAI initiatives, with an Enterprise & Solution Architect background spanning AWS, Azure and Google Cloud.',
+      keywords: 'Marco Califano, BU Manager, Business Unit Manager, Solution Architect, Cloud Architect, AWS, Azure, GCP, GenAI, Enterprise Architecture',
+      ogDescription: 'BU Manager, Cloud & AI Solutions turning business priorities into secure, scalable technology delivery.'
     },
     nav: {
       brand: 'Marco Califano',
@@ -366,20 +380,20 @@ const data: Record<Locale, Content> = {
       }
     },
     hero: {
-      badge: 'Enterprise & Solution Architect',
+      badge: 'BU Manager, Cloud & AI Solutions',
       title: "Hi, I'm Marco.",
-      lead: 'I architect and steer cloud, data and AI modernisation for financial, insurance and industrial organisations, blending strategic governance with hands-on delivery.',
+      lead: 'I lead a Cloud & AI Business Unit with responsibility for offering strategy, delivery governance and team growth across cloud, data and GenAI initiatives, building on a hands-on enterprise architecture background.',
       typing: [
-        'Multi-cloud blueprints & landing zones',
-        'GenAI governance and AI Gateway',
-        'MLOps & AI SDLC playbooks',
-        'Real-time data & analytics platforms',
-        'Coaching distributed DevSecOps teams'
+        'Cloud, data & GenAI offering strategy',
+        'Landing zones, RAG & AI gateways',
+        'Presales and solution shaping',
+        'Delivery and programme governance',
+        'Mentoring architects and tech leads'
       ],
       proofSignals: [
         { text: '10+ years in enterprise delivery' },
         { text: 'AWS / Azure / GCP' },
-        { text: 'GenAI governance & AI gateway' }
+        { text: 'BU leadership & GenAI governance' }
       ],
       highlights: [
         { title: 'Cloud strategy', detail: 'Blueprints, landing zones' },
@@ -459,11 +473,25 @@ const data: Record<Locale, Content> = {
       intro: 'Selected mandates where I aligned target architecture, governance and delivery across cloud, data and AI programmes.',
       items: [
         {
+          company: 'Liquid',
+          period: '2026 - Present',
+          role: 'BU Manager, Cloud & AI Solutions',
+          context: 'Cloud, data and generative AI business unit',
+          summary: 'I lead the Business Unit with responsibility for offering strategy, delivery governance and team growth across cloud, data and generative AI initiatives.',
+          highlights: ['BU leadership', 'Cloud & GenAI strategy', 'Presales', 'Delivery governance'],
+          bullets: [
+            'Drive BU planning, pipeline support, staffing and delivery oversight, aligning commercial priorities with execution capacity.',
+            'Shape cloud and GenAI solutions across AWS, Azure and GCP - landing zones, RAG architectures, AI gateways and secure integration patterns - with governance models for architecture, security, compliance and cost.',
+            'Lead proposal shaping, estimation, technical storytelling and solution review for strategic opportunities, managing release and programme governance for transformation initiatives.',
+            'Mentor architects and technical leads, promoting reusable assets, accelerators and delivery standards.'
+          ]
+        },
+        {
           company: 'Reply',
-          period: '2022 - Present',
+          period: '2022 - 2025',
           role: 'Enterprise & Solution Architect / PMO / Technical Lead',
           context: 'Banking, insurance and regulated transformation programmes',
-          summary: 'I lead enterprise programmes where architecture has to translate into operating decisions, programme governance and technical delivery through go-live.',
+          summary: 'I led enterprise programmes where architecture had to translate into operating decisions, programme governance and technical delivery through go-live.',
           highlights: ['Banking & insurance', 'Regulated cloud', 'AI gateway', 'Release governance'],
           bullets: [
             'Made multi-cloud blueprints, landing zones and data/AI service layers reusable across banking and insurance programmes, accelerating architecture decisions in regulated contexts.',
@@ -531,8 +559,8 @@ const data: Record<Locale, Content> = {
         },
         {
           category: 'Leadership & Governance',
-          summary: 'Alignment across stakeholders, roadmaps, compliance and execution through go-live.',
-          items: ['IT strategy & PMO', 'Cross-team orchestration', 'Compliance & security', 'Stakeholder management']
+          summary: 'Business unit leadership: offering, roadmaps, compliance and execution through go-live.',
+          items: ['BU management & IT strategy', 'Presales & solution shaping', 'Delivery governance & PMO', 'Cross-team orchestration', 'Compliance & security', 'Stakeholder management']
         }
       ]
     },
@@ -577,7 +605,7 @@ const data: Record<Locale, Content> = {
         { icon: 'ri-linkedin-box-line', label: 'LinkedIn', text: 'linkedin.com/in/marcocalifano', href: 'https://www.linkedin.com/in/marcocalifano/' }
       ]
     },
-    footer: 'Marco Califano - Enterprise & Solution Architect'
+    footer: 'Marco Califano - BU Manager, Cloud & AI Solutions'
   }
 };
 

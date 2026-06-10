@@ -261,9 +261,10 @@ test.describe('Homepage experience', () => {
     await page.goto('/en/#experience');
     await page.locator('#experience').scrollIntoViewIfNeeded();
 
-    await expect(page.locator('.timeline-card__context')).toHaveCount(2);
-    await expect(page.locator('.timeline-card__context').first()).toContainText('Banking');
-    await expect(page.locator('.timeline-card__context').nth(1)).toContainText('Media');
+    await expect(page.locator('.timeline-card__context')).toHaveCount(3);
+    await expect(page.locator('.timeline-card__context').first()).toContainText('generative AI');
+    await expect(page.locator('.timeline-card__context').nth(1)).toContainText('Banking');
+    await expect(page.locator('.timeline-card__context').nth(2)).toContainText('Media');
   });
 
   test('uses a structured full-width skills layout on desktop', async ({ page }) => {
