@@ -155,26 +155,26 @@ const data: Record<Locale, Content> = {
     },
     metrics: {
       title: 'Outcome selezionati',
-      intro: 'Una vista rapida sui programmi che porto dalla strategia al go-live.',
+      intro: 'I numeri della Business Unit e del percorso che porto dalla strategia al go-live.',
       items: [
         {
-          eyebrow: 'Banking & insurance',
-          value: 'Multi-cloud',
-          label: 'Blueprint, landing zone e layer data/AI',
-          detail: 'Architetture target AWS, Azure e GCP per iniziative regulated con governance e pattern riutilizzabili.',
-          signals: ['AWS / Azure / GCP', 'Landing zone', 'Risk-aware']
+          eyebrow: 'Business unit',
+          value: '40',
+          label: 'Professionisti nella BU Cloud & AI Solutions',
+          detail: 'Architetti, engineer e team di progetto coordinati tra presales e delivery, con pianificazione, staffing e supervisione della qualità.',
+          signals: ['BU leadership', 'Staffing & pipeline', 'Mentoring']
         },
         {
-          eyebrow: 'GenAI delivery',
-          value: 'GenAI',
-          label: 'Gateway centralizzati, RAG e AI SDLC',
-          detail: 'Dall’assessment dell’AI gateway ai playbook MLOps/DevSecOps con controlli, KPI e modelli operativi condivisi.',
-          signals: ['AI gateway', 'RAG', 'AI SDLC']
+          eyebrow: 'Clienti & settori',
+          value: '20+',
+          label: 'Clienti attivi su più settori',
+          detail: 'Soluzioni cloud, data e GenAI su AWS, Azure e GCP — da landing zone e architetture RAG ad AI gateway — anche per realtà regulated.',
+          signals: ['AWS / Azure / GCP', 'GenAI', 'Regulated']
         },
         {
-          eyebrow: 'Programme orchestration',
+          eyebrow: 'Delivery enterprise',
           value: '10+',
-          label: 'Team e stakeholder allineati fino al go-live',
+          label: 'Anni di programmi portati fino al go-live',
           detail: 'Release governance, dashboard BI, mentoring tecnico ed executive advisory su stream cross-funzionali.',
           signals: ['Executive advisory', 'Release governance', 'Change enablement']
         }
@@ -410,26 +410,26 @@ const data: Record<Locale, Content> = {
     },
     metrics: {
       title: 'Selected outcomes',
-      intro: 'A quick view of the programmes I carry from strategy into rollout.',
+      intro: 'The Business Unit in numbers, and the track record I carry from strategy into rollout.',
       items: [
         {
-          eyebrow: 'Banking & insurance',
-          value: 'Multi-cloud',
-          label: 'Blueprints, landing zones and data/AI service layers',
-          detail: 'Target architectures across AWS, Azure and GCP for regulated initiatives with reusable governance patterns.',
-          signals: ['AWS / Azure / GCP', 'Landing zones', 'Risk-aware']
+          eyebrow: 'Business unit',
+          value: '40',
+          label: 'Professionals in the Cloud & AI Solutions BU',
+          detail: 'Architects, engineers and project teams coordinated across presales and delivery, with planning, staffing and quality oversight.',
+          signals: ['BU leadership', 'Staffing & pipeline', 'Mentoring']
         },
         {
-          eyebrow: 'GenAI delivery',
-          value: 'GenAI',
-          label: 'Central gateways, RAG and AI SDLC patterns',
-          detail: 'From AI gateway assessments to MLOps/DevSecOps playbooks with shared controls, KPIs and operating models.',
-          signals: ['AI gateway', 'RAG', 'AI SDLC']
+          eyebrow: 'Clients & industries',
+          value: '20+',
+          label: 'Active clients across multiple industries',
+          detail: 'Cloud, data and GenAI solutions on AWS, Azure and GCP — from landing zones and RAG architectures to AI gateways — including regulated environments.',
+          signals: ['AWS / Azure / GCP', 'GenAI', 'Regulated']
         },
         {
-          eyebrow: 'Programme orchestration',
+          eyebrow: 'Enterprise delivery',
           value: '10+',
-          label: 'Teams and stakeholders aligned through go-live',
+          label: 'Years of programmes carried through go-live',
           detail: 'Release governance, BI dashboards, technical mentoring and executive advisory across cross-functional streams.',
           signals: ['Executive advisory', 'Release governance', 'Change enablement']
         }
