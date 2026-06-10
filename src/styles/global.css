@@ -320,6 +320,32 @@ img {
   letter-spacing: 0.08em;
 }
 
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle .nav-toggle__close {
+  display: none;
+}
+
+.site-header__inner.nav-open .nav-toggle__open {
+  display: none;
+}
+
+.site-header__inner.nav-open .nav-toggle__close {
+  display: inline;
+}
+
+.site-header__cta {
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.site-header__cta--idle {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .control--theme {
   width: 2.4rem;
   height: 2.4rem;
@@ -520,6 +546,7 @@ section {
 .hero__badge {
   display: inline-flex;
   align-items: center;
+  justify-self: start;
   gap: 0.5rem;
   padding: 0.48rem 1rem;
   border-radius: 999px;
@@ -550,15 +577,12 @@ section {
 
 .hero__typing {
   margin: 0;
-  min-height: 3.1rem;
+  min-height: 2.3rem;
   display: flex;
   align-items: center;
-  padding: 0.92rem 1rem;
-  border-radius: 18px;
-  background: var(--surface-tertiary);
-  border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   max-width: 30rem;
+  font-size: 1.05rem;
 }
 
 .typing {
@@ -704,7 +728,6 @@ section {
   box-shadow: 0 0 0 0.22rem rgba(var(--accent-rgb), 0.12);
 }
 
-:root[data-theme='light'] .hero__typing,
 :root[data-theme='light'] .hero__proof-strip,
 :root[data-theme='light'] .skills-tab,
 :root[data-theme='light'] .timeline-card__period,
@@ -1482,40 +1505,64 @@ section {
 
 @media (max-width: 960px) {
   .site-header__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      'brand controls'
-      'nav nav';
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: 0.62rem 0.85rem;
     padding: 0.72rem 0.9rem;
     border-radius: 24px;
   }
 
+  .nav-toggle {
+    display: inline-flex;
+  }
+
   .site-nav {
-    grid-area: nav;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: none;
+    order: 3;
     width: 100%;
-    gap: 0.48rem 0.78rem;
-    padding-top: 0.08rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+    margin-top: 0.4rem;
+    padding-top: 0.45rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .site-header__inner.nav-open .site-nav {
+    display: flex;
+  }
+
+  .site-nav a {
+    font-size: 0.98rem;
+    min-height: 44px;
+    padding: 0.55rem 0.4rem;
+    border-radius: 12px;
+  }
+
+  .site-nav a::after {
+    display: none;
+  }
+
+  .site-nav a.is-active,
+  .site-nav a[aria-current='location'] {
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent);
   }
 
   .site-header__controls {
-    grid-area: controls;
     width: auto;
     justify-content: flex-end;
     gap: 0.48rem;
   }
 
-  .site-header__brand {
-    grid-area: brand;
-    align-self: center;
+  section {
+    scroll-margin-top: 5.4rem;
   }
 
-  .site-nav a {
-    font-size: 0.8rem;
+  .hero {
+    scroll-margin-top: 5.8rem;
   }
 
   .site-header__controls .control {
@@ -1545,7 +1592,6 @@ section {
   }
 
   .hero__visual {
-    order: -1;
     width: min(100%, 460px);
     justify-self: center;
     padding: 0;
@@ -1635,18 +1681,12 @@ section {
     border-radius: 22px;
   }
 
-  .site-nav {
-    gap: 0.42rem 0.62rem;
-  }
-
   .site-header__controls {
     gap: 0.42rem;
   }
 
-  .site-header__controls .button {
-    width: auto;
-    padding: 0.62rem 0.95rem;
-    font-size: 0.82rem;
+  .site-header__cta {
+    display: none;
   }
 
   .site-header__controls .control {
@@ -1655,12 +1695,8 @@ section {
   }
 
   .site-header__controls .control--theme {
-    width: 2.08rem;
-    height: 2.08rem;
-  }
-
-  .site-nav a {
-    font-size: 0.78rem;
+    width: 2.22rem;
+    height: 2.22rem;
   }
 
   .hero__actions {
@@ -1718,22 +1754,8 @@ section {
 }
 
 @media (max-width: 520px) {
-  .site-header__inner {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'brand'
-      'nav'
-      'controls';
-    gap: 0.48rem;
-  }
-
   .site-header__brand {
-    justify-self: start;
-  }
-
-  .site-header__controls {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
   }
 }

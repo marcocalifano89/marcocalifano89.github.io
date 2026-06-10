@@ -63,6 +63,7 @@ const metadataScript = JSON.stringify({
 
 const footerText = `\u00A9 ${new Date().getFullYear()} ${footer}`;
 const navLabel = locale === 'it' ? 'Navigazione principale' : 'Primary navigation';
+const menuToggleLabel = locale === 'it' ? 'Apri o chiudi il menu' : 'Open or close the menu';
 const backToTopLabel = locale === 'it' ? 'Torna in alto' : 'Back to top';
 const credentialLabel = locale === 'it' ? 'Vedi credenziale' : 'View credential';
 const unavailableCredentialLabel =
@@ -115,12 +116,23 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
   <header class="site-header" id="top">
     <div class="site-header__inner">
       <a class="site-header__brand" href="#top">{nav.brand}</a>
-      <nav class="site-nav" aria-label={navLabel}>
+      <nav class="site-nav" id="primary-nav" aria-label={navLabel}>
         {nav.items.map((item) => (
           <a href={`#${item.id}`} data-nav-link={item.id}>{item.label}</a>
         ))}
       </nav>
       <div class="site-header__controls">
+        <button
+          class="control control--theme nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          data-nav-toggle
+        >
+          <span class="sr-only">{menuToggleLabel}</span>
+          <i class="ri-menu-line nav-toggle__open" aria-hidden="true"></i>
+          <i class="ri-close-line nav-toggle__close" aria-hidden="true"></i>
+        </button>
         <a
           class="control control--language"
           href={alternatePath}
@@ -141,10 +153,11 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
           <i class="ri-moon-line" aria-hidden="true"></i>
         </button>
         <a
-          class="button"
+          class="button site-header__cta site-header__cta--idle"
           href={hero.actions.primaryHref}
           target="_blank"
           rel="noopener noreferrer"
+          data-header-cta
         >
           {hero.actions.primaryLabel}
         </a>
@@ -469,6 +482,11 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         const localeToggleEl = document.querySelector('[data-locale-target]');
         const brandLink = document.querySelector('.site-header__brand');
         const backToTopButton = backToTopEl instanceof HTMLElement ? backToTopEl : null;
+        const headerCtaEl = document.querySelector('[data-header-cta]');
+        const headerCta = headerCtaEl instanceof HTMLElement ? headerCtaEl : null;
+        const navToggleEl = document.querySelector('[data-nav-toggle]');
+        const navToggle = navToggleEl instanceof HTMLElement ? navToggleEl : null;
+        const headerInner = document.querySelector('.site-header__inner');
         const themeButton = themeToggleEl instanceof HTMLElement ? themeToggleEl : null;
         const localeButton = localeToggleEl instanceof HTMLAnchorElement ? localeToggleEl : null;
         const navLinks = Array.from(document.querySelectorAll('[data-nav-link]'));
@@ -559,13 +577,40 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
         };
 
         const toggleVisibility = () => {
-          if (!backToTopButton) return;
-          if (window.scrollY > 320) {
-            backToTopButton.classList.add('back-to-top--visible');
-          } else {
-            backToTopButton.classList.remove('back-to-top--visible');
+          const scrolled = window.scrollY > 320;
+          if (backToTopButton) {
+            backToTopButton.classList.toggle('back-to-top--visible', scrolled);
+          }
+          if (headerCta) {
+            headerCta.classList.toggle('site-header__cta--idle', !scrolled);
           }
         };
+
+        const closeNav = () => {
+          if (!headerInner || !navToggle) return;
+          headerInner.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        };
+
+        if (navToggle && headerInner) {
+          navToggle.addEventListener('click', () => {
+            const isOpen = headerInner.classList.toggle('nav-open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          });
+          navLinks.forEach((link) => link.addEventListener('click', closeNav));
+          document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeNav();
+          });
+          document.addEventListener('click', (event) => {
+            if (
+              headerInner.classList.contains('nav-open') &&
+              event.target instanceof Node &&
+              !headerInner.contains(event.target)
+            ) {
+              closeNav();
+            }
+          });
+        }
 
         const updateScrollProgress = () => {
           if (!scrollProgressEl) return;
