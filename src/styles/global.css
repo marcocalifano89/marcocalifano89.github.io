@@ -63,7 +63,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: clamp(7.25rem, 9vw, 9.75rem);
 }
 
 body {
@@ -214,7 +213,7 @@ img {
   margin: 0 auto;
   padding: 0.85rem 1.1rem;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1.25rem;
   border-radius: 999px;
@@ -387,7 +386,7 @@ img {
 section {
   position: relative;
   margin-top: 5.2rem;
-  scroll-margin-top: clamp(8rem, 10vw, 10.5rem);
+  scroll-margin-top: clamp(7.5rem, 8.5vw, 9rem);
 }
 
 .section-heading {
@@ -436,7 +435,7 @@ section {
 .hero {
   position: relative;
   margin-top: 1.5rem;
-  scroll-margin-top: clamp(9rem, 11vw, 11rem);
+  scroll-margin-top: clamp(8rem, 9vw, 9.5rem);
   display: grid;
   gap: clamp(1rem, 2vw, 1.5rem);
   min-height: clamp(400px, 53vh, 540px);
@@ -1358,6 +1357,13 @@ section {
 
 .cert-card__link--disabled {
   color: var(--text-muted);
+}
+
+@media (min-width: 961px) {
+  /* Let the last anchor reach the top of the viewport like every other section */
+  #contact {
+    min-height: calc(100vh - 15rem);
+  }
 }
 
 .contact-grid {
