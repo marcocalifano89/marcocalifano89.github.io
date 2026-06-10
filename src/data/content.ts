@@ -150,7 +150,7 @@ const data: Record<Locale, Content> = {
       ],
       actions: {
         primaryLabel: 'Scarica il CV',
-        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link'
+        primaryHref: '/assets/Marco.Califano.CV_en.pdf'
       }
     },
     metrics: {
@@ -405,7 +405,7 @@ const data: Record<Locale, Content> = {
       ],
       actions: {
         primaryLabel: 'Download CV',
-        primaryHref: 'https://drive.google.com/file/d/1Ik4bvW0YoHdVsm_CBipPkPgcaRpKqVvA/view?usp=drive_link'
+        primaryHref: '/assets/Marco.Califano.CV_en.pdf'
       }
     },
     metrics: {

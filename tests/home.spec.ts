@@ -323,6 +323,17 @@ test.describe('Homepage experience', () => {
     await page.waitForFunction(() => window.scrollY < 5);
   });
 
+  test('serves the self-hosted CV from the hero download button', async ({ page, request }) => {
+    await page.goto('/');
+
+    const cvHref = '/assets/Marco.Califano.CV_en.pdf';
+    await expect(page.locator('.hero__actions .button')).toHaveAttribute('href', cvHref);
+
+    const response = await request.get(cvHref);
+    expect(response.ok()).toBeTruthy();
+    expect(response.headers()['content-type']).toContain('pdf');
+  });
+
   test('does not render empty certification links', async ({ page }) => {
     await page.goto('/');
 
