@@ -31,7 +31,8 @@ const pagePath = localePaths[locale];
 const canonicalUrl = new URL(pagePath, siteOrigin).toString();
 const alternateUrl = new URL(alternatePath, siteOrigin).toString();
 const fallbackUrl = new URL(fallbackPath, siteOrigin).toString();
-const socialImageUrl = new URL('/assets/img/profile.jpeg', siteOrigin).toString();
+const socialImageUrl = new URL('/assets/img/social-card.png', siteOrigin).toString();
+const profileImageUrl = new URL('/assets/img/profile.jpeg', siteOrigin).toString();
 const localeRoutesScript = JSON.stringify(localePaths);
 const skillGroups = skills.groups.map((group) => ({ ...group, key: toSkillKey(group.category) }));
 
@@ -48,7 +49,7 @@ const metadataScript = JSON.stringify({
     name: nav.brand,
     jobTitle: hero.badge,
     url: canonicalUrl,
-    image: socialImageUrl,
+    image: profileImageUrl,
     email: emailCard?.href ?? 'mailto:marcocalifano89@gmail.com',
     telephone: phoneCard?.href?.replace('tel:', '') ?? phoneCard?.text ?? '+393488782506',
     worksFor: {
@@ -108,6 +109,8 @@ const metricIcons = ['ri-stack-line', 'ri-cpu-line', 'ri-team-line'];
   twitterDescription={head.ogDescription}
   twitterImage={socialImageUrl}
 >
+  <meta slot="meta" property="og:image:width" content="1200" />
+  <meta slot="meta" property="og:image:height" content="630" />
   <link slot="meta" rel="alternate" hreflang={locale} href={canonicalUrl} />
   <link slot="meta" rel="alternate" hreflang={alternateLocale} href={alternateUrl} />
   <link slot="meta" rel="alternate" hreflang="x-default" href={fallbackUrl} />

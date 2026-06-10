@@ -1,6 +1,7 @@
 @import '@fontsource-variable/inter/index.css';
 @import '@fontsource/sora/600.css';
 @import '@fontsource/sora/700.css';
+@import './icons.css';
 
 :root {
   color-scheme: dark;
@@ -1741,13 +1742,25 @@ section {
     right: -36%;
   }
 
-  .skills-tab {
-    min-height: 52px;
-    padding-block: 0.82rem;
+  .skills-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.35rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
   }
 
-  .skills-tabs {
-    grid-template-columns: 1fr;
+  .skills-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .skills-tab {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    min-height: 52px;
+    padding-block: 0.82rem;
   }
 
   .skills-pane__list {

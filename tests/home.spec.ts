@@ -145,7 +145,7 @@ test.describe('Homepage experience', () => {
     );
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       'content',
-      'https://marcocalifano89.github.io/assets/img/profile.jpeg'
+      'https://marcocalifano89.github.io/assets/img/social-card.png'
     );
     await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
       'content',
@@ -153,7 +153,7 @@ test.describe('Homepage experience', () => {
     );
     await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
       'content',
-      'https://marcocalifano89.github.io/assets/img/profile.jpeg'
+      'https://marcocalifano89.github.io/assets/img/social-card.png'
     );
   });
 
