@@ -218,7 +218,7 @@ const data: Record<Locale, Content> = {
       intro: 'Mandati selezionati in cui ho allineato architettura target, governance e delivery per programmi cloud, dati e AI.',
       items: [
         {
-          company: 'Liquid',
+          company: 'Liquid Reply',
           period: '2026 - Oggi',
           role: 'BU Manager, Cloud & AI Solutions',
           context: 'Business unit cloud, data e generative AI',
@@ -473,7 +473,7 @@ const data: Record<Locale, Content> = {
       intro: 'Selected mandates where I aligned target architecture, governance and delivery across cloud, data and AI programmes.',
       items: [
         {
-          company: 'Liquid',
+          company: 'Liquid Reply',
           period: '2026 - Present',
           role: 'BU Manager, Cloud & AI Solutions',
           context: 'Cloud, data and generative AI business unit',
